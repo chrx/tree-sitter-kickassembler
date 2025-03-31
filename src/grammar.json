@@ -360,8 +360,28 @@
       ]
     },
     "macro_name": {
-      "type": "PATTERN",
-      "value": "[A-Za-z_@!][A-Za-z0-9_\\.]*\\(\\)"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[A-Za-z_@!][A-Za-z0-9_\\.]*"
+        },
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "symbol"
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
     },
     "macro": {
       "type": "SEQ",
