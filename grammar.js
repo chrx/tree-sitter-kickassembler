@@ -45,7 +45,7 @@ module.exports = grammar({
         choice("\n", ";"),
       ),
 
-    label: ($) => /\s*(!)|(!?([A-Za-z_][A-Za-z0-9_]*)+)\:/,
+    label: ($) => /^\s*(!)|(!?([A-Za-z_][A-Za-z0-9_]*)+)\:/,
     symbol: ($) => /[A-Za-z_@!][A-Za-z0-9_\.]*/,
 
     command: ($) =>
