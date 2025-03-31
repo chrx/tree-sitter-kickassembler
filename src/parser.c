@@ -1546,11 +1546,11 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 68:
       if (lookahead == ':') ADVANCE(164);
       if (lookahead == 0x17f ||
-          lookahead == 0x212a) ADVANCE(210);
+          lookahead == 0x212a) ADVANCE(211);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
           lookahead == '_' ||
-          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(211);
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(210);
       END_STATE();
     case 69:
       if (lookahead == ':') ADVANCE(164);
@@ -2000,7 +2000,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead == '_' ||
           ('a' <= lookahead && lookahead <= 'z') ||
           lookahead == 0x17f ||
-          lookahead == 0x212a) ADVANCE(210);
+          lookahead == 0x212a) ADVANCE(211);
       END_STATE();
     case 157:
       if (eof) ADVANCE(158);
@@ -2342,14 +2342,22 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 210:
       ACCEPT_TOKEN(sym_dex_opcode);
-      END_STATE();
-    case 211:
-      ACCEPT_TOKEN(sym_dex_opcode);
       if (lookahead == ':') ADVANCE(164);
+      if (lookahead == 0x17f ||
+          lookahead == 0x212a) ADVANCE(211);
       if (('0' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
           lookahead == '_' ||
-          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(69);
+          ('a' <= lookahead && lookahead <= 'z')) ADVANCE(210);
+      END_STATE();
+    case 211:
+      ACCEPT_TOKEN(sym_dex_opcode);
+      if (('0' <= lookahead && lookahead <= '9') ||
+          ('A' <= lookahead && lookahead <= 'Z') ||
+          lookahead == '_' ||
+          ('a' <= lookahead && lookahead <= 'z') ||
+          lookahead == 0x17f ||
+          lookahead == 0x212a) ADVANCE(211);
       END_STATE();
     case 212:
       ACCEPT_TOKEN(sym_dey_opcode);
@@ -5947,7 +5955,7 @@ TS_PUBLIC const TSLanguage *tree_sitter_kickassembler(void) {
     .metadata = {
       .major_version = 0,
       .minor_version = 1,
-      .patch_version = 2,
+      .patch_version = 3,
     },
   };
   return &language;

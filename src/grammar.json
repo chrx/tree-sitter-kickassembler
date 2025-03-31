@@ -2800,7 +2800,7 @@
     },
     "dex_opcode": {
       "type": "PATTERN",
-      "value": "dex\\w",
+      "value": "dex\\w+",
       "flags": "i"
     },
     "dey_opcode": {
