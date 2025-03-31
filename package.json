@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-kickassembler",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Tree sitter parser for Kick Assembler",
   "repository": "https://github.com/chrx/tree-sitter-kickassembler",
   "license": "MIT",

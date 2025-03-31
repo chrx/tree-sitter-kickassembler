@@ -4,7 +4,7 @@ endif
 
 LANGUAGE_NAME := tree-sitter-kickassembler
 HOMEPAGE_URL := https://github.com/chrx/tree-sitter-kickassembler
-VERSION := 0.1.1
+VERSION := 0.1.2
 
 # repository
 SRC_DIR := src
