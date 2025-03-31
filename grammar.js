@@ -66,7 +66,7 @@ module.exports = grammar({
 
     import: ($) => seq(choice(/#import/, /#importonce/), $.string),
     memblock: ($) => seq(/\.memblock/, $.string),
-    // namespace: ($) => seq(/\.memblock/, $.string)
+    namespace: ($) => seq(/\.namespace/, $.symbol),
 
     /**
      * Operand with an 8-bit value.

@@ -343,6 +343,19 @@
         }
       ]
     },
+    "namespace": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "\\.namespace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "symbol"
+        }
+      ]
+    },
     "operand_8": {
       "type": "CHOICE",
       "members": [
