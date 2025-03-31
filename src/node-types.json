@@ -68,11 +68,11 @@
           "named": true
         },
         {
-          "type": "text",
+          "type": "storage",
           "named": true
         },
         {
-          "type": "user_label",
+          "type": "text",
           "named": true
         },
         {
@@ -336,6 +336,21 @@
     }
   },
   {
+    "type": "storage",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "symbol",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "string",
     "named": true,
     "fields": {}
@@ -355,21 +370,6 @@
       "types": [
         {
           "type": "string",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "user_label",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "symbol",
           "named": true
         }
       ]
@@ -489,10 +489,6 @@
   },
   {
     "type": "preprocessor",
-    "named": true
-  },
-  {
-    "type": "storage",
     "named": true
   },
   {

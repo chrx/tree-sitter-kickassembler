@@ -59,7 +59,7 @@ module.exports = grammar({
         $.memblock,
         $.namespace,
         $.macro,
-        $.user_label,
+        $.storage,
       ),
 
     byte: ($) =>
@@ -79,7 +79,7 @@ module.exports = grammar({
       seq(/[A-Za-z_@!][A-Za-z0-9_\.]*/, "(", repeat($.symbol), ")"),
     macro: ($) => seq(/\.macro/, $.macro_name),
 
-    user_label: ($) => seq(/\.label/, $.symbol, "="),
+    storage: ($) => seq(choice(/\.var/, /\.label/, /\.const/), $.symbol, "="),
 
     //.label animation_type_single = 1<<4
 
@@ -173,8 +173,6 @@ module.exports = grammar({
 
     threed: ($) =>
       /Matrix|RotationMatrix|ScaleMatrix|MoveMatrix|PerspectiveMatrix|Vector/,
-
-    storage: ($) => /\.(var|label|const)/i,
 
     object: ($) => /\.(struct|enum)/i,
 

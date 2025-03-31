@@ -211,7 +211,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "user_label"
+          "name": "storage"
         }
       ]
     },
@@ -392,12 +392,25 @@
         }
       ]
     },
-    "user_label": {
+    "storage": {
       "type": "SEQ",
       "members": [
         {
-          "type": "PATTERN",
-          "value": "\\.label"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "\\.var"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\\.label"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\\.const"
+            }
+          ]
         },
         {
           "type": "SYMBOL",
@@ -601,11 +614,6 @@
     "threed": {
       "type": "PATTERN",
       "value": "Matrix|RotationMatrix|ScaleMatrix|MoveMatrix|PerspectiveMatrix|Vector"
-    },
-    "storage": {
-      "type": "PATTERN",
-      "value": "\\.(var|label|const)",
-      "flags": "i"
     },
     "object": {
       "type": "PATTERN",
