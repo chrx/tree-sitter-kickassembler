@@ -60,6 +60,10 @@
           "named": true
         },
         {
+          "type": "namespace",
+          "named": true
+        },
+        {
           "type": "text",
           "named": true
         },
@@ -160,6 +164,21 @@
       "types": [
         {
           "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "namespace",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "symbol",
           "named": true
         }
       ]
@@ -404,6 +423,10 @@
   },
   {
     "type": "storage",
+    "named": true
+  },
+  {
+    "type": "symbol",
     "named": true
   },
   {

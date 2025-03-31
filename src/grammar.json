@@ -200,6 +200,10 @@
         {
           "type": "SYMBOL",
           "name": "memblock"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "namespace"
         }
       ]
     },

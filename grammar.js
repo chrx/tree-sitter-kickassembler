@@ -50,7 +50,8 @@ module.exports = grammar({
     label: ($) => /[A-Za-z_@!][A-Za-z0-9_]*:/,
     symbol: ($) => /[A-Za-z_@!][A-Za-z0-9_\.]*/,
 
-    command: ($) => choice($.byte, $.word, $.text, $.import, $.memblock),
+    command: ($) =>
+      choice($.byte, $.word, $.text, $.import, $.memblock, $.namespace),
 
     byte: ($) =>
       seq(
