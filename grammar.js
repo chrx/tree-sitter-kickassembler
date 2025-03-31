@@ -73,8 +73,7 @@ module.exports = grammar({
 
     import: ($) => seq(choice(/#import/, /#importonce/), $.string),
     memblock: ($) => seq(/\.memblock/, $.string),
-    namespace_name: ($) => /[A-Za-z_@!][A-Za-z0-9_\.]*\(\)/,
-    namespace: ($) => seq(/\.namespace/, $.namespace_name),
+    namespace: ($) => seq(/\.namespace/, $.symbol),
     macro_name: ($) =>
       seq(/[A-Za-z_@!][A-Za-z0-9_\.]*/, "(", repeat($.symbol), ")"),
     macro: ($) => seq(/\.macro/, $.macro_name),

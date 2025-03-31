@@ -212,7 +212,7 @@
       "required": true,
       "types": [
         {
-          "type": "namespace_name",
+          "type": "symbol",
           "named": true
         }
       ]
@@ -450,10 +450,6 @@
   },
   {
     "type": "math",
-    "named": true
-  },
-  {
-    "type": "namespace_name",
     "named": true
   },
   {
