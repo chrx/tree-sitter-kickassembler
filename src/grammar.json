@@ -338,6 +338,10 @@
         }
       ]
     },
+    "namespace_name": {
+      "type": "PATTERN",
+      "value": "[A-Za-z_@!][A-Za-z0-9_\\.]*\\(\\)"
+    },
     "namespace": {
       "type": "SEQ",
       "members": [
@@ -347,7 +351,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "symbol"
+          "name": "namespace_name"
         },
         {
           "type": "SYMBOL",
@@ -372,7 +376,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "byte"
+          "name": "block"
         }
       ]
     },

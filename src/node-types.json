@@ -167,7 +167,7 @@
       "required": true,
       "types": [
         {
-          "type": "byte",
+          "type": "block",
           "named": true
         },
         {
@@ -176,6 +176,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "macro_name",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "memblock",
@@ -205,11 +210,16 @@
           "named": true
         },
         {
-          "type": "symbol",
+          "type": "namespace_name",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "namespace_name",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "operand_16",
@@ -429,10 +439,6 @@
     "named": true
   },
   {
-    "type": "macro_name",
-    "named": true
-  },
-  {
     "type": "math",
     "named": true
   },
@@ -454,10 +460,6 @@
   },
   {
     "type": "storage",
-    "named": true
-  },
-  {
-    "type": "symbol",
     "named": true
   },
   {
