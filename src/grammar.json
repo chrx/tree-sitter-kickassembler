@@ -204,6 +204,10 @@
         {
           "type": "SYMBOL",
           "name": "namespace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "macro"
         }
       ]
     },
@@ -299,19 +303,6 @@
         }
       ]
     },
-    "macro": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "[A-Za-z_]+"
-        },
-        {
-          "type": "PATTERN",
-          "value": "\\(.*\\)"
-        }
-      ]
-    },
     "import": {
       "type": "SEQ",
       "members": [
@@ -357,6 +348,31 @@
         {
           "type": "SYMBOL",
           "name": "symbol"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "block"
+        }
+      ]
+    },
+    "macro_name": {
+      "type": "PATTERN",
+      "value": "[A-Za-z_@!][A-Za-z0-9_\\.]*\\(\\)"
+    },
+    "macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "\\.macro"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "macro_name"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "byte"
         }
       ]
     },

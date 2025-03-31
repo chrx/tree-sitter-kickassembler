@@ -56,6 +56,10 @@
           "named": true
         },
         {
+          "type": "macro",
+          "named": true
+        },
+        {
           "type": "memblock",
           "named": true
         },
@@ -155,6 +159,25 @@
     }
   },
   {
+    "type": "macro",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "byte",
+          "named": true
+        },
+        {
+          "type": "macro_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "memblock",
     "named": true,
     "fields": {},
@@ -174,9 +197,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "block",
+          "named": true
+        },
         {
           "type": "symbol",
           "named": true
@@ -399,6 +426,10 @@
   },
   {
     "type": "label",
+    "named": true
+  },
+  {
+    "type": "macro_name",
     "named": true
   },
   {

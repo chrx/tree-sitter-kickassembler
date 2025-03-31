@@ -51,7 +51,15 @@ module.exports = grammar({
     symbol: ($) => /[A-Za-z_@!][A-Za-z0-9_\.]*/,
 
     command: ($) =>
-      choice($.byte, $.word, $.text, $.import, $.memblock, $.namespace),
+      choice(
+        $.byte,
+        $.word,
+        $.text,
+        $.import,
+        $.memblock,
+        $.namespace,
+        $.macro,
+      ),
 
     byte: ($) =>
       seq(
@@ -63,11 +71,12 @@ module.exports = grammar({
 
     text: ($) => seq(/\.text/i, $.string),
 
-    macro: ($) => seq(/[A-Za-z_]+/, /\(.*\)/),
-
     import: ($) => seq(choice(/#import/, /#importonce/), $.string),
     memblock: ($) => seq(/\.memblock/, $.string),
-    namespace: ($) => seq(/\.namespace/, $.symbol),
+    namespace: ($) => seq(/\.namespace/, $.symbol, $.block),
+    macro_name: ($) => /[A-Za-z_@!][A-Za-z0-9_\.]*\(\)/,
+    macro: ($) => seq(/\.macro/, $.macro_name, $.byte),
+    //.macro restore_ya()
 
     /**
      * Operand with an 8-bit value.
