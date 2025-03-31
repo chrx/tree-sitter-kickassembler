@@ -1,5 +1,15 @@
 [
   {
+    "type": "bin_16",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "bin_8",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "block",
     "named": true,
     "fields": {},
@@ -13,6 +23,58 @@
         }
       ]
     }
+  },
+  {
+    "type": "byte",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "operand_8",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "command",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "byte",
+          "named": true
+        },
+        {
+          "type": "memblock",
+          "named": true
+        },
+        {
+          "type": "namespace",
+          "named": true
+        },
+        {
+          "type": "word",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "hex_16",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "hex_8",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "inst",
@@ -70,6 +132,86 @@
     }
   },
   {
+    "type": "memblock",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "namespace",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "operand_16",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bin_16",
+          "named": true
+        },
+        {
+          "type": "colour",
+          "named": true
+        },
+        {
+          "type": "dec_16",
+          "named": true
+        },
+        {
+          "type": "file_type",
+          "named": true
+        },
+        {
+          "type": "hex_16",
+          "named": true
+        },
+        {
+          "type": "opcode_imm",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "operand_8",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "bin_8",
+          "named": true
+        },
+        {
+          "type": "colour",
+          "named": true
+        },
+        {
+          "type": "dec_8",
+          "named": true
+        },
+        {
+          "type": "file_type",
+          "named": true
+        },
+        {
+          "type": "hex_8",
+          "named": true
+        },
+        {
+          "type": "opcode_imm",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "program",
     "named": true,
     "root": true,
@@ -98,6 +240,10 @@
           "named": true
         },
         {
+          "type": "command",
+          "named": true
+        },
+        {
           "type": "inst",
           "named": true
         },
@@ -107,6 +253,37 @@
         }
       ]
     }
+  },
+  {
+    "type": "word",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "operand_16",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "$",
+    "named": false
+  },
+  {
+    "type": "%",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "colour",
+    "named": true
   },
   {
     "type": "comment",
@@ -122,12 +299,28 @@
     "named": true
   },
   {
+    "type": "dec_16",
+    "named": true
+  },
+  {
+    "type": "dec_8",
+    "named": true
+  },
+  {
     "type": "file",
+    "named": true
+  },
+  {
+    "type": "file_type",
     "named": true
   },
   {
     "type": "function",
     "named": true
+  },
+  {
+    "type": "h",
+    "named": false
   },
   {
     "type": "illegal",
@@ -147,6 +340,10 @@
   },
   {
     "type": "opcode",
+    "named": true
+  },
+  {
+    "type": "opcode_imm",
     "named": true
   },
   {

@@ -77,6 +77,10 @@
         {
           "type": "SYMBOL",
           "name": "inst"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "command"
         }
       ]
     },
@@ -309,10 +313,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "symbol"
-        },
-        {
-          "type": "SYMBOL",
           "name": "colour"
         },
         {
@@ -399,10 +399,6 @@
         {
           "type": "SYMBOL",
           "name": "hex_16"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "symbol"
         },
         {
           "type": "SYMBOL",
