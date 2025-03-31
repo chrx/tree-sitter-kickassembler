@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 project(tree-sitter-kickassembler
-        VERSION "0.1.2"
+        VERSION "0.1.3"
         DESCRIPTION "Tree sitter parser for Kick Assembler"
         HOMEPAGE_URL "https://github.com/chrx/tree-sitter-kickassembler"
         LANGUAGES C)

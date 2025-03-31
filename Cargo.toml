@@ -1,7 +1,7 @@
 [package]
 name = "tree-sitter-kickassembler"
 description = "Tree sitter parser for Kick Assembler"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["Chrx"]
 license = "MIT"
 readme = "README.md"
