@@ -1,0 +1,41 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "kickassembler",
+      "camelcase": "KickAssembler",
+      "title": "Kick Assembler",
+      "scope": "source.kickassembler",
+      "file-types": [
+        "asm",
+        "a",
+        "s",
+        "inc"
+      ],
+      "injection-regex": "^kickassembler$",
+      "class-name": "TreeSitterKickassembler"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree sitter parser for Kick Assembler",
+    "authors": [
+      {
+        "name": "Chrx"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/chrx/tree-sitter-kickassembler"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}

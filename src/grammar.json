@@ -1,0 +1,3899 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
+  "name": "kickassembler",
+  "rules": {
+    "asm": {
+      "type": "REPEAT",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "label"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "inst"
+          }
+        ]
+      }
+    },
+    "comment": {
+      "type": "TOKEN",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "//"
+          },
+          {
+            "type": "PATTERN",
+            "value": ".*"
+          }
+        ]
+      }
+    },
+    "string": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "\"[^\"]*\""
+        },
+        {
+          "type": "PATTERN",
+          "value": "'[^']*'"
+        }
+      ]
+    },
+    "acc_register": {
+      "type": "PATTERN",
+      "value": "a",
+      "flags": "i"
+    },
+    "x_register": {
+      "type": "PATTERN",
+      "value": "x",
+      "flags": "i"
+    },
+    "y_register": {
+      "type": "PATTERN",
+      "value": "y",
+      "flags": "i"
+    },
+    "label": {
+      "type": "PATTERN",
+      "value": "[A-Za-z_@!][A-Za-z0-9_]*:"
+    },
+    "symbol": {
+      "type": "PATTERN",
+      "value": "[A-Za-z_@!][A-Za-z2-9_]*"
+    },
+    "inst": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "impl_addr_inst"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "acc_addr_inst"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "imm_addr_inst"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "abs_addr_inst"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "zp_addr_inst"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "abs_x_addr_inst"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "abs_y_addr_inst"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "zp_x_addr_inst"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "zp_y_addr_inst"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ind_addr_inst"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ind_x_addr_inst"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "ind_y_addr_inst"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "rel_addr_inst"
+        }
+      ]
+    },
+    "impl_addr_inst": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "brk_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "clc_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cld_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "cli_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "clv_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dex_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dey_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "inx_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "iny_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "nop_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pha_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "php_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "pla_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "plp_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "rti_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "rts_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "sec_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "sed_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "sei_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tax_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tay_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tsx_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "txa_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tcs_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "tya_opcode"
+        }
+      ]
+    },
+    "acc_addr_inst": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "asl_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "acc_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "rol_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "acc_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ror_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "acc_register"
+            }
+          ]
+        }
+      ]
+    },
+    "imm_addr_inst": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "adc_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "imm_prefix"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "and_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "imm_prefix"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cmp_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "imm_prefix"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cpx_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "imm_prefix"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cpy_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "imm_prefix"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "eor_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "imm_prefix"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lda_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "imm_prefix"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ldx_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "imm_prefix"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ldy_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "imm_prefix"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lsr_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "imm_prefix"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ora_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "imm_prefix"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sbc_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "imm_prefix"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        }
+      ]
+    },
+    "abs_addr_inst": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "adc_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "and_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "asl_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "bit_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cmp_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cpx_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cpy_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dec_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "eor_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "inc_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "jmp_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "jsr_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lda_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ldx_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ldy_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lsr_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ora_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "rol_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ror_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sbc_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sta_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "stx_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sty_opcode"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "zp_addr_inst": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "adc_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "and_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "asl_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "bit_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cmp_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cpx_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cpy_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dec_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "eor_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "inc_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lda_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ldx_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ldy_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lsr_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ora_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "rol_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ror_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sbc_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sta_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "stx_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sty_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            }
+          ]
+        }
+      ]
+    },
+    "abs_x_addr_inst": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "adc_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "and_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "asl_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cmp_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dec_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "eor_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "inc_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lda_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ldy_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lsr_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ora_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "rol_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ror_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sbc_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sta_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        }
+      ]
+    },
+    "abs_y_addr_inst": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "adc_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "and_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cmp_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "eor_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lda_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ldx_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ora_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sbc_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sta_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        }
+      ]
+    },
+    "zp_x_addr_inst": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "adc_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "and_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "asl_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cmp_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "dec_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "eor_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "inc_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lda_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ldy_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lsr_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ora_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "rol_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ror_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sbc_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sta_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sty_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            }
+          ]
+        }
+      ]
+    },
+    "zp_y_addr_inst": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ldx_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "stx_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        }
+      ]
+    },
+    "ind_addr_inst": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "jmp_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        }
+      ]
+    },
+    "ind_x_addr_inst": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "adc_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "and_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cmp_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "eor_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lda_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ora_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sbc_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sta_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "x_register"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            }
+          ]
+        }
+      ]
+    },
+    "ind_y_addr_inst": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "adc_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "and_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "cmp_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "eor_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "lda_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "ora_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sbc_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "sta_opcode"
+            },
+            {
+              "type": "STRING",
+              "value": "("
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_8"
+            },
+            {
+              "type": "STRING",
+              "value": ")"
+            },
+            {
+              "type": "STRING",
+              "value": ","
+            },
+            {
+              "type": "SYMBOL",
+              "name": "y_register"
+            }
+          ]
+        }
+      ]
+    },
+    "rel_addr_inst": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "bcc_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "bcs_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "beq_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "bmi_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "bne_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "bpl_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "bvc_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "bvs_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "operand_16"
+            }
+          ]
+        }
+      ]
+    },
+    "adc_opcode": {
+      "type": "PATTERN",
+      "value": "adc",
+      "flags": "i"
+    },
+    "and_opcode": {
+      "type": "PATTERN",
+      "value": "and",
+      "flags": "i"
+    },
+    "asl_opcode": {
+      "type": "PATTERN",
+      "value": "asl",
+      "flags": "i"
+    },
+    "bcc_opcode": {
+      "type": "PATTERN",
+      "value": "bcc",
+      "flags": "i"
+    },
+    "bcs_opcode": {
+      "type": "PATTERN",
+      "value": "bcs",
+      "flags": "i"
+    },
+    "beq_opcode": {
+      "type": "PATTERN",
+      "value": "beq",
+      "flags": "i"
+    },
+    "bit_opcode": {
+      "type": "PATTERN",
+      "value": "bit",
+      "flags": "i"
+    },
+    "bmi_opcode": {
+      "type": "PATTERN",
+      "value": "bmi",
+      "flags": "i"
+    },
+    "bne_opcode": {
+      "type": "PATTERN",
+      "value": "bne",
+      "flags": "i"
+    },
+    "bpl_opcode": {
+      "type": "PATTERN",
+      "value": "bpl",
+      "flags": "i"
+    },
+    "brk_opcode": {
+      "type": "PATTERN",
+      "value": "brk",
+      "flags": "i"
+    },
+    "bvc_opcode": {
+      "type": "PATTERN",
+      "value": "bvc",
+      "flags": "i"
+    },
+    "bvs_opcode": {
+      "type": "PATTERN",
+      "value": "bvs",
+      "flags": "i"
+    },
+    "clc_opcode": {
+      "type": "PATTERN",
+      "value": "clc",
+      "flags": "i"
+    },
+    "cld_opcode": {
+      "type": "PATTERN",
+      "value": "cld",
+      "flags": "i"
+    },
+    "cli_opcode": {
+      "type": "PATTERN",
+      "value": "cli",
+      "flags": "i"
+    },
+    "clv_opcode": {
+      "type": "PATTERN",
+      "value": "clv",
+      "flags": "i"
+    },
+    "cmp_opcode": {
+      "type": "PATTERN",
+      "value": "cmp",
+      "flags": "i"
+    },
+    "cpx_opcode": {
+      "type": "PATTERN",
+      "value": "cpx",
+      "flags": "i"
+    },
+    "cpy_opcode": {
+      "type": "PATTERN",
+      "value": "cpy",
+      "flags": "i"
+    },
+    "dec_opcode": {
+      "type": "PATTERN",
+      "value": "dec",
+      "flags": "i"
+    },
+    "dex_opcode": {
+      "type": "PATTERN",
+      "value": "dex",
+      "flags": "i"
+    },
+    "dey_opcode": {
+      "type": "PATTERN",
+      "value": "dey",
+      "flags": "i"
+    },
+    "eor_opcode": {
+      "type": "PATTERN",
+      "value": "eor",
+      "flags": "i"
+    },
+    "inc_opcode": {
+      "type": "PATTERN",
+      "value": "inc",
+      "flags": "i"
+    },
+    "inx_opcode": {
+      "type": "PATTERN",
+      "value": "inx",
+      "flags": "i"
+    },
+    "iny_opcode": {
+      "type": "PATTERN",
+      "value": "iny",
+      "flags": "i"
+    },
+    "jmp_opcode": {
+      "type": "PATTERN",
+      "value": "jmp",
+      "flags": "i"
+    },
+    "jsr_opcode": {
+      "type": "PATTERN",
+      "value": "jsr",
+      "flags": "i"
+    },
+    "lda_opcode": {
+      "type": "PATTERN",
+      "value": "lda",
+      "flags": "i"
+    },
+    "ldx_opcode": {
+      "type": "PATTERN",
+      "value": "ldx",
+      "flags": "i"
+    },
+    "ldy_opcode": {
+      "type": "PATTERN",
+      "value": "ldy",
+      "flags": "i"
+    },
+    "lsr_opcode": {
+      "type": "PATTERN",
+      "value": "lsr",
+      "flags": "i"
+    },
+    "nop_opcode": {
+      "type": "PATTERN",
+      "value": "nop",
+      "flags": "i"
+    },
+    "ora_opcode": {
+      "type": "PATTERN",
+      "value": "ora",
+      "flags": "i"
+    },
+    "pha_opcode": {
+      "type": "PATTERN",
+      "value": "pha",
+      "flags": "i"
+    },
+    "php_opcode": {
+      "type": "PATTERN",
+      "value": "php",
+      "flags": "i"
+    },
+    "pla_opcode": {
+      "type": "PATTERN",
+      "value": "pla",
+      "flags": "i"
+    },
+    "plp_opcode": {
+      "type": "PATTERN",
+      "value": "plp",
+      "flags": "i"
+    },
+    "rol_opcode": {
+      "type": "PATTERN",
+      "value": "rol",
+      "flags": "i"
+    },
+    "ror_opcode": {
+      "type": "PATTERN",
+      "value": "ror",
+      "flags": "i"
+    },
+    "rti_opcode": {
+      "type": "PATTERN",
+      "value": "rti",
+      "flags": "i"
+    },
+    "rts_opcode": {
+      "type": "PATTERN",
+      "value": "rts",
+      "flags": "i"
+    },
+    "sbc_opcode": {
+      "type": "PATTERN",
+      "value": "sbc",
+      "flags": "i"
+    },
+    "sec_opcode": {
+      "type": "PATTERN",
+      "value": "sec",
+      "flags": "i"
+    },
+    "sed_opcode": {
+      "type": "PATTERN",
+      "value": "sed",
+      "flags": "i"
+    },
+    "sei_opcode": {
+      "type": "PATTERN",
+      "value": "sei",
+      "flags": "i"
+    },
+    "sta_opcode": {
+      "type": "PATTERN",
+      "value": "sta",
+      "flags": "i"
+    },
+    "stx_opcode": {
+      "type": "PATTERN",
+      "value": "stx",
+      "flags": "i"
+    },
+    "sty_opcode": {
+      "type": "PATTERN",
+      "value": "sty",
+      "flags": "i"
+    },
+    "tax_opcode": {
+      "type": "PATTERN",
+      "value": "tax",
+      "flags": "i"
+    },
+    "tay_opcode": {
+      "type": "PATTERN",
+      "value": "tay",
+      "flags": "i"
+    },
+    "tsx_opcode": {
+      "type": "PATTERN",
+      "value": "tsx",
+      "flags": "i"
+    },
+    "txa_opcode": {
+      "type": "PATTERN",
+      "value": "txa",
+      "flags": "i"
+    },
+    "tcs_opcode": {
+      "type": "PATTERN",
+      "value": "tcs",
+      "flags": "i"
+    },
+    "tya_opcode": {
+      "type": "PATTERN",
+      "value": "tya",
+      "flags": "i"
+    },
+    "operand_8": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "bin_8"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dec_8"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hex_8"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "symbol"
+        }
+      ]
+    },
+    "bin_8": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "%"
+        },
+        {
+          "type": "PATTERN",
+          "value": "0*[01]{1,8}"
+        }
+      ]
+    },
+    "dec_8": {
+      "type": "PATTERN",
+      "value": "0*(25[0-5]|2[0-4][0-9]|[01]?[0-9]{1,2})"
+    },
+    "hex_8": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "$"
+                },
+                {
+                  "type": "STRING",
+                  "value": "h"
+                }
+              ]
+            },
+            {
+              "type": "PATTERN",
+              "value": "0*[0-9a-fA-F]{1,2}"
+            }
+          ]
+        },
+        {
+          "type": "PATTERN",
+          "value": "0*[0-9a-fA-F]{1,2}h"
+        }
+      ]
+    },
+    "operand_16": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "bin_16"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "dec_16"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "hex_16"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "symbol"
+        }
+      ]
+    },
+    "bin_16": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "%"
+        },
+        {
+          "type": "PATTERN",
+          "value": "0*[01]{9,16}"
+        }
+      ]
+    },
+    "dec_16": {
+      "type": "PATTERN",
+      "value": "0*(6553[0-5]|655[0-2]\\d|65[0-4]\\d{2}|6[0-4]\\d{3}|[1-5]?\\d{1,4})"
+    },
+    "hex_16": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "$"
+            },
+            {
+              "type": "STRING",
+              "value": "h"
+            }
+          ]
+        },
+        {
+          "type": "PATTERN",
+          "value": "0*[0-9a-fA-F]{3,4}"
+        }
+      ]
+    },
+    "imm_prefix": {
+      "type": "STRING",
+      "value": "#"
+    },
+    "expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "PREC_LEFT",
+          "value": 8,
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "("
+              },
+              {
+                "type": "SYMBOL",
+                "name": "expression"
+              },
+              {
+                "type": "STRING",
+                "value": ")"
+              }
+            ]
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "operand_16"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "operand_8"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "unary_pos_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "unary_neg_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "unary_not_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "unary_lobyte_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "unary_hibyte_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "unary_bankbyte_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "mult_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "div_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "mod_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bit_and_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bit_xor_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "shift_l_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "shift_r_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "add_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "sub_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bit_or_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "eq_cmp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "neq_cmp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "lt_cmp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "gt_cmp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "lte_cmp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "gte_cmp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bool_and_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bool_xor_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bool_or_exp"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "bool_not_exp"
+        }
+      ]
+    },
+    "unary_pos_exp": {
+      "type": "PREC_LEFT",
+      "value": 7,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "+"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "unary_neg_exp": {
+      "type": "PREC_LEFT",
+      "value": 7,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "-"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "unary_not_exp": {
+      "type": "PREC_LEFT",
+      "value": 7,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ".BITNOT"
+              },
+              {
+                "type": "STRING",
+                "value": "~"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "unary_lobyte_exp": {
+      "type": "PREC_LEFT",
+      "value": 7,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ".LOBYTE"
+              },
+              {
+                "type": "STRING",
+                "value": "<"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "unary_hibyte_exp": {
+      "type": "PREC_LEFT",
+      "value": 7,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ".HIBYTE"
+              },
+              {
+                "type": "STRING",
+                "value": ">"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "unary_bankbyte_exp": {
+      "type": "PREC_LEFT",
+      "value": 7,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ".BANKBYTE"
+              },
+              {
+                "type": "STRING",
+                "value": "^"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "mult_exp": {
+      "type": "PREC_LEFT",
+      "value": 6,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": "*"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "div_exp": {
+      "type": "PREC_LEFT",
+      "value": 6,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": "/"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "mod_exp": {
+      "type": "PREC_LEFT",
+      "value": 6,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": ".MOD"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "bit_and_exp": {
+      "type": "PREC_LEFT",
+      "value": 6,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ".BITAND"
+              },
+              {
+                "type": "STRING",
+                "value": "&"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "bit_xor_exp": {
+      "type": "PREC_LEFT",
+      "value": 6,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ".BITXOR"
+              },
+              {
+                "type": "STRING",
+                "value": "^"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "shift_l_exp": {
+      "type": "PREC_LEFT",
+      "value": 6,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ".SHL"
+              },
+              {
+                "type": "STRING",
+                "value": "<<"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "shift_r_exp": {
+      "type": "PREC_LEFT",
+      "value": 6,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ".SHR"
+              },
+              {
+                "type": "STRING",
+                "value": ">>"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "add_exp": {
+      "type": "PREC_LEFT",
+      "value": 5,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": "+"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "sub_exp": {
+      "type": "PREC_LEFT",
+      "value": 5,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": "-"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "bit_or_exp": {
+      "type": "PREC_LEFT",
+      "value": 5,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ".BITOR"
+              },
+              {
+                "type": "STRING",
+                "value": "|"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "eq_cmp": {
+      "type": "PREC_LEFT",
+      "value": 4,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": "="
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "neq_cmp": {
+      "type": "PREC_LEFT",
+      "value": 4,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": "<>"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "lt_cmp": {
+      "type": "PREC_LEFT",
+      "value": 4,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": "<"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "gt_cmp": {
+      "type": "PREC_LEFT",
+      "value": 4,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": ">"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "lte_cmp": {
+      "type": "PREC_LEFT",
+      "value": 4,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": "<="
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "gte_cmp": {
+      "type": "PREC_LEFT",
+      "value": 4,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": ">="
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "bool_and_exp": {
+      "type": "PREC_LEFT",
+      "value": 3,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ".AND"
+              },
+              {
+                "type": "STRING",
+                "value": "&&"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "bool_xor_exp": {
+      "type": "PREC_LEFT",
+      "value": 3,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "STRING",
+            "value": ".XOR"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "bool_or_exp": {
+      "type": "PREC_LEFT",
+      "value": 2,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          },
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ".OR"
+              },
+              {
+                "type": "STRING",
+                "value": "||"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    },
+    "bool_not_exp": {
+      "type": "PREC_LEFT",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ".NOT"
+              },
+              {
+                "type": "STRING",
+                "value": "!"
+              }
+            ]
+          },
+          {
+            "type": "SYMBOL",
+            "name": "expression"
+          }
+        ]
+      }
+    }
+  },
+  "extras": [
+    {
+      "type": "SYMBOL",
+      "name": "comment"
+    },
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [
+    [
+      "operand_8",
+      "operand_16"
+    ]
+  ],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": [],
+  "reserved": {}
+}
