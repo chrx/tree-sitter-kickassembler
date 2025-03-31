@@ -100,51 +100,73 @@
       "flags": "i"
     },
     "inst": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "opcode"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "illegal"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "control"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "data"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "math"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "file"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "threed"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "storage"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "object"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "function"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "preprocessor"
+            }
+          ]
         },
         {
-          "type": "SYMBOL",
-          "name": "illegal"
+          "type": "PATTERN",
+          "value": ".+."
         },
         {
-          "type": "SYMBOL",
-          "name": "control"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "data"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "math"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "file"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "threed"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "storage"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "object"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "function"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "preprocessor"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "\n"
+            },
+            {
+              "type": "STRING",
+              "value": ";"
+            }
+          ]
         }
       ]
     },

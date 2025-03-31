@@ -29,18 +29,22 @@ module.exports = grammar({
     y_register: ($) => /y/i,
 
     inst: ($) =>
-      choice(
-        $.opcode,
-        $.illegal,
-        $.control,
-        $.data,
-        $.math,
-        $.file,
-        $.threed,
-        $.storage,
-        $.object,
-        $.function,
-        $.preprocessor,
+      seq(
+        choice(
+          $.opcode,
+          $.illegal,
+          $.control,
+          $.data,
+          $.math,
+          $.file,
+          $.threed,
+          $.storage,
+          $.object,
+          $.function,
+          $.preprocessor,
+        ),
+        /.+./,
+        choice("\n", ";"),
       ),
 
     label: ($) => /[A-Za-z_@!][A-Za-z0-9_]*:/,
