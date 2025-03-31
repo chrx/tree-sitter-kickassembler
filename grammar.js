@@ -46,10 +46,8 @@ module.exports = grammar({
     label: ($) => /[A-Za-z_@!][A-Za-z0-9_]*:/,
     symbol: ($) => /[A-Za-z_@!][A-Za-z0-9_\.]*/,
 
-    command: ($) => choice($.memblock, $.namespace, $.byte, $.word),
+    command: ($) => choice($.byte, $.word, $.text),
 
-    memblock: ($) => seq(/\.memblock/i, /\".+\"/),
-    namespace: ($) => seq(/\.namespace/i, /.+/),
     byte: ($) =>
       seq(
         /\.byte/,
@@ -57,6 +55,8 @@ module.exports = grammar({
       ),
     word: ($) =>
       seq(/\.word/i, choice($.operand_16, repeat(seq($.operand_16, ",")))),
+
+    text: ($) => seq(/\.text/i, $.string),
 
     macro: ($) => seq(/[A-Za-z_]+/, /\(.*\)/),
 

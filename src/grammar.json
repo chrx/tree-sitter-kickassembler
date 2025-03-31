@@ -161,47 +161,15 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "memblock"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "namespace"
-        },
-        {
-          "type": "SYMBOL",
           "name": "byte"
         },
         {
           "type": "SYMBOL",
           "name": "word"
-        }
-      ]
-    },
-    "memblock": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "\\.memblock",
-          "flags": "i"
         },
         {
-          "type": "PATTERN",
-          "value": "\\\".+\\\""
-        }
-      ]
-    },
-    "namespace": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "PATTERN",
-          "value": "\\.namespace",
-          "flags": "i"
-        },
-        {
-          "type": "PATTERN",
-          "value": ".+"
+          "type": "SYMBOL",
+          "name": "text"
         }
       ]
     },
@@ -280,6 +248,20 @@
               }
             }
           ]
+        }
+      ]
+    },
+    "text": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "\\.text",
+          "flags": "i"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
         }
       ]
     },

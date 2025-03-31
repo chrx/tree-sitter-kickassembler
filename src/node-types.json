@@ -52,11 +52,7 @@
           "named": true
         },
         {
-          "type": "memblock",
-          "named": true
-        },
-        {
-          "type": "namespace",
+          "type": "text",
           "named": true
         },
         {
@@ -130,16 +126,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "memblock",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "namespace",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "operand_16",
@@ -249,6 +235,26 @@
         },
         {
           "type": "label",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "text",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
           "named": true
         }
       ]
