@@ -18,16 +18,32 @@ module.exports = grammar({
   ],
 
   rules: {
-    asm: ($) => repeat(choice($.label, $.inst)),
+    program: ($) => repeat(choice($.statement)),
     comment: ($) => token(seq("//", /.*/)),
     string: ($) => choice(/"[^"]*"/, /'[^']*'/),
+    block: ($) => seq("{", repeat($.statement), "}"),
+    statement: ($) => choice($.block, $.label, $.inst, $.command),
 
     acc_register: ($) => /a/i,
     x_register: ($) => /x/i,
     y_register: ($) => /y/i,
 
     label: ($) => /[A-Za-z_@!][A-Za-z0-9_]*:/,
-    symbol: ($) => /[A-Za-z_@!][A-Za-z2-9_\.]*/,
+    symbol: ($) => /[A-Za-z_@!][A-Za-z0-9_\.]*/,
+
+    command: ($) => choice($.memblock, $.namespace, $.byte, $.word),
+
+    memblock: ($) => seq(/\.memblock/i, /\".+\"/),
+    namespace: ($) => seq(/\.namespace/i, /.+/),
+    byte: ($) =>
+      seq(
+        /\.byte/,
+        choice($.operand_8, seq(repeat(seq($.operand_8, ",")), $.operand_8)),
+      ),
+    word: ($) =>
+      seq(/\.word/i, choice($.operand_16, repeat(seq($.operand_16, ",")))),
+
+    macro: ($) => seq(/[A-Za-z_]+/, /\(.*\)/),
 
     /**
      * Instructions
