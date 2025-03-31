@@ -50,7 +50,7 @@ module.exports = grammar({
     label: ($) => /[A-Za-z_@!][A-Za-z0-9_]*:/,
     symbol: ($) => /[A-Za-z_@!][A-Za-z0-9_\.]*/,
 
-    command: ($) => choice($.byte, $.word, $.text),
+    command: ($) => choice($.byte, $.word, $.text, $.import),
 
     byte: ($) =>
       seq(
@@ -63,6 +63,8 @@ module.exports = grammar({
     text: ($) => seq(/\.text/i, $.string),
 
     macro: ($) => seq(/[A-Za-z_]+/, /\(.*\)/),
+
+    import: ($) => seq(/#import/, $.string),
 
     /**
      * Operand with an 8-bit value.

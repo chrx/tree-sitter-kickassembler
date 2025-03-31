@@ -52,6 +52,10 @@
           "named": true
         },
         {
+          "type": "import",
+          "named": true
+        },
+        {
           "type": "text",
           "named": true
         },
@@ -71,6 +75,21 @@
     "type": "hex_8",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "import",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "inst",

@@ -192,6 +192,10 @@
         {
           "type": "SYMBOL",
           "name": "text"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "import"
         }
       ]
     },
@@ -297,6 +301,19 @@
         {
           "type": "PATTERN",
           "value": "\\(.*\\)"
+        }
+      ]
+    },
+    "import": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "#import"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
         }
       ]
     },
