@@ -77,7 +77,10 @@ module.exports = grammar({
     macro_name: ($) =>
       seq(/[A-Za-z_@!][A-Za-z0-9_\.]*/, "(", repeat($.symbol), ")"),
     macro: ($) => seq(/\.macro/, $.macro_name),
-    //.macro restore_ya()
+
+    user_label: ($) => seq(/\.label/, $.symbol, "="),
+
+    //.label animation_type_single = 1<<4
 
     /**
      * Operand with an 8-bit value.
