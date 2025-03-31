@@ -50,7 +50,7 @@ module.exports = grammar({
     label: ($) => /[A-Za-z_@!][A-Za-z0-9_]*:/,
     symbol: ($) => /[A-Za-z_@!][A-Za-z0-9_\.]*/,
 
-    command: ($) => choice($.byte, $.word, $.text, $.import),
+    command: ($) => choice($.byte, $.word, $.text, $.import, $.memblock),
 
     byte: ($) =>
       seq(
@@ -64,7 +64,9 @@ module.exports = grammar({
 
     macro: ($) => seq(/[A-Za-z_]+/, /\(.*\)/),
 
-    import: ($) => seq(/#import/, $.string),
+    import: ($) => seq(choice(/#import/, /#importonce/), $.string),
+    memblock: ($) => seq(/\.memblock/, $.string),
+    // namespace: ($) => seq(/\.memblock/, $.string)
 
     /**
      * Operand with an 8-bit value.
@@ -162,8 +164,8 @@ module.exports = grammar({
     object: ($) => /\.(struct|enum)/i,
 
     function: ($) =>
-      /\.(eval|fill|print|printnow|import|align|assert|asserterror|error)/,
+      /\.(eval|fill|print|printnow|align|assert|asserterror|error)/,
 
-    preprocessor: ($) => /\.(pc|importonce|pseudopc|return|eval)/i,
+    preprocessor: ($) => /\.(pc|pseudopc|return|eval)/i,
   },
 });

@@ -56,6 +56,10 @@
           "named": true
         },
         {
+          "type": "memblock",
+          "named": true
+        },
+        {
           "type": "text",
           "named": true
         },
@@ -141,6 +145,21 @@
         },
         {
           "type": "threed",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "memblock",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
           "named": true
         }
       ]

@@ -196,6 +196,10 @@
         {
           "type": "SYMBOL",
           "name": "import"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "memblock"
         }
       ]
     },
@@ -308,8 +312,30 @@
       "type": "SEQ",
       "members": [
         {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "PATTERN",
+              "value": "#import"
+            },
+            {
+              "type": "PATTERN",
+              "value": "#importonce"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string"
+        }
+      ]
+    },
+    "memblock": {
+      "type": "SEQ",
+      "members": [
+        {
           "type": "PATTERN",
-          "value": "#import"
+          "value": "\\.memblock"
         },
         {
           "type": "SYMBOL",
@@ -522,11 +548,11 @@
     },
     "function": {
       "type": "PATTERN",
-      "value": "\\.(eval|fill|print|printnow|import|align|assert|asserterror|error)"
+      "value": "\\.(eval|fill|print|printnow|align|assert|asserterror|error)"
     },
     "preprocessor": {
       "type": "PATTERN",
-      "value": "\\.(pc|importonce|pseudopc|return|eval)",
+      "value": "\\.(pc|pseudopc|return|eval)",
       "flags": "i"
     }
   },
