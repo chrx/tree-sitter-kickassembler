@@ -208,6 +208,10 @@
         {
           "type": "SYMBOL",
           "name": "macro"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "user_label"
         }
       ]
     },

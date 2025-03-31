@@ -72,6 +72,10 @@
           "named": true
         },
         {
+          "type": "user_label",
+          "named": true
+        },
+        {
           "type": "word",
           "named": true
         }
@@ -357,6 +361,21 @@
     }
   },
   {
+    "type": "user_label",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "symbol",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "word",
     "named": true,
     "fields": {},
@@ -397,6 +416,10 @@
   },
   {
     "type": ";",
+    "named": false
+  },
+  {
+    "type": "=",
     "named": false
   },
   {

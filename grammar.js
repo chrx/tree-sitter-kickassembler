@@ -59,6 +59,7 @@ module.exports = grammar({
         $.memblock,
         $.namespace,
         $.macro,
+        $.user_label,
       ),
 
     byte: ($) =>
