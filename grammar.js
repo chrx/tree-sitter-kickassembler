@@ -12,21 +12,36 @@ module.exports = grammar({
 
   extras: ($) => [$.comment, /\s/],
 
-  conflicts: ($) => [
-    [$.operand_8, $.operand_16],
-    // [$.operand_8, $.operand_16, $.define_ctrl_cmd],
-  ],
+  // conflicts: ($) => [
+  //   [$.operand_8, $.operand_16],
+  //   // [$.operand_8, $.operand_16, $.define_ctrl_cmd],
+  // ],
 
   rules: {
     program: ($) => repeat(choice($.statement)),
     comment: ($) => token(seq("//", /.*/)),
     string: ($) => choice(/"[^"]*"/, /'[^']*'/),
     block: ($) => seq("{", repeat($.statement), "}"),
-    statement: ($) => choice($.block, $.label, $.inst, $.command),
+    statement: ($) => choice($.block, $.label, $.inst),
 
     acc_register: ($) => /a/i,
     x_register: ($) => /x/i,
     y_register: ($) => /y/i,
+
+    inst: ($) =>
+      choice(
+        $.opcode,
+        $.illegal,
+        $.control,
+        $.data,
+        $.math,
+        $.file,
+        $.threed,
+        $.storage,
+        $.object,
+        $.function,
+        $.preprocessor,
+      ),
 
     label: ($) => /[A-Za-z_@!][A-Za-z0-9_]*:/,
     symbol: ($) => /[A-Za-z_@!][A-Za-z0-9_\.]*/,
@@ -46,432 +61,18 @@ module.exports = grammar({
     macro: ($) => seq(/[A-Za-z_]+/, /\(.*\)/),
 
     /**
-     * Instructions
-     */
-    inst: ($) =>
-      choice(
-        /**
-         * Implied Addressing Instruction.
-         * Example: CLC
-         */
-        $.impl_addr_inst,
-
-        /**
-         * Accumulator Addressing Instruction.
-         * Example: ROL A
-         */
-        $.acc_addr_inst,
-
-        /**
-         * Immediate Addressing Instruction.
-         * Example: LDA #$07
-         */
-        $.imm_addr_inst,
-
-        /**
-         * Absolute Addressing Instruction.
-         * Example: LDA $3010
-         */
-        $.abs_addr_inst,
-
-        /**
-         * Zero-Page Addressing Instruction.
-         * Example: LDA $3010
-         */
-        $.zp_addr_inst,
-
-        /**
-         * Indexed Addressing Instruction: Absolute,X.
-         * Example: LDA $3120,X
-         */
-        $.abs_x_addr_inst,
-
-        /**
-         * Indexed Addressing Instruction: Absolute,Y.
-         * Example: LDX $8240,Y
-         */
-        $.abs_y_addr_inst,
-
-        /**
-         * Indexed Addressing Instruction: Zero-Page,X.
-         * Example: LDA $80,X
-         */
-        $.zp_x_addr_inst,
-
-        /**
-         * Indexed Addressing Instruction: Zero-Page,Y.
-         * Example: LDX $60,Y
-         */
-        $.zp_y_addr_inst,
-
-        /**
-         * Indirect Addressing Instruction.
-         * Example: JMP ($FF82)
-         */
-        $.ind_addr_inst,
-
-        /**
-         * Pre-Indexed Indirect Addressing Instruction.
-         * Example: LDA ($70,X)
-         */
-        $.ind_x_addr_inst,
-
-        /**
-         * Post-Indexed Indirect Addressing Instruction.
-         * Example: LDA ($70),Y
-         */
-        $.ind_y_addr_inst,
-
-        /**
-         * Relative Addressing Instruction.
-         * Example: BEQ $1005
-         */
-        $.rel_addr_inst,
-      ),
-
-    /**
-     * Implied Addressing Instructions.
-     * Example: OPC
-     */
-    impl_addr_inst: ($) =>
-      choice(
-        $.brk_opcode,
-        $.clc_opcode,
-        $.cld_opcode,
-        $.cli_opcode,
-        $.clv_opcode,
-        $.dex_opcode,
-        $.dey_opcode,
-        $.inx_opcode,
-        $.iny_opcode,
-        $.nop_opcode,
-        $.pha_opcode,
-        $.php_opcode,
-        $.pla_opcode,
-        $.plp_opcode,
-        $.rti_opcode,
-        $.rts_opcode,
-        $.sec_opcode,
-        $.sed_opcode,
-        $.sei_opcode,
-        $.tax_opcode,
-        $.tay_opcode,
-        $.tsx_opcode,
-        $.txa_opcode,
-        $.tcs_opcode,
-        $.tya_opcode,
-      ),
-
-    /**
-     * Accumulator Addressing Instructions.
-     * Example: OPC A
-     */
-    acc_addr_inst: ($) =>
-      choice(
-        ...[$.asl_opcode, $.rol_opcode, $.ror_opcode].map((opcode) =>
-          seq(opcode, $.acc_register),
-        ),
-      ),
-
-    /**
-     * Immediate Addressing Instructions.
-     * Example: OPC #$BB
-     */
-    imm_addr_inst: ($) =>
-      choice(
-        ...[
-          $.adc_opcode,
-          $.and_opcode,
-          $.cmp_opcode,
-          $.cpx_opcode,
-          $.cpy_opcode,
-          $.eor_opcode,
-          $.lda_opcode,
-          $.ldx_opcode,
-          $.ldy_opcode,
-          $.lsr_opcode,
-          $.ora_opcode,
-          $.sbc_opcode,
-        ].map((opcode) => seq(opcode, $.imm_prefix, $.operand_8)),
-      ),
-
-    /**
-     * Absolute Addressing Instructions.
-     * Example: OPC $LLHH
-     */
-    abs_addr_inst: ($) =>
-      choice(
-        ...[
-          $.adc_opcode,
-          $.and_opcode,
-          $.asl_opcode,
-          $.bit_opcode,
-          $.cmp_opcode,
-          $.cpx_opcode,
-          $.cpy_opcode,
-          $.dec_opcode,
-          $.eor_opcode,
-          $.inc_opcode,
-          $.jmp_opcode,
-          $.jsr_opcode,
-          $.lda_opcode,
-          $.ldx_opcode,
-          $.ldy_opcode,
-          $.lsr_opcode,
-          $.ora_opcode,
-          $.rol_opcode,
-          $.ror_opcode,
-          $.sbc_opcode,
-          $.sta_opcode,
-          $.stx_opcode,
-          $.sty_opcode,
-        ].map((opcode) => seq(opcode, choice($.operand_16))),
-      ),
-
-    /**
-     * Zero-Page Addressing Instructions.
-     * Example: OPC $LL
-     */
-    zp_addr_inst: ($) =>
-      choice(
-        ...[
-          $.adc_opcode,
-          $.and_opcode,
-          $.asl_opcode,
-          $.bit_opcode,
-          $.cmp_opcode,
-          $.cpx_opcode,
-          $.cpy_opcode,
-          $.dec_opcode,
-          $.eor_opcode,
-          $.inc_opcode,
-          $.lda_opcode,
-          $.ldx_opcode,
-          $.ldy_opcode,
-          $.lsr_opcode,
-          $.ora_opcode,
-          $.rol_opcode,
-          $.ror_opcode,
-          $.sbc_opcode,
-          $.sta_opcode,
-          $.stx_opcode,
-          $.sty_opcode,
-        ].map((opcode) => seq(opcode, $.operand_8)),
-      ),
-
-    /**
-     * Indexed Addressing Instructions: Absolute,X.
-     * Example: OPC $LLHH,X
-     */
-    abs_x_addr_inst: ($) =>
-      choice(
-        ...[
-          $.adc_opcode,
-          $.and_opcode,
-          $.asl_opcode,
-          $.cmp_opcode,
-          $.dec_opcode,
-          $.eor_opcode,
-          $.inc_opcode,
-          $.lda_opcode,
-          $.ldy_opcode,
-          $.lsr_opcode,
-          $.ora_opcode,
-          $.rol_opcode,
-          $.ror_opcode,
-          $.sbc_opcode,
-          $.sta_opcode,
-        ].map((opcode) => seq(opcode, $.operand_16, ",", $.x_register)),
-      ),
-
-    /**
-     * Indexed Addressing Instructions: Absolute,Y.
-     * Example: OPC $LLHH,Y
-     */
-    abs_y_addr_inst: ($) =>
-      choice(
-        ...[
-          $.adc_opcode,
-          $.and_opcode,
-          $.cmp_opcode,
-          $.eor_opcode,
-          $.lda_opcode,
-          $.ldx_opcode,
-          $.ora_opcode,
-          $.sbc_opcode,
-          $.sta_opcode,
-        ].map((opcode) => seq(opcode, $.operand_16, ",", $.y_register)),
-      ),
-
-    /**
-     * Indexed Addressing Instructions: Zero-Page,X.
-     * Example: OPC $LL,X
-     */
-    zp_x_addr_inst: ($) =>
-      choice(
-        ...[
-          $.adc_opcode,
-          $.and_opcode,
-          $.asl_opcode,
-          $.cmp_opcode,
-          $.dec_opcode,
-          $.eor_opcode,
-          $.inc_opcode,
-          $.lda_opcode,
-          $.ldy_opcode,
-          $.lsr_opcode,
-          $.ora_opcode,
-          $.rol_opcode,
-          $.ror_opcode,
-          $.sbc_opcode,
-          $.sta_opcode,
-          $.sty_opcode,
-        ].map((opcode) => seq(opcode, $.operand_8, ",", $.x_register)),
-      ),
-
-    /**
-     * Indexed Addressing Instructions: Zero-Page,Y.
-     * Example: OPC $LL,Y
-     */
-    zp_y_addr_inst: ($) =>
-      choice(
-        ...[$.ldx_opcode, $.stx_opcode].map((opcode) =>
-          seq(opcode, $.operand_8, ",", $.y_register),
-        ),
-      ),
-
-    /**
-     * Indirect Addressing Instructions.
-     * Example: OPC ($LLHH)
-     */
-    ind_addr_inst: ($) =>
-      choice(
-        ...[$.jmp_opcode].map((opcode) => seq(opcode, "(", $.operand_16, ")")),
-      ),
-
-    /**
-     * Pre-Indexed Indirect Addressing Instruction.
-     * OPC ($LL,X)
-     */
-    ind_x_addr_inst: ($) =>
-      choice(
-        ...[
-          $.adc_opcode,
-          $.and_opcode,
-          $.cmp_opcode,
-          $.eor_opcode,
-          $.lda_opcode,
-          $.ora_opcode,
-          $.sbc_opcode,
-          $.sta_opcode,
-        ].map((opcode) =>
-          seq(opcode, "(", $.operand_8, ",", $.x_register, ")"),
-        ),
-      ),
-
-    /**
-     * Post-Indexed Indirect Addressing Instructions.
-     * Example: OPC ($LL),Y
-     */
-    ind_y_addr_inst: ($) =>
-      choice(
-        ...[
-          $.adc_opcode,
-          $.and_opcode,
-          $.cmp_opcode,
-          $.eor_opcode,
-          $.lda_opcode,
-          $.ora_opcode,
-          $.sbc_opcode,
-          $.sta_opcode,
-        ].map((opcode) =>
-          seq(opcode, "(", $.operand_8, ")", ",", $.y_register),
-        ),
-      ),
-
-    /**
-     * Relative Addressing Instruction.
-     * Example: OPC $BB
-     */
-    rel_addr_inst: ($) =>
-      choice(
-        ...[
-          $.bcc_opcode,
-          $.bcs_opcode,
-          $.beq_opcode,
-          $.bmi_opcode,
-          $.bne_opcode,
-          $.bpl_opcode,
-          $.bvc_opcode,
-          $.bvs_opcode,
-        ].map((opcode) => seq(opcode, $.operand_16)),
-      ),
-
-    /**
-     * Opcodes
-     */
-
-    adc_opcode: ($) => /adc/i,
-    and_opcode: ($) => /and/i,
-    asl_opcode: ($) => /asl/i,
-    bcc_opcode: ($) => /bcc/i,
-    bcs_opcode: ($) => /bcs/i,
-    beq_opcode: ($) => /beq/i,
-    bit_opcode: ($) => /bit/i,
-    bmi_opcode: ($) => /bmi/i,
-    bne_opcode: ($) => /bne/i,
-    bpl_opcode: ($) => /bpl/i,
-    brk_opcode: ($) => /brk/i,
-    bvc_opcode: ($) => /bvc/i,
-    bvs_opcode: ($) => /bvs/i,
-    clc_opcode: ($) => /clc/i,
-    cld_opcode: ($) => /cld/i,
-    cli_opcode: ($) => /cli/i,
-    clv_opcode: ($) => /clv/i,
-    cmp_opcode: ($) => /cmp/i,
-    cpx_opcode: ($) => /cpx/i,
-    cpy_opcode: ($) => /cpy/i,
-    dec_opcode: ($) => /dec/i,
-    dex_opcode: ($) => /dex/i,
-    dey_opcode: ($) => /dey/i,
-    eor_opcode: ($) => /eor/i,
-    inc_opcode: ($) => /inc/i,
-    inx_opcode: ($) => /inx/i,
-    iny_opcode: ($) => /iny/i,
-    jmp_opcode: ($) => /jmp/i,
-    jsr_opcode: ($) => /jsr/i,
-    lda_opcode: ($) => /lda/i,
-    ldx_opcode: ($) => /ldx/i,
-    ldy_opcode: ($) => /ldy/i,
-    lsr_opcode: ($) => /lsr/i,
-    nop_opcode: ($) => /nop/i,
-    ora_opcode: ($) => /ora/i,
-    pha_opcode: ($) => /pha/i,
-    php_opcode: ($) => /php/i,
-    pla_opcode: ($) => /pla/i,
-    plp_opcode: ($) => /plp/i,
-    rol_opcode: ($) => /rol/i,
-    ror_opcode: ($) => /ror/i,
-    rti_opcode: ($) => /rti/i,
-    rts_opcode: ($) => /rts/i,
-    sbc_opcode: ($) => /sbc/i,
-    sec_opcode: ($) => /sec/i,
-    sed_opcode: ($) => /sed/i,
-    sei_opcode: ($) => /sei/i,
-    sta_opcode: ($) => /sta/i,
-    stx_opcode: ($) => /stx/i,
-    sty_opcode: ($) => /sty/i,
-    tax_opcode: ($) => /tax/i,
-    tay_opcode: ($) => /tay/i,
-    tsx_opcode: ($) => /tsx/i,
-    txa_opcode: ($) => /txa/i,
-    tcs_opcode: ($) => /tcs/i,
-    tya_opcode: ($) => /tya/i,
-
-    /**
      * Operand with an 8-bit value.
      */
-    operand_8: ($) => choice($.bin_8, $.dec_8, $.hex_8, $.symbol),
+    operand_8: ($) =>
+      choice(
+        $.bin_8,
+        $.dec_8,
+        $.hex_8,
+        $.symbol,
+        $.colour,
+        $.opcode_imm,
+        $.file_type,
+      ),
 
     /**
      * 8-bit binary length number.
@@ -492,10 +93,27 @@ module.exports = grammar({
         /0*[0-9a-fA-F]{1,2}h/,
       ),
 
+    colour: ($) =>
+      /BLACK|WHITE|RED|CYAN|PURPLE|GREEN|BLUE|YELLOW|ORANGE|BROWN|LIGHT_RED|DARK_GRAY|GRAY|DARK_GREY|GREY|LIGHT_GREEN|LIGHT_BLUE|LIGHT_GRAY|LIGHT_GREY/,
+
+    opcode_imm: ($) =>
+      /LDA_IMM|LDA_ZP|LDA_ZPX|LDX_ZPY|LDA_IZPX|LDA_IZPY|LDA_ABS|LDA_ABSX|LDA_ABSY|JMP_IND|BNE_REL|RTS/,
+
+    file_type: ($) => /BF_C64FILE|BF_BITMAP_SINGLECOLOR|BF_KOALA|BF_FLI/,
+
     /**
      * Operand with a 16-bit length value.
      */
-    operand_16: ($) => choice($.bin_16, $.dec_16, $.hex_16, $.symbol),
+    operand_16: ($) =>
+      choice(
+        $.bin_16,
+        $.dec_16,
+        $.hex_16,
+        $.symbol,
+        $.colour,
+        $.opcode_imm,
+        $.file_type,
+      ),
 
     /**
      * 16-bit length binary number.
@@ -515,182 +133,31 @@ module.exports = grammar({
 
     imm_prefix: ($) => "#",
 
-    /**
-     * EXPRESSIONS
-     */
-    expression: ($) =>
-      choice(
-        prec.left(8, seq("(", $.expression, ")")),
-        $.operand_16,
-        $.operand_8,
-        $.string,
-        $.unary_pos_exp,
-        $.unary_neg_exp,
-        $.unary_not_exp,
-        $.unary_lobyte_exp,
-        $.unary_hibyte_exp,
-        $.unary_bankbyte_exp,
-        $.mult_exp,
-        $.div_exp,
-        $.mod_exp,
-        $.bit_and_exp,
-        $.bit_xor_exp,
-        $.shift_l_exp,
-        $.shift_r_exp,
-        $.add_exp,
-        $.sub_exp,
-        $.bit_or_exp,
-        $.eq_cmp,
-        $.neq_cmp,
-        $.lt_cmp,
-        $.gt_cmp,
-        $.lte_cmp,
-        $.gte_cmp,
-        $.bool_and_exp,
-        $.bool_xor_exp,
-        $.bool_or_exp,
-        $.bool_not_exp,
-      ),
+    opcode: ($) =>
+      /adc|and|asl|bit|clc|cld|cli|clv|cmp|cpx|cpy|dec|dex|dey|eor|inc|inx|iny|lda|ldx|ldy|lsr|nop|ora|pha|php|pla|plp|rol|ror|sbc|sec|sed|sei|sta|stx|sty|tax|txa|tay|tya|tsx|txs/i,
 
-    /**
-     * Unary positive
-     */
-    unary_pos_exp: ($) => prec.left(7, seq("+", $.expression)),
+    illegal: ($) =>
+      /aac|aax|alr|anc|ane|arr|aso|asr|atx|axa|axs|dcm|dcp|dop|hlt|ins|isb|isc|jam|kil|lae|lar|las|lax|lse|lxa|oal|rla|rra|sax|sbx|skb|sha|shs|say|shx|shy|slo|skw|sre|sxa|sya|tas|top|xaa|xas/i,
 
-    /**
-     * Unary negative
-     */
-    unary_neg_exp: ($) => prec.left(7, seq("-", $.expression)),
+    control: ($) => /bcc|bcs|beq|bmi|bne|bpl|brk|bvc|bvs|jmp|jsr|rti|rts/i,
 
-    /**
-     * Unary bitwise not operator.
-     */
-    unary_not_exp: ($) =>
-      prec.left(7, seq(choice(".BITNOT", "~"), $.expression)),
+    data: ($) => /\.(word|byte|text|dword)/i,
 
-    /**
-     * Unary low-byte operator.
-     */
-    unary_lobyte_exp: ($) =>
-      prec.left(7, seq(choice(".LOBYTE", "<"), $.expression)),
+    math: ($) =>
+      /abs|acos|asin|atan|atan2|cbrt|ceil|cos|cosh|exp|expm1|floor|hypot|IEEEremainder|log|log10|log1p|max|min|pow|mod|random|round|signum|sin|sinh|sqrt|tan|tanh|toDegrees|toRadians/,
 
-    /**
-     * Unary high-byte operator.
-     */
-    unary_hibyte_exp: ($) =>
-      prec.left(7, seq(choice(".HIBYTE", ">"), $.expression)),
+    file: ($) => /LoadBinary|LoadPicture|LoadSid|createFile/,
 
-    /**
-     * Unary bank-byte operator.
-     */
-    unary_bankbyte_exp: ($) =>
-      prec.left(7, seq(choice(".BANKBYTE", "^"), $.expression)),
+    threed: ($) =>
+      /Matrix|RotationMatrix|ScaleMatrix|MoveMatrix|PerspectiveMatrix|Vector/,
 
-    /**
-     * Multiplication term.
-     */
-    mult_exp: ($) => prec.left(6, seq($.expression, "*", $.expression)),
+    storage: ($) => /\.(var|label|const)/i,
 
-    /**
-     * Division term.
-     */
-    div_exp: ($) => prec.left(6, seq($.expression, "/", $.expression)),
+    object: ($) => /\.(struct|enum)/i,
 
-    /**
-     * Modulo term.
-     */
-    mod_exp: ($) => prec.left(6, seq($.expression, ".MOD", $.expression)),
+    function: ($) =>
+      /\.(eval|fill|print|printnow|import|align|assert|asserterror|error)/,
 
-    /**
-     * Bitwise and term.
-     */
-    bit_and_exp: ($) =>
-      prec.left(6, seq($.expression, choice(".BITAND", "&"), $.expression)),
-
-    /**
-     * Bitwise xor term.
-     */
-    bit_xor_exp: ($) =>
-      prec.left(6, seq($.expression, choice(".BITXOR", "^"), $.expression)),
-
-    /**
-     * Shift-left term.
-     */
-    shift_l_exp: ($) =>
-      prec.left(6, seq($.expression, choice(".SHL", "<<"), $.expression)),
-
-    /**
-     * Shift-left term.
-     */
-    shift_r_exp: ($) =>
-      prec.left(6, seq($.expression, choice(".SHR", ">>"), $.expression)),
-
-    /**
-     * Binary addition expression.
-     */
-    add_exp: ($) => prec.left(5, seq($.expression, "+", $.expression)),
-
-    /**
-     * Binary substraction expression.
-     */
-    sub_exp: ($) => prec.left(5, seq($.expression, "-", $.expression)),
-
-    /**
-     * Bitwise or expression.
-     */
-    bit_or_exp: ($) =>
-      prec.left(5, seq($.expression, choice(".BITOR", "|"), $.expression)),
-
-    /**
-     * Equal comparison.
-     */
-    eq_cmp: ($) => prec.left(4, seq($.expression, "=", $.expression)),
-
-    /**
-     * Not Equal comparison.
-     */
-    neq_cmp: ($) => prec.left(4, seq($.expression, "<>", $.expression)),
-
-    /**
-     * Less than comparison.
-     */
-    lt_cmp: ($) => prec.left(4, seq($.expression, "<", $.expression)),
-
-    /**
-     * Greater than comparison.
-     */
-    gt_cmp: ($) => prec.left(4, seq($.expression, ">", $.expression)),
-
-    /**
-     * Less than equal comparison.
-     */
-    lte_cmp: ($) => prec.left(4, seq($.expression, "<=", $.expression)),
-
-    /**
-     * Greater than equal comparison.
-     */
-    gte_cmp: ($) => prec.left(4, seq($.expression, ">=", $.expression)),
-
-    /**
-     * Boolean AND
-     */
-    bool_and_exp: ($) =>
-      prec.left(3, seq($.expression, choice(".AND", "&&"), $.expression)),
-
-    /**
-     * Boolean XOR
-     */
-    bool_xor_exp: ($) => prec.left(3, seq($.expression, ".XOR", $.expression)),
-
-    /**
-     * Boolean OR
-     */
-    bool_or_exp: ($) =>
-      prec.left(2, seq($.expression, choice(".OR", "||"), $.expression)),
-
-    /**
-     * Boolean not.
-     */
-    bool_not_exp: ($) => prec.left(1, seq(choice(".NOT", "!"), $.expression)),
+    preprocessor: ($) => /\.(pc|importonce|pseudopc|return|eval)/i,
   },
 });
