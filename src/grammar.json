@@ -352,10 +352,6 @@
         {
           "type": "SYMBOL",
           "name": "namespace_name"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "block"
         }
       ]
     },
@@ -393,10 +389,6 @@
         {
           "type": "SYMBOL",
           "name": "macro_name"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "block"
         }
       ]
     },

@@ -74,10 +74,10 @@ module.exports = grammar({
     import: ($) => seq(choice(/#import/, /#importonce/), $.string),
     memblock: ($) => seq(/\.memblock/, $.string),
     namespace_name: ($) => /[A-Za-z_@!][A-Za-z0-9_\.]*\(\)/,
-    namespace: ($) => seq(/\.namespace/, $.namespace_name, $.block),
+    namespace: ($) => seq(/\.namespace/, $.namespace_name),
     macro_name: ($) =>
       seq(/[A-Za-z_@!][A-Za-z0-9_\.]*/, "(", repeat($.symbol), ")"),
-    macro: ($) => seq(/\.macro/, $.macro_name, $.block),
+    macro: ($) => seq(/\.macro/, $.macro_name),
     //.macro restore_ya()
 
     /**
