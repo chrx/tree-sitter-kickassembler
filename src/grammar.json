@@ -388,6 +388,23 @@
         }
       ]
     },
+    "user_label": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "\\.label"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "symbol"
+        },
+        {
+          "type": "STRING",
+          "value": "="
+        }
+      ]
+    },
     "operand_8": {
       "type": "CHOICE",
       "members": [
