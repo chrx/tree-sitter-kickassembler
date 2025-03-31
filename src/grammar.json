@@ -111,14 +111,6 @@
             },
             {
               "type": "SYMBOL",
-              "name": "illegal"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "control"
-            },
-            {
-              "type": "SYMBOL",
               "name": "data"
             },
             {
@@ -172,7 +164,7 @@
     },
     "label": {
       "type": "PATTERN",
-      "value": "[A-Za-z_@!][A-Za-z0-9_]*:"
+      "value": "\\s*(!)|(!?([A-Za-z_][A-Za-z0-9_]*)+)\\:"
     },
     "symbol": {
       "type": "PATTERN",
@@ -592,16 +584,33 @@
       "value": "#"
     },
     "opcode": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_opcode"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_illegal"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_control"
+        }
+      ]
+    },
+    "_opcode": {
       "type": "PATTERN",
       "value": "adc|and|asl|bit|clc|cld|cli|clv|cmp|cpx|cpy|dec|dex|dey|eor|inc|inx|iny|lda|ldx|ldy|lsr|nop|ora|pha|php|pla|plp|rol|ror|sbc|sec|sed|sei|sta|stx|sty|tax|txa|tay|tya|tsx|txs",
       "flags": "i"
     },
-    "illegal": {
+    "_illegal": {
       "type": "PATTERN",
       "value": "aac|aax|alr|anc|ane|arr|aso|asr|atx|axa|axs|dcm|dcp|dop|hlt|ins|isb|isc|jam|kil|lae|lar|las|lax|lse|lxa|oal|rla|rra|sax|sbx|skb|sha|shs|say|shx|shy|slo|skw|sre|sxa|sya|tas|top|xaa|xas",
       "flags": "i"
     },
-    "control": {
+    "_control": {
       "type": "PATTERN",
       "value": "bcc|bcs|beq|bmi|bne|bpl|brk|bvc|bvs|jmp|jsr|rti|rts",
       "flags": "i"

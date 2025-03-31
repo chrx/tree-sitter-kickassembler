@@ -32,8 +32,6 @@ module.exports = grammar({
       seq(
         choice(
           $.opcode,
-          $.illegal,
-          $.control,
           $.data,
           $.math,
           $.file,
@@ -47,7 +45,7 @@ module.exports = grammar({
         choice("\n", ";"),
       ),
 
-    label: ($) => /[A-Za-z_@!][A-Za-z0-9_]*:/,
+    label: ($) => /\s*(!)|(!?([A-Za-z_][A-Za-z0-9_]*)+)\:/,
     symbol: ($) => /[A-Za-z_@!][A-Za-z0-9_\.]*/,
 
     command: ($) =>
@@ -156,13 +154,15 @@ module.exports = grammar({
 
     imm_prefix: ($) => "#",
 
-    opcode: ($) =>
+    opcode: ($) => choice($._opcode, $._illegal, $._control),
+
+    _opcode: ($) =>
       /adc|and|asl|bit|clc|cld|cli|clv|cmp|cpx|cpy|dec|dex|dey|eor|inc|inx|iny|lda|ldx|ldy|lsr|nop|ora|pha|php|pla|plp|rol|ror|sbc|sec|sed|sei|sta|stx|sty|tax|txa|tay|tya|tsx|txs/i,
 
-    illegal: ($) =>
+    _illegal: ($) =>
       /aac|aax|alr|anc|ane|arr|aso|asr|atx|axa|axs|dcm|dcp|dop|hlt|ins|isb|isc|jam|kil|lae|lar|las|lax|lse|lxa|oal|rla|rra|sax|sbx|skb|sha|shs|say|shx|shy|slo|skw|sre|sxa|sya|tas|top|xaa|xas/i,
 
-    control: ($) => /bcc|bcs|beq|bmi|bne|bpl|brk|bvc|bvs|jmp|jsr|rti|rts/i,
+    _control: ($) => /bcc|bcs|beq|bmi|bne|bpl|brk|bvc|bvs|jmp|jsr|rti|rts/i,
 
     data: ($) => /\.(word|byte|text|dword)/i,
 

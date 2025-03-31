@@ -116,10 +116,6 @@
       "required": true,
       "types": [
         {
-          "type": "control",
-          "named": true
-        },
-        {
           "type": "data",
           "named": true
         },
@@ -129,10 +125,6 @@
         },
         {
           "type": "function",
-          "named": true
-        },
-        {
-          "type": "illegal",
           "named": true
         },
         {
@@ -221,6 +213,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "opcode",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "operand_16",
@@ -432,10 +429,6 @@
     "extra": true
   },
   {
-    "type": "control",
-    "named": true
-  },
-  {
     "type": "data",
     "named": true
   },
@@ -464,10 +457,6 @@
     "named": false
   },
   {
-    "type": "illegal",
-    "named": true
-  },
-  {
     "type": "label",
     "named": true
   },
@@ -477,10 +466,6 @@
   },
   {
     "type": "object",
-    "named": true
-  },
-  {
-    "type": "opcode",
     "named": true
   },
   {
