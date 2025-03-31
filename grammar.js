@@ -43,7 +43,7 @@ module.exports = grammar({
           $.function,
           $.preprocessor,
         ),
-        /.+./,
+        /.*/,
         choice("\n", ";"),
       ),
 
