@@ -68,7 +68,7 @@
     },
     "symbol": {
       "type": "PATTERN",
-      "value": "[A-Za-z_@!][A-Za-z2-9_]*"
+      "value": "[A-Za-z_@!][A-Za-z2-9_\\.]*"
     },
     "inst": {
       "type": "CHOICE",

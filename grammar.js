@@ -27,7 +27,7 @@ module.exports = grammar({
     y_register: ($) => /y/i,
 
     label: ($) => /[A-Za-z_@!][A-Za-z0-9_]*:/,
-    symbol: ($) => /[A-Za-z_@!][A-Za-z2-9_]*/,
+    symbol: ($) => /[A-Za-z_@!][A-Za-z2-9_\.]*/,
 
     /**
      * Instructions

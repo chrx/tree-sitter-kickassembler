@@ -2048,7 +2048,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (('2' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(164);
-      if (('G' <= lookahead && lookahead <= 'Z') ||
+      if (lookahead == '.' ||
+          ('G' <= lookahead && lookahead <= 'Z') ||
           lookahead == '_' ||
           ('g' <= lookahead && lookahead <= 'z')) ADVANCE(165);
       END_STATE();
@@ -2069,21 +2070,24 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (('2' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'F') ||
           ('a' <= lookahead && lookahead <= 'f')) ADVANCE(164);
-      if (('G' <= lookahead && lookahead <= 'Z') ||
+      if (lookahead == '.' ||
+          ('G' <= lookahead && lookahead <= 'Z') ||
           lookahead == '_' ||
           ('g' <= lookahead && lookahead <= 'z')) ADVANCE(165);
       END_STATE();
     case 164:
       ACCEPT_TOKEN(sym_symbol);
       if (lookahead == 'h') ADVANCE(165);
-      if (('2' <= lookahead && lookahead <= '9') ||
+      if (lookahead == '.' ||
+          ('2' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
           lookahead == '_' ||
           ('a' <= lookahead && lookahead <= 'z')) ADVANCE(165);
       END_STATE();
     case 165:
       ACCEPT_TOKEN(sym_symbol);
-      if (('2' <= lookahead && lookahead <= '9') ||
+      if (lookahead == '.' ||
+          ('2' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
           lookahead == '_' ||
           ('a' <= lookahead && lookahead <= 'z')) ADVANCE(165);
@@ -2911,7 +2915,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 314:
       ACCEPT_TOKEN(anon_sym_h);
-      if (('2' <= lookahead && lookahead <= '9') ||
+      if (lookahead == '.' ||
+          ('2' <= lookahead && lookahead <= '9') ||
           ('A' <= lookahead && lookahead <= 'Z') ||
           lookahead == '_' ||
           ('a' <= lookahead && lookahead <= 'z')) ADVANCE(165);
@@ -5925,7 +5930,7 @@ TS_PUBLIC const TSLanguage *tree_sitter_kickassembler(void) {
     .metadata = {
       .major_version = 0,
       .minor_version = 1,
-      .patch_version = 0,
+      .patch_version = 1,
     },
   };
   return &language;
