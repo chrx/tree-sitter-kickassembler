@@ -140,10 +140,6 @@
           "named": true
         },
         {
-          "type": "operand",
-          "named": true
-        },
-        {
           "type": "preprocessor",
           "named": true
         },
@@ -224,29 +220,6 @@
     "fields": {}
   },
   {
-    "type": "operand",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "imm_prefix",
-          "named": true
-        },
-        {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "parentheses",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "operand_16",
     "named": true,
     "fields": {},
@@ -307,16 +280,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "operator",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "parentheses",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "program",
@@ -429,10 +392,6 @@
     "named": false
   },
   {
-    "type": "&",
-    "named": false
-  },
-  {
     "type": "(",
     "named": false
   },
@@ -441,23 +400,7 @@
     "named": false
   },
   {
-    "type": "*",
-    "named": false
-  },
-  {
-    "type": "+",
-    "named": false
-  },
-  {
     "type": ",",
-    "named": false
-  },
-  {
-    "type": "-",
-    "named": false
-  },
-  {
-    "type": "/",
     "named": false
   },
   {
@@ -465,27 +408,7 @@
     "named": false
   },
   {
-    "type": "<",
-    "named": false
-  },
-  {
-    "type": "<<",
-    "named": false
-  },
-  {
     "type": "=",
-    "named": false
-  },
-  {
-    "type": ">",
-    "named": false
-  },
-  {
-    "type": ">>",
-    "named": false
-  },
-  {
-    "type": "^",
     "named": false
   },
   {
@@ -526,10 +449,6 @@
     "named": false
   },
   {
-    "type": "imm_prefix",
-    "named": true
-  },
-  {
     "type": "label",
     "named": true
   },
@@ -554,15 +473,7 @@
     "named": false
   },
   {
-    "type": "|",
-    "named": false
-  },
-  {
     "type": "}",
-    "named": false
-  },
-  {
-    "type": "~",
     "named": false
   }
 ]

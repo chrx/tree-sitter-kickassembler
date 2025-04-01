@@ -42,7 +42,7 @@ module.exports = grammar({
           $.function,
           $.preprocessor,
         ),
-        optional($.operand),
+        /.*/,
         optional($.comment),
         choice("\n", ";"),
       ),
