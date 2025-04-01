@@ -203,10 +203,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "macro_call"
-        },
-        {
-          "type": "SYMBOL",
           "name": "storage"
         }
       ]
@@ -395,10 +391,6 @@
           "name": "macro_name"
         }
       ]
-    },
-    "macro_call": {
-      "type": "SYMBOL",
-      "name": "macro_name"
     },
     "storage": {
       "type": "SEQ",

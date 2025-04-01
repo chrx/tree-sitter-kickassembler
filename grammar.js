@@ -57,7 +57,6 @@ module.exports = grammar({
         $.memblock,
         $.namespace,
         $.macro,
-        $.macro_call,
         $.storage,
       ),
 
@@ -77,7 +76,6 @@ module.exports = grammar({
     macro_name: ($) =>
       seq(/[A-Za-z_@!][A-Za-z0-9_\.]*/, "(", repeat($.symbol), ")"),
     macro: ($) => seq(/\.macro/, $.macro_name),
-    macro_call: ($) => $.macro_name,
 
     storage: ($) => seq(choice(/\.var/, /\.label/, /\.const/), $.symbol, "="),
 
