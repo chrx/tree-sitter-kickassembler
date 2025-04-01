@@ -152,8 +152,16 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "operand"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "operand"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "CHOICE",
