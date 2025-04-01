@@ -164,7 +164,7 @@
     },
     "label": {
       "type": "PATTERN",
-      "value": "^\\s*(!)|(!?([A-Za-z_][A-Za-z0-9_]*)+)\\:"
+      "value": "\\s*(!)|(!?([A-Za-z_][A-Za-z0-9_]*)+)\\:"
     },
     "symbol": {
       "type": "PATTERN",
@@ -200,6 +200,10 @@
         {
           "type": "SYMBOL",
           "name": "macro"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "macro_call"
         },
         {
           "type": "SYMBOL",
@@ -391,6 +395,10 @@
           "name": "macro_name"
         }
       ]
+    },
+    "macro_call": {
+      "type": "SYMBOL",
+      "name": "macro_name"
     },
     "storage": {
       "type": "SEQ",
