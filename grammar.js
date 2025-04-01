@@ -18,11 +18,10 @@ module.exports = grammar({
   ],
 
   rules: {
-    program: ($) => repeat(choice($.statement, $._empty)),
+    program: ($) => repeat(choice($.statement)),
     comment: ($) => token(seq("//", /.*/)),
     string: ($) => choice(/"[^"]*"/, /'[^']*'/),
     block: ($) => seq("{", repeat($.statement), "}"),
-    _empty: ($) => "\n",
     statement: ($) => choice($.block, $.label, $.inst, $.command),
 
     acc_register: ($) => /a/i,
@@ -46,18 +45,8 @@ module.exports = grammar({
         choice("\n", ";"),
       ),
 
-    label: ($) => /\s*(!)\:|(!?([A-Za-z_][A-Za-z0-9_]*)+)\:/,
+    label: ($) => /\s*(!)|(!?([A-Za-z_][A-Za-z0-9_]*)+)\:/,
     symbol: ($) => /[A-Za-z_@!][A-Za-z0-9_\.]*/,
-
-    operator: ($) =>
-      choice("-", "+", "*", "/", ">", "<", "<<", ">>", "&", "|", "^", "~", "%"),
-
-    parentheses: ($) => choice("(", ")"),
-
-    operand: ($) =>
-      repeat1(
-        choice($.operator, $.imm_prefix, $.parentheses, /[A-Za-z0-9_@!\.]+/),
-      ),
 
     command: ($) =>
       choice(
@@ -68,7 +57,7 @@ module.exports = grammar({
         $.memblock,
         $.namespace,
         $.macro,
-        // $.storage,
+        $.storage,
       ),
 
     byte: ($) =>
@@ -100,7 +89,7 @@ module.exports = grammar({
         $.bin_8,
         $.dec_8,
         $.hex_8,
-        $.symbol,
+        // $.symbol,
         $.colour,
         // $.opcode_imm,
         $.file_type,

@@ -10,10 +10,6 @@
           {
             "type": "SYMBOL",
             "name": "statement"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "_empty"
           }
         ]
       }
@@ -66,10 +62,6 @@
           "value": "}"
         }
       ]
-    },
-    "_empty": {
-      "type": "STRING",
-      "value": "\n"
     },
     "statement": {
       "type": "CHOICE",
@@ -172,105 +164,11 @@
     },
     "label": {
       "type": "PATTERN",
-      "value": "\\s*(!)\\:|(!?([A-Za-z_][A-Za-z0-9_]*)+)\\:"
+      "value": "\\s*(!)|(!?([A-Za-z_][A-Za-z0-9_]*)+)\\:"
     },
     "symbol": {
       "type": "PATTERN",
       "value": "[A-Za-z_@!][A-Za-z0-9_\\.]*"
-    },
-    "operator": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "-"
-        },
-        {
-          "type": "STRING",
-          "value": "+"
-        },
-        {
-          "type": "STRING",
-          "value": "*"
-        },
-        {
-          "type": "STRING",
-          "value": "/"
-        },
-        {
-          "type": "STRING",
-          "value": ">"
-        },
-        {
-          "type": "STRING",
-          "value": "<"
-        },
-        {
-          "type": "STRING",
-          "value": "<<"
-        },
-        {
-          "type": "STRING",
-          "value": ">>"
-        },
-        {
-          "type": "STRING",
-          "value": "&"
-        },
-        {
-          "type": "STRING",
-          "value": "|"
-        },
-        {
-          "type": "STRING",
-          "value": "^"
-        },
-        {
-          "type": "STRING",
-          "value": "~"
-        },
-        {
-          "type": "STRING",
-          "value": "%"
-        }
-      ]
-    },
-    "parentheses": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "("
-        },
-        {
-          "type": "STRING",
-          "value": ")"
-        }
-      ]
-    },
-    "operand": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "CHOICE",
-        "members": [
-          {
-            "type": "SYMBOL",
-            "name": "operator"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "imm_prefix"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "parentheses"
-          },
-          {
-            "type": "PATTERN",
-            "value": "[A-Za-z0-9_@!\\.]+"
-          }
-        ]
-      }
     },
     "command": {
       "type": "CHOICE",
@@ -302,6 +200,10 @@
         {
           "type": "SYMBOL",
           "name": "macro"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "storage"
         }
       ]
     },
@@ -534,10 +436,6 @@
         {
           "type": "SYMBOL",
           "name": "hex_8"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "symbol"
         },
         {
           "type": "SYMBOL",

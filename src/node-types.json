@@ -68,6 +68,10 @@
           "named": true
         },
         {
+          "type": "storage",
+          "named": true
+        },
+        {
           "type": "text",
           "named": true
         },
@@ -268,10 +272,6 @@
         },
         {
           "type": "hex_8",
-          "named": true
-        },
-        {
-          "type": "symbol",
           "named": true
         }
       ]
