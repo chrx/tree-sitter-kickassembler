@@ -112,6 +112,10 @@
       "required": true,
       "types": [
         {
+          "type": "comment",
+          "named": true
+        },
+        {
           "type": "data",
           "named": true
         },
@@ -454,6 +458,10 @@
   },
   {
     "type": "/",
+    "named": false
+  },
+  {
+    "type": ";",
     "named": false
   },
   {

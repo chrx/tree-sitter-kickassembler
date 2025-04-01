@@ -43,6 +43,8 @@ module.exports = grammar({
           $.preprocessor,
         ),
         $.operand,
+        optional($.comment),
+        choice("\n", ";"),
       ),
 
     label: ($) => /\s*(!)|(!?([A-Za-z_][A-Za-z0-9_]*)+)\:/,
