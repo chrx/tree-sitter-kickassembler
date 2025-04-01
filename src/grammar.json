@@ -192,7 +192,7 @@
     },
     "label": {
       "type": "PATTERN",
-      "value": "\\s*(!)|(!?([A-Za-z_][A-Za-z0-9_]*)+)\\:"
+      "value": "\\s*(!)\\:|(!?([A-Za-z_][A-Za-z0-9_]*)+)\\:"
     },
     "symbol": {
       "type": "PATTERN",
