@@ -18,10 +18,11 @@ module.exports = grammar({
   ],
 
   rules: {
-    program: ($) => repeat(choice($.statement)),
+    program: ($) => repeat(choice($.statement, $._empty)),
     comment: ($) => token(seq("//", /.*/)),
     string: ($) => choice(/"[^"]*"/, /'[^']*'/),
     block: ($) => seq("{", repeat($.statement), "}"),
+    _empty: ($) => "\n",
     statement: ($) => choice($.block, $.label, $.inst, $.command),
 
     acc_register: ($) => /a/i,
@@ -41,12 +42,21 @@ module.exports = grammar({
           $.function,
           $.preprocessor,
         ),
-        /.*/,
-        choice("\n", ";"),
+        $.operand,
       ),
 
     label: ($) => /\s*(!)|(!?([A-Za-z_][A-Za-z0-9_]*)+)\:/,
     symbol: ($) => /[A-Za-z_@!][A-Za-z0-9_\.]*/,
+
+    operator: ($) =>
+      choice("-", "+", "*", "/", ">", "<", "<<", ">>", "&", "|", "^", "~", "%"),
+
+    parentheses: ($) => choice("(", ")"),
+
+    operand: ($) =>
+      repeat1(
+        choice($.operator, $.imm_prefix, $.parentheses, /[A-Za-z0-9_@!\.]+/),
+      ),
 
     command: ($) =>
       choice(
@@ -57,7 +67,7 @@ module.exports = grammar({
         $.memblock,
         $.namespace,
         $.macro,
-        $.storage,
+        // $.storage,
       ),
 
     byte: ($) =>
@@ -89,9 +99,9 @@ module.exports = grammar({
         $.bin_8,
         $.dec_8,
         $.hex_8,
-        // $.symbol,
+        $.symbol,
         $.colour,
-        $.opcode_imm,
+        // $.opcode_imm,
         $.file_type,
       ),
 
@@ -117,16 +127,15 @@ module.exports = grammar({
     colour: ($) =>
       /BLACK|WHITE|RED|CYAN|PURPLE|GREEN|BLUE|YELLOW|ORANGE|BROWN|LIGHT_RED|DARK_GRAY|GRAY|DARK_GREY|GREY|LIGHT_GREEN|LIGHT_BLUE|LIGHT_GRAY|LIGHT_GREY/,
 
-    opcode_imm: ($) =>
-      /LDA_IMM|LDA_ZP|LDA_ZPX|LDX_ZPY|LDA_IZPX|LDA_IZPY|LDA_ABS|LDA_ABSX|LDA_ABSY|JMP_IND|BNE_REL|RTS/,
+    // opcode_imm: ($) =>
+    //   /LDA_IMM|LDA_ZP|LDA_ZPX|LDX_ZPY|LDA_IZPX|LDA_IZPY|LDA_ABS|LDA_ABSX|LDA_ABSY|JMP_IND|BNE_REL|RTS/,
 
     file_type: ($) => /BF_C64FILE|BF_BITMAP_SINGLECOLOR|BF_KOALA|BF_FLI/,
 
     /**
      * Operand with a 16-bit length value.
      */
-    operand_16: ($) =>
-      choice($.bin_16, $.dec_16, $.hex_16, $.opcode_imm, $.file_type),
+    operand_16: ($) => choice($.bin_16, $.dec_16, $.hex_16, $.file_type),
 
     /**
      * 16-bit length binary number.
@@ -146,12 +155,7 @@ module.exports = grammar({
 
     imm_prefix: ($) => "#",
 
-    opcode: ($) =>
-      seq(
-        choice($._opcode, $._illegal, $._control),
-        optional($.imm_prefix),
-        optional(choice($.operand_8, $.operand_16)),
-      ),
+    opcode: ($) => choice($._opcode, $._illegal, $._control),
 
     _opcode: ($) =>
       /adc|and|asl|bit|clc|cld|cli|clv|cmp|cpx|cpy|dec|dex|dey|eor|inc|inx|iny|lda|ldx|ldy|lsr|nop|ora|pha|php|pla|plp|rol|ror|sbc|sec|sed|sei|sta|stx|sty|tax|txa|tay|tya|tsx|txs/i,

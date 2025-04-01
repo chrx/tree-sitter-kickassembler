@@ -68,10 +68,6 @@
           "named": true
         },
         {
-          "type": "storage",
-          "named": true
-        },
-        {
           "type": "text",
           "named": true
         },
@@ -112,7 +108,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -137,6 +133,10 @@
         },
         {
           "type": "opcode",
+          "named": true
+        },
+        {
+          "type": "operand",
           "named": true
         },
         {
@@ -217,6 +217,11 @@
   {
     "type": "opcode",
     "named": true,
+    "fields": {}
+  },
+  {
+    "type": "operand",
+    "named": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -227,11 +232,11 @@
           "named": true
         },
         {
-          "type": "operand_16",
+          "type": "operator",
           "named": true
         },
         {
-          "type": "operand_8",
+          "type": "parentheses",
           "named": true
         }
       ]
@@ -259,10 +264,6 @@
         },
         {
           "type": "hex_16",
-          "named": true
-        },
-        {
-          "type": "opcode_imm",
           "named": true
         }
       ]
@@ -297,11 +298,21 @@
           "named": true
         },
         {
-          "type": "opcode_imm",
+          "type": "symbol",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "operator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "parentheses",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "program",
@@ -414,6 +425,10 @@
     "named": false
   },
   {
+    "type": "&",
+    "named": false
+  },
+  {
     "type": "(",
     "named": false
   },
@@ -422,15 +437,47 @@
     "named": false
   },
   {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": "+",
+    "named": false
+  },
+  {
     "type": ",",
     "named": false
   },
   {
-    "type": ";",
+    "type": "-",
+    "named": false
+  },
+  {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": "<<",
     "named": false
   },
   {
     "type": "=",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": ">>",
+    "named": false
+  },
+  {
+    "type": "^",
     "named": false
   },
   {
@@ -487,10 +534,6 @@
     "named": true
   },
   {
-    "type": "opcode_imm",
-    "named": true
-  },
-  {
     "type": "preprocessor",
     "named": true
   },
@@ -503,7 +546,15 @@
     "named": false
   },
   {
+    "type": "|",
+    "named": false
+  },
+  {
     "type": "}",
+    "named": false
+  },
+  {
+    "type": "~",
     "named": false
   }
 ]
