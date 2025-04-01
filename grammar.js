@@ -12,10 +12,10 @@ module.exports = grammar({
 
   extras: ($) => [$.comment, /\s/],
 
-  // conflicts: ($) => [
-  //   [$.operand_8, $.operand_16],
-  //   // [$.operand_8, $.operand_16, $.define_ctrl_cmd],
-  // ],
+  conflicts: ($) => [
+    [$.operand_8, $.operand_16],
+    // [$.operand_8, $.operand_16, $.define_ctrl_cmd],
+  ],
 
   rules: {
     program: ($) => repeat(choice($.statement)),
@@ -126,15 +126,7 @@ module.exports = grammar({
      * Operand with a 16-bit length value.
      */
     operand_16: ($) =>
-      choice(
-        $.bin_16,
-        $.dec_16,
-        $.hex_16,
-        // $.symbol,
-        $.colour,
-        $.opcode_imm,
-        $.file_type,
-      ),
+      choice($.bin_16, $.dec_16, $.hex_16, $.opcode_imm, $.file_type),
 
     /**
      * 16-bit length binary number.
@@ -154,7 +146,12 @@ module.exports = grammar({
 
     imm_prefix: ($) => "#",
 
-    opcode: ($) => choice($._opcode, $._illegal, $._control),
+    opcode: ($) =>
+      seq(
+        choice($._opcode, $._illegal, $._control),
+        optional($.imm_prefix),
+        optional(choice($.operand_8, $.operand_16)),
+      ),
 
     _opcode: ($) =>
       /adc|and|asl|bit|clc|cld|cli|clv|cmp|cpx|cpy|dec|dex|dey|eor|inc|inx|iny|lda|ldx|ldy|lsr|nop|ora|pha|php|pla|plp|rol|ror|sbc|sec|sed|sei|sta|stx|sty|tax|txa|tay|tya|tsx|txs/i,

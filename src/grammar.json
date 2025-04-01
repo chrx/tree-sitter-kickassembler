@@ -528,10 +528,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "colour"
-        },
-        {
-          "type": "SYMBOL",
           "name": "opcode_imm"
         },
         {
@@ -584,19 +580,57 @@
       "value": "#"
     },
     "opcode": {
-      "type": "CHOICE",
+      "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "_opcode"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_opcode"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_illegal"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_control"
+            }
+          ]
         },
         {
-          "type": "SYMBOL",
-          "name": "_illegal"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "imm_prefix"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
-          "type": "SYMBOL",
-          "name": "_control"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_8"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "operand_16"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -657,7 +691,12 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "operand_8",
+      "operand_16"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],

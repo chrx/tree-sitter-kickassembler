@@ -217,7 +217,25 @@
   {
     "type": "opcode",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "imm_prefix",
+          "named": true
+        },
+        {
+          "type": "operand_16",
+          "named": true
+        },
+        {
+          "type": "operand_8",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "operand_16",
@@ -229,10 +247,6 @@
       "types": [
         {
           "type": "bin_16",
-          "named": true
-        },
-        {
-          "type": "colour",
           "named": true
         },
         {
@@ -455,6 +469,10 @@
   {
     "type": "h",
     "named": false
+  },
+  {
+    "type": "imm_prefix",
+    "named": true
   },
   {
     "type": "label",
