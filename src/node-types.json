@@ -1,13 +1,223 @@
 [
   {
-    "type": "bin_16",
+    "type": "argument_label",
     "named": true,
-    "fields": {}
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "addressing_mode_constant",
+          "named": true
+        },
+        {
+          "type": "argument_label",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "builtin_function",
+          "named": true
+        },
+        {
+          "type": "char",
+          "named": true
+        },
+        {
+          "type": "colour_constant",
+          "named": true
+        },
+        {
+          "type": "control_keyword",
+          "named": true
+        },
+        {
+          "type": "cpu_constant",
+          "named": true
+        },
+        {
+          "type": "file_type_constant",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_unary_expression",
+          "named": true
+        },
+        {
+          "type": "math_constant",
+          "named": true
+        },
+        {
+          "type": "multi_label_reference",
+          "named": true
+        },
+        {
+          "type": "null",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "opcode_constant",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "punctuation",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        }
+      ]
+    }
   },
   {
-    "type": "bin_8",
+    "type": "assignment_statement",
     "named": true,
-    "fields": {}
+    "fields": {
+      "left": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "addressing_mode_constant",
+          "named": true
+        },
+        {
+          "type": "argument_label",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "builtin_function",
+          "named": true
+        },
+        {
+          "type": "char",
+          "named": true
+        },
+        {
+          "type": "colour_constant",
+          "named": true
+        },
+        {
+          "type": "control_keyword",
+          "named": true
+        },
+        {
+          "type": "cpu_constant",
+          "named": true
+        },
+        {
+          "type": "file_type_constant",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_unary_expression",
+          "named": true
+        },
+        {
+          "type": "math_constant",
+          "named": true
+        },
+        {
+          "type": "multi_label_reference",
+          "named": true
+        },
+        {
+          "type": "null",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "opcode_constant",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "punctuation",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "block",
@@ -18,14 +228,65 @@
       "required": false,
       "types": [
         {
-          "type": "statement",
+          "type": "assignment_statement",
+          "named": true
+        },
+        {
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "directive_statement",
+          "named": true
+        },
+        {
+          "type": "expression_statement",
+          "named": true
+        },
+        {
+          "type": "instruction_statement",
+          "named": true
+        },
+        {
+          "type": "label_block",
+          "named": true
+        },
+        {
+          "type": "label_definition",
+          "named": true
+        },
+        {
+          "type": "macro_call_statement",
+          "named": true
+        },
+        {
+          "type": "preprocessor_statement",
+          "named": true
+        },
+        {
+          "type": "program_counter_statement",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "byte",
+    "type": "char",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "char_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "directive_statement",
     "named": true,
     "fields": {},
     "children": {
@@ -33,106 +294,319 @@
       "required": true,
       "types": [
         {
-          "type": "operand_8",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "command",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "byte",
+          "type": "addressing_mode_constant",
           "named": true
         },
         {
-          "type": "import",
+          "type": "argument_label",
           "named": true
         },
         {
-          "type": "macro",
+          "type": "block",
           "named": true
         },
         {
-          "type": "memblock",
+          "type": "boolean",
           "named": true
         },
         {
-          "type": "namespace",
+          "type": "builtin_function",
           "named": true
         },
         {
-          "type": "storage",
+          "type": "char",
           "named": true
         },
         {
-          "type": "text",
+          "type": "colour_constant",
           "named": true
         },
         {
-          "type": "word",
+          "type": "control_keyword",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "hex_16",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "hex_8",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "import",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
+        },
+        {
+          "type": "cpu_constant",
+          "named": true
+        },
+        {
+          "type": "directive",
+          "named": true
+        },
+        {
+          "type": "else_clause",
+          "named": true
+        },
+        {
+          "type": "file_type_constant",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_unary_expression",
+          "named": true
+        },
+        {
+          "type": "math_constant",
+          "named": true
+        },
+        {
+          "type": "multi_label_reference",
+          "named": true
+        },
+        {
+          "type": "null",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "opcode_constant",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "punctuation",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
         {
           "type": "string",
           "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
         }
       ]
     }
   },
   {
-    "type": "inst",
+    "type": "else_clause",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "data",
+          "type": "block",
           "named": true
         },
         {
-          "type": "file",
+          "type": "else_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addressing_mode_constant",
           "named": true
         },
         {
-          "type": "function",
+          "type": "argument_label",
           "named": true
         },
         {
-          "type": "math",
+          "type": "boolean",
           "named": true
         },
         {
-          "type": "object",
+          "type": "builtin_function",
+          "named": true
+        },
+        {
+          "type": "char",
+          "named": true
+        },
+        {
+          "type": "colour_constant",
+          "named": true
+        },
+        {
+          "type": "control_keyword",
+          "named": true
+        },
+        {
+          "type": "cpu_constant",
+          "named": true
+        },
+        {
+          "type": "file_type_constant",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_unary_expression",
+          "named": true
+        },
+        {
+          "type": "math_constant",
+          "named": true
+        },
+        {
+          "type": "multi_label_reference",
+          "named": true
+        },
+        {
+          "type": "null",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "opcode_constant",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "punctuation",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "immediate_unary_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "instruction_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "addressing_mode_constant",
+          "named": true
+        },
+        {
+          "type": "argument_label",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "builtin_function",
+          "named": true
+        },
+        {
+          "type": "char",
+          "named": true
+        },
+        {
+          "type": "colour_constant",
+          "named": true
+        },
+        {
+          "type": "control_keyword",
+          "named": true
+        },
+        {
+          "type": "cpu_constant",
+          "named": true
+        },
+        {
+          "type": "file_type_constant",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_unary_expression",
+          "named": true
+        },
+        {
+          "type": "math_constant",
+          "named": true
+        },
+        {
+          "type": "multi_label_reference",
+          "named": true
+        },
+        {
+          "type": "null",
+          "named": true
+        },
+        {
+          "type": "number",
           "named": true
         },
         {
@@ -140,75 +614,176 @@
           "named": true
         },
         {
-          "type": "preprocessor",
+          "type": "opcode_constant",
           "named": true
         },
         {
-          "type": "storage",
+          "type": "operator",
           "named": true
         },
         {
-          "type": "threed",
+          "type": "punctuation",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "macro",
+    "type": "label_block",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "macro_name",
+          "type": "block",
+          "named": true
+        },
+        {
+          "type": "label_definition",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "macro_name",
+    "type": "label_definition",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "multi_label_name",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "macro_call_statement",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "macro_name",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": false,
       "types": [
         {
-          "type": "symbol",
+          "type": "addressing_mode_constant",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "memblock",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
+        },
+        {
+          "type": "argument_label",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "builtin_function",
+          "named": true
+        },
+        {
+          "type": "char",
+          "named": true
+        },
+        {
+          "type": "colour_constant",
+          "named": true
+        },
+        {
+          "type": "control_keyword",
+          "named": true
+        },
+        {
+          "type": "cpu_constant",
+          "named": true
+        },
+        {
+          "type": "file_type_constant",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_unary_expression",
+          "named": true
+        },
+        {
+          "type": "math_constant",
+          "named": true
+        },
+        {
+          "type": "multi_label_reference",
+          "named": true
+        },
+        {
+          "type": "null",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "opcode_constant",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "punctuation",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
         {
           "type": "string",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "namespace",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
+        },
         {
-          "type": "symbol",
+          "type": "type_identifier",
           "named": true
         }
       ]
@@ -220,58 +795,107 @@
     "fields": {}
   },
   {
-    "type": "operand_16",
+    "type": "preprocessor_statement",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
-          "type": "bin_16",
+          "type": "addressing_mode_constant",
           "named": true
         },
         {
-          "type": "dec_16",
+          "type": "argument_label",
           "named": true
         },
         {
-          "type": "file_type",
+          "type": "block",
           "named": true
         },
         {
-          "type": "hex_16",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "operand_8",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "bin_8",
+          "type": "boolean",
           "named": true
         },
         {
-          "type": "colour",
+          "type": "builtin_function",
           "named": true
         },
         {
-          "type": "dec_8",
+          "type": "char",
           "named": true
         },
         {
-          "type": "file_type",
+          "type": "colour_constant",
           "named": true
         },
         {
-          "type": "hex_8",
+          "type": "control_keyword",
+          "named": true
+        },
+        {
+          "type": "cpu_constant",
+          "named": true
+        },
+        {
+          "type": "file_type_constant",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_unary_expression",
+          "named": true
+        },
+        {
+          "type": "math_constant",
+          "named": true
+        },
+        {
+          "type": "multi_label_reference",
+          "named": true
+        },
+        {
+          "type": "null",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "opcode_constant",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "preprocessor_directive",
+          "named": true
+        },
+        {
+          "type": "punctuation",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
           "named": true
         }
       ]
@@ -287,104 +911,182 @@
       "required": false,
       "types": [
         {
-          "type": "statement",
+          "type": "assignment_statement",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
+        },
         {
           "type": "block",
           "named": true
         },
         {
-          "type": "command",
+          "type": "directive_statement",
           "named": true
         },
         {
-          "type": "inst",
+          "type": "expression_statement",
           "named": true
         },
         {
-          "type": "label",
+          "type": "instruction_statement",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "storage",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
+        },
         {
-          "type": "symbol",
+          "type": "label_block",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "string",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "symbol",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "text",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
+        },
         {
-          "type": "string",
+          "type": "label_definition",
+          "named": true
+        },
+        {
+          "type": "macro_call_statement",
+          "named": true
+        },
+        {
+          "type": "preprocessor_statement",
+          "named": true
+        },
+        {
+          "type": "program_counter_statement",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "word",
+    "type": "program_counter_statement",
     "named": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
-          "type": "operand_16",
+          "type": "addressing_mode_constant",
+          "named": true
+        },
+        {
+          "type": "argument_label",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "builtin_function",
+          "named": true
+        },
+        {
+          "type": "char",
+          "named": true
+        },
+        {
+          "type": "colour_constant",
+          "named": true
+        },
+        {
+          "type": "control_keyword",
+          "named": true
+        },
+        {
+          "type": "cpu_constant",
+          "named": true
+        },
+        {
+          "type": "directive",
+          "named": true
+        },
+        {
+          "type": "file_type_constant",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_identifier",
+          "named": true
+        },
+        {
+          "type": "immediate_unary_expression",
+          "named": true
+        },
+        {
+          "type": "math_constant",
+          "named": true
+        },
+        {
+          "type": "multi_label_reference",
+          "named": true
+        },
+        {
+          "type": "null",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "opcode_constant",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "punctuation",
+          "named": true
+        },
+        {
+          "type": "register",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
           "named": true
         }
       ]
     }
   },
   {
-    "type": "\n",
+    "type": "punctuation",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "register",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "string_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "\"",
     "named": false
   },
   {
-    "type": "$",
-    "named": false
-  },
-  {
-    "type": "%",
+    "type": "'",
     "named": false
   },
   {
@@ -396,11 +1098,23 @@
     "named": false
   },
   {
-    "type": ",",
+    "type": "*=",
     "named": false
   },
   {
-    "type": ";",
+    "type": "+=",
+    "named": false
+  },
+  {
+    "type": "-=",
+    "named": false
+  },
+  {
+    "type": "/=",
+    "named": false
+  },
+  {
+    "type": ":",
     "named": false
   },
   {
@@ -408,7 +1122,4503 @@
     "named": false
   },
   {
-    "type": "colour",
+    "type": "A",
+    "named": false
+  },
+  {
+    "type": "AAC",
+    "named": false
+  },
+  {
+    "type": "AAX",
+    "named": false
+  },
+  {
+    "type": "AAc",
+    "named": false
+  },
+  {
+    "type": "AAx",
+    "named": false
+  },
+  {
+    "type": "ADC",
+    "named": false
+  },
+  {
+    "type": "ADCQ",
+    "named": false
+  },
+  {
+    "type": "ADCq",
+    "named": false
+  },
+  {
+    "type": "ADc",
+    "named": false
+  },
+  {
+    "type": "ADcQ",
+    "named": false
+  },
+  {
+    "type": "ADcq",
+    "named": false
+  },
+  {
+    "type": "AHX",
+    "named": false
+  },
+  {
+    "type": "AHx",
+    "named": false
+  },
+  {
+    "type": "ALR",
+    "named": false
+  },
+  {
+    "type": "ALr",
+    "named": false
+  },
+  {
+    "type": "ANC",
+    "named": false
+  },
+  {
+    "type": "ANC2",
+    "named": false
+  },
+  {
+    "type": "AND",
+    "named": false
+  },
+  {
+    "type": "ANDQ",
+    "named": false
+  },
+  {
+    "type": "ANDq",
+    "named": false
+  },
+  {
+    "type": "ANE",
+    "named": false
+  },
+  {
+    "type": "ANc",
+    "named": false
+  },
+  {
+    "type": "ANc2",
+    "named": false
+  },
+  {
+    "type": "ANd",
+    "named": false
+  },
+  {
+    "type": "ANdQ",
+    "named": false
+  },
+  {
+    "type": "ANdq",
+    "named": false
+  },
+  {
+    "type": "ANe",
+    "named": false
+  },
+  {
+    "type": "ARR",
+    "named": false
+  },
+  {
+    "type": "ARr",
+    "named": false
+  },
+  {
+    "type": "ASL",
+    "named": false
+  },
+  {
+    "type": "ASLQ",
+    "named": false
+  },
+  {
+    "type": "ASLq",
+    "named": false
+  },
+  {
+    "type": "ASO",
+    "named": false
+  },
+  {
+    "type": "ASR",
+    "named": false
+  },
+  {
+    "type": "ASRQ",
+    "named": false
+  },
+  {
+    "type": "ASRq",
+    "named": false
+  },
+  {
+    "type": "ASl",
+    "named": false
+  },
+  {
+    "type": "ASlQ",
+    "named": false
+  },
+  {
+    "type": "ASlq",
+    "named": false
+  },
+  {
+    "type": "ASo",
+    "named": false
+  },
+  {
+    "type": "ASr",
+    "named": false
+  },
+  {
+    "type": "ASrQ",
+    "named": false
+  },
+  {
+    "type": "ASrq",
+    "named": false
+  },
+  {
+    "type": "ATX",
+    "named": false
+  },
+  {
+    "type": "ATx",
+    "named": false
+  },
+  {
+    "type": "AXA",
+    "named": false
+  },
+  {
+    "type": "AXS",
+    "named": false
+  },
+  {
+    "type": "AXa",
+    "named": false
+  },
+  {
+    "type": "AXs",
+    "named": false
+  },
+  {
+    "type": "AaC",
+    "named": false
+  },
+  {
+    "type": "AaX",
+    "named": false
+  },
+  {
+    "type": "Aac",
+    "named": false
+  },
+  {
+    "type": "Aax",
+    "named": false
+  },
+  {
+    "type": "AdC",
+    "named": false
+  },
+  {
+    "type": "AdCQ",
+    "named": false
+  },
+  {
+    "type": "AdCq",
+    "named": false
+  },
+  {
+    "type": "Adc",
+    "named": false
+  },
+  {
+    "type": "AdcQ",
+    "named": false
+  },
+  {
+    "type": "Adcq",
+    "named": false
+  },
+  {
+    "type": "AhX",
+    "named": false
+  },
+  {
+    "type": "Ahx",
+    "named": false
+  },
+  {
+    "type": "AlR",
+    "named": false
+  },
+  {
+    "type": "Alr",
+    "named": false
+  },
+  {
+    "type": "AnC",
+    "named": false
+  },
+  {
+    "type": "AnC2",
+    "named": false
+  },
+  {
+    "type": "AnD",
+    "named": false
+  },
+  {
+    "type": "AnDQ",
+    "named": false
+  },
+  {
+    "type": "AnDq",
+    "named": false
+  },
+  {
+    "type": "AnE",
+    "named": false
+  },
+  {
+    "type": "Anc",
+    "named": false
+  },
+  {
+    "type": "Anc2",
+    "named": false
+  },
+  {
+    "type": "And",
+    "named": false
+  },
+  {
+    "type": "AndQ",
+    "named": false
+  },
+  {
+    "type": "Andq",
+    "named": false
+  },
+  {
+    "type": "Ane",
+    "named": false
+  },
+  {
+    "type": "ArR",
+    "named": false
+  },
+  {
+    "type": "Arr",
+    "named": false
+  },
+  {
+    "type": "AsL",
+    "named": false
+  },
+  {
+    "type": "AsLQ",
+    "named": false
+  },
+  {
+    "type": "AsLq",
+    "named": false
+  },
+  {
+    "type": "AsO",
+    "named": false
+  },
+  {
+    "type": "AsR",
+    "named": false
+  },
+  {
+    "type": "AsRQ",
+    "named": false
+  },
+  {
+    "type": "AsRq",
+    "named": false
+  },
+  {
+    "type": "Asl",
+    "named": false
+  },
+  {
+    "type": "AslQ",
+    "named": false
+  },
+  {
+    "type": "Aslq",
+    "named": false
+  },
+  {
+    "type": "Aso",
+    "named": false
+  },
+  {
+    "type": "Asr",
+    "named": false
+  },
+  {
+    "type": "AsrQ",
+    "named": false
+  },
+  {
+    "type": "Asrq",
+    "named": false
+  },
+  {
+    "type": "AtX",
+    "named": false
+  },
+  {
+    "type": "Atx",
+    "named": false
+  },
+  {
+    "type": "AxA",
+    "named": false
+  },
+  {
+    "type": "AxS",
+    "named": false
+  },
+  {
+    "type": "Axa",
+    "named": false
+  },
+  {
+    "type": "Axs",
+    "named": false
+  },
+  {
+    "type": "BBR0",
+    "named": false
+  },
+  {
+    "type": "BBR1",
+    "named": false
+  },
+  {
+    "type": "BBR2",
+    "named": false
+  },
+  {
+    "type": "BBR3",
+    "named": false
+  },
+  {
+    "type": "BBR4",
+    "named": false
+  },
+  {
+    "type": "BBR5",
+    "named": false
+  },
+  {
+    "type": "BBR6",
+    "named": false
+  },
+  {
+    "type": "BBR7",
+    "named": false
+  },
+  {
+    "type": "BBS0",
+    "named": false
+  },
+  {
+    "type": "BBS1",
+    "named": false
+  },
+  {
+    "type": "BBS2",
+    "named": false
+  },
+  {
+    "type": "BBS3",
+    "named": false
+  },
+  {
+    "type": "BBS4",
+    "named": false
+  },
+  {
+    "type": "BBS5",
+    "named": false
+  },
+  {
+    "type": "BBS6",
+    "named": false
+  },
+  {
+    "type": "BBS7",
+    "named": false
+  },
+  {
+    "type": "BBr0",
+    "named": false
+  },
+  {
+    "type": "BBr1",
+    "named": false
+  },
+  {
+    "type": "BBr2",
+    "named": false
+  },
+  {
+    "type": "BBr3",
+    "named": false
+  },
+  {
+    "type": "BBr4",
+    "named": false
+  },
+  {
+    "type": "BBr5",
+    "named": false
+  },
+  {
+    "type": "BBr6",
+    "named": false
+  },
+  {
+    "type": "BBr7",
+    "named": false
+  },
+  {
+    "type": "BBs0",
+    "named": false
+  },
+  {
+    "type": "BBs1",
+    "named": false
+  },
+  {
+    "type": "BBs2",
+    "named": false
+  },
+  {
+    "type": "BBs3",
+    "named": false
+  },
+  {
+    "type": "BBs4",
+    "named": false
+  },
+  {
+    "type": "BBs5",
+    "named": false
+  },
+  {
+    "type": "BBs6",
+    "named": false
+  },
+  {
+    "type": "BBs7",
+    "named": false
+  },
+  {
+    "type": "BCC",
+    "named": false
+  },
+  {
+    "type": "BCS",
+    "named": false
+  },
+  {
+    "type": "BCc",
+    "named": false
+  },
+  {
+    "type": "BCs",
+    "named": false
+  },
+  {
+    "type": "BEQ",
+    "named": false
+  },
+  {
+    "type": "BEq",
+    "named": false
+  },
+  {
+    "type": "BIT",
+    "named": false
+  },
+  {
+    "type": "BITQ",
+    "named": false
+  },
+  {
+    "type": "BITq",
+    "named": false
+  },
+  {
+    "type": "BIt",
+    "named": false
+  },
+  {
+    "type": "BItQ",
+    "named": false
+  },
+  {
+    "type": "BItq",
+    "named": false
+  },
+  {
+    "type": "BMI",
+    "named": false
+  },
+  {
+    "type": "BMi",
+    "named": false
+  },
+  {
+    "type": "BNE",
+    "named": false
+  },
+  {
+    "type": "BNe",
+    "named": false
+  },
+  {
+    "type": "BPL",
+    "named": false
+  },
+  {
+    "type": "BPl",
+    "named": false
+  },
+  {
+    "type": "BRA",
+    "named": false
+  },
+  {
+    "type": "BRK",
+    "named": false
+  },
+  {
+    "type": "BRa",
+    "named": false
+  },
+  {
+    "type": "BRk",
+    "named": false
+  },
+  {
+    "type": "BVC",
+    "named": false
+  },
+  {
+    "type": "BVS",
+    "named": false
+  },
+  {
+    "type": "BVc",
+    "named": false
+  },
+  {
+    "type": "BVs",
+    "named": false
+  },
+  {
+    "type": "BbR0",
+    "named": false
+  },
+  {
+    "type": "BbR1",
+    "named": false
+  },
+  {
+    "type": "BbR2",
+    "named": false
+  },
+  {
+    "type": "BbR3",
+    "named": false
+  },
+  {
+    "type": "BbR4",
+    "named": false
+  },
+  {
+    "type": "BbR5",
+    "named": false
+  },
+  {
+    "type": "BbR6",
+    "named": false
+  },
+  {
+    "type": "BbR7",
+    "named": false
+  },
+  {
+    "type": "BbS0",
+    "named": false
+  },
+  {
+    "type": "BbS1",
+    "named": false
+  },
+  {
+    "type": "BbS2",
+    "named": false
+  },
+  {
+    "type": "BbS3",
+    "named": false
+  },
+  {
+    "type": "BbS4",
+    "named": false
+  },
+  {
+    "type": "BbS5",
+    "named": false
+  },
+  {
+    "type": "BbS6",
+    "named": false
+  },
+  {
+    "type": "BbS7",
+    "named": false
+  },
+  {
+    "type": "Bbr0",
+    "named": false
+  },
+  {
+    "type": "Bbr1",
+    "named": false
+  },
+  {
+    "type": "Bbr2",
+    "named": false
+  },
+  {
+    "type": "Bbr3",
+    "named": false
+  },
+  {
+    "type": "Bbr4",
+    "named": false
+  },
+  {
+    "type": "Bbr5",
+    "named": false
+  },
+  {
+    "type": "Bbr6",
+    "named": false
+  },
+  {
+    "type": "Bbr7",
+    "named": false
+  },
+  {
+    "type": "Bbs0",
+    "named": false
+  },
+  {
+    "type": "Bbs1",
+    "named": false
+  },
+  {
+    "type": "Bbs2",
+    "named": false
+  },
+  {
+    "type": "Bbs3",
+    "named": false
+  },
+  {
+    "type": "Bbs4",
+    "named": false
+  },
+  {
+    "type": "Bbs5",
+    "named": false
+  },
+  {
+    "type": "Bbs6",
+    "named": false
+  },
+  {
+    "type": "Bbs7",
+    "named": false
+  },
+  {
+    "type": "BcC",
+    "named": false
+  },
+  {
+    "type": "BcS",
+    "named": false
+  },
+  {
+    "type": "Bcc",
+    "named": false
+  },
+  {
+    "type": "Bcs",
+    "named": false
+  },
+  {
+    "type": "BeQ",
+    "named": false
+  },
+  {
+    "type": "Beq",
+    "named": false
+  },
+  {
+    "type": "BiT",
+    "named": false
+  },
+  {
+    "type": "BiTQ",
+    "named": false
+  },
+  {
+    "type": "BiTq",
+    "named": false
+  },
+  {
+    "type": "Bit",
+    "named": false
+  },
+  {
+    "type": "BitQ",
+    "named": false
+  },
+  {
+    "type": "Bitq",
+    "named": false
+  },
+  {
+    "type": "BmI",
+    "named": false
+  },
+  {
+    "type": "Bmi",
+    "named": false
+  },
+  {
+    "type": "BnE",
+    "named": false
+  },
+  {
+    "type": "Bne",
+    "named": false
+  },
+  {
+    "type": "BpL",
+    "named": false
+  },
+  {
+    "type": "Bpl",
+    "named": false
+  },
+  {
+    "type": "BrA",
+    "named": false
+  },
+  {
+    "type": "BrK",
+    "named": false
+  },
+  {
+    "type": "Bra",
+    "named": false
+  },
+  {
+    "type": "Brk",
+    "named": false
+  },
+  {
+    "type": "BvC",
+    "named": false
+  },
+  {
+    "type": "BvS",
+    "named": false
+  },
+  {
+    "type": "Bvc",
+    "named": false
+  },
+  {
+    "type": "Bvs",
+    "named": false
+  },
+  {
+    "type": "CLC",
+    "named": false
+  },
+  {
+    "type": "CLD",
+    "named": false
+  },
+  {
+    "type": "CLE",
+    "named": false
+  },
+  {
+    "type": "CLI",
+    "named": false
+  },
+  {
+    "type": "CLV",
+    "named": false
+  },
+  {
+    "type": "CLc",
+    "named": false
+  },
+  {
+    "type": "CLd",
+    "named": false
+  },
+  {
+    "type": "CLe",
+    "named": false
+  },
+  {
+    "type": "CLi",
+    "named": false
+  },
+  {
+    "type": "CLv",
+    "named": false
+  },
+  {
+    "type": "CMP",
+    "named": false
+  },
+  {
+    "type": "CMp",
+    "named": false
+  },
+  {
+    "type": "CPQ",
+    "named": false
+  },
+  {
+    "type": "CPX",
+    "named": false
+  },
+  {
+    "type": "CPY",
+    "named": false
+  },
+  {
+    "type": "CPZ",
+    "named": false
+  },
+  {
+    "type": "CPq",
+    "named": false
+  },
+  {
+    "type": "CPx",
+    "named": false
+  },
+  {
+    "type": "CPy",
+    "named": false
+  },
+  {
+    "type": "CPz",
+    "named": false
+  },
+  {
+    "type": "ClC",
+    "named": false
+  },
+  {
+    "type": "ClD",
+    "named": false
+  },
+  {
+    "type": "ClE",
+    "named": false
+  },
+  {
+    "type": "ClI",
+    "named": false
+  },
+  {
+    "type": "ClV",
+    "named": false
+  },
+  {
+    "type": "Clc",
+    "named": false
+  },
+  {
+    "type": "Cld",
+    "named": false
+  },
+  {
+    "type": "Cle",
+    "named": false
+  },
+  {
+    "type": "Cli",
+    "named": false
+  },
+  {
+    "type": "Clv",
+    "named": false
+  },
+  {
+    "type": "CmP",
+    "named": false
+  },
+  {
+    "type": "Cmp",
+    "named": false
+  },
+  {
+    "type": "CpQ",
+    "named": false
+  },
+  {
+    "type": "CpX",
+    "named": false
+  },
+  {
+    "type": "CpY",
+    "named": false
+  },
+  {
+    "type": "CpZ",
+    "named": false
+  },
+  {
+    "type": "Cpq",
+    "named": false
+  },
+  {
+    "type": "Cpx",
+    "named": false
+  },
+  {
+    "type": "Cpy",
+    "named": false
+  },
+  {
+    "type": "Cpz",
+    "named": false
+  },
+  {
+    "type": "DCM",
+    "named": false
+  },
+  {
+    "type": "DCP",
+    "named": false
+  },
+  {
+    "type": "DCm",
+    "named": false
+  },
+  {
+    "type": "DCp",
+    "named": false
+  },
+  {
+    "type": "DEC",
+    "named": false
+  },
+  {
+    "type": "DEQ",
+    "named": false
+  },
+  {
+    "type": "DEW",
+    "named": false
+  },
+  {
+    "type": "DEX",
+    "named": false
+  },
+  {
+    "type": "DEY",
+    "named": false
+  },
+  {
+    "type": "DEZ",
+    "named": false
+  },
+  {
+    "type": "DEc",
+    "named": false
+  },
+  {
+    "type": "DEq",
+    "named": false
+  },
+  {
+    "type": "DEw",
+    "named": false
+  },
+  {
+    "type": "DEx",
+    "named": false
+  },
+  {
+    "type": "DEy",
+    "named": false
+  },
+  {
+    "type": "DEz",
+    "named": false
+  },
+  {
+    "type": "DOP",
+    "named": false
+  },
+  {
+    "type": "DOp",
+    "named": false
+  },
+  {
+    "type": "DcM",
+    "named": false
+  },
+  {
+    "type": "DcP",
+    "named": false
+  },
+  {
+    "type": "Dcm",
+    "named": false
+  },
+  {
+    "type": "Dcp",
+    "named": false
+  },
+  {
+    "type": "DeC",
+    "named": false
+  },
+  {
+    "type": "DeQ",
+    "named": false
+  },
+  {
+    "type": "DeW",
+    "named": false
+  },
+  {
+    "type": "DeX",
+    "named": false
+  },
+  {
+    "type": "DeY",
+    "named": false
+  },
+  {
+    "type": "DeZ",
+    "named": false
+  },
+  {
+    "type": "Dec",
+    "named": false
+  },
+  {
+    "type": "Deq",
+    "named": false
+  },
+  {
+    "type": "Dew",
+    "named": false
+  },
+  {
+    "type": "Dex",
+    "named": false
+  },
+  {
+    "type": "Dey",
+    "named": false
+  },
+  {
+    "type": "Dez",
+    "named": false
+  },
+  {
+    "type": "DoP",
+    "named": false
+  },
+  {
+    "type": "Dop",
+    "named": false
+  },
+  {
+    "type": "EOM",
+    "named": false
+  },
+  {
+    "type": "EOR",
+    "named": false
+  },
+  {
+    "type": "EORQ",
+    "named": false
+  },
+  {
+    "type": "EORq",
+    "named": false
+  },
+  {
+    "type": "EOm",
+    "named": false
+  },
+  {
+    "type": "EOr",
+    "named": false
+  },
+  {
+    "type": "EOrQ",
+    "named": false
+  },
+  {
+    "type": "EOrq",
+    "named": false
+  },
+  {
+    "type": "EoM",
+    "named": false
+  },
+  {
+    "type": "EoR",
+    "named": false
+  },
+  {
+    "type": "EoRQ",
+    "named": false
+  },
+  {
+    "type": "EoRq",
+    "named": false
+  },
+  {
+    "type": "Eom",
+    "named": false
+  },
+  {
+    "type": "Eor",
+    "named": false
+  },
+  {
+    "type": "EorQ",
+    "named": false
+  },
+  {
+    "type": "Eorq",
+    "named": false
+  },
+  {
+    "type": "HLT",
+    "named": false
+  },
+  {
+    "type": "HLt",
+    "named": false
+  },
+  {
+    "type": "HlT",
+    "named": false
+  },
+  {
+    "type": "Hlt",
+    "named": false
+  },
+  {
+    "type": "INC",
+    "named": false
+  },
+  {
+    "type": "INQ",
+    "named": false
+  },
+  {
+    "type": "INS",
+    "named": false
+  },
+  {
+    "type": "INW",
+    "named": false
+  },
+  {
+    "type": "INX",
+    "named": false
+  },
+  {
+    "type": "INY",
+    "named": false
+  },
+  {
+    "type": "INZ",
+    "named": false
+  },
+  {
+    "type": "INc",
+    "named": false
+  },
+  {
+    "type": "INq",
+    "named": false
+  },
+  {
+    "type": "INs",
+    "named": false
+  },
+  {
+    "type": "INw",
+    "named": false
+  },
+  {
+    "type": "INx",
+    "named": false
+  },
+  {
+    "type": "INy",
+    "named": false
+  },
+  {
+    "type": "INz",
+    "named": false
+  },
+  {
+    "type": "ISB",
+    "named": false
+  },
+  {
+    "type": "ISC",
+    "named": false
+  },
+  {
+    "type": "ISb",
+    "named": false
+  },
+  {
+    "type": "ISc",
+    "named": false
+  },
+  {
+    "type": "InC",
+    "named": false
+  },
+  {
+    "type": "InQ",
+    "named": false
+  },
+  {
+    "type": "InS",
+    "named": false
+  },
+  {
+    "type": "InW",
+    "named": false
+  },
+  {
+    "type": "InX",
+    "named": false
+  },
+  {
+    "type": "InY",
+    "named": false
+  },
+  {
+    "type": "InZ",
+    "named": false
+  },
+  {
+    "type": "Inc",
+    "named": false
+  },
+  {
+    "type": "Inq",
+    "named": false
+  },
+  {
+    "type": "Ins",
+    "named": false
+  },
+  {
+    "type": "Inw",
+    "named": false
+  },
+  {
+    "type": "Inx",
+    "named": false
+  },
+  {
+    "type": "Iny",
+    "named": false
+  },
+  {
+    "type": "Inz",
+    "named": false
+  },
+  {
+    "type": "IsB",
+    "named": false
+  },
+  {
+    "type": "IsC",
+    "named": false
+  },
+  {
+    "type": "Isb",
+    "named": false
+  },
+  {
+    "type": "Isc",
+    "named": false
+  },
+  {
+    "type": "JAM",
+    "named": false
+  },
+  {
+    "type": "JAm",
+    "named": false
+  },
+  {
+    "type": "JMP",
+    "named": false
+  },
+  {
+    "type": "JMp",
+    "named": false
+  },
+  {
+    "type": "JSR",
+    "named": false
+  },
+  {
+    "type": "JSr",
+    "named": false
+  },
+  {
+    "type": "JaM",
+    "named": false
+  },
+  {
+    "type": "Jam",
+    "named": false
+  },
+  {
+    "type": "JmP",
+    "named": false
+  },
+  {
+    "type": "Jmp",
+    "named": false
+  },
+  {
+    "type": "JsR",
+    "named": false
+  },
+  {
+    "type": "Jsr",
+    "named": false
+  },
+  {
+    "type": "KIL",
+    "named": false
+  },
+  {
+    "type": "KIl",
+    "named": false
+  },
+  {
+    "type": "KiL",
+    "named": false
+  },
+  {
+    "type": "Kil",
+    "named": false
+  },
+  {
+    "type": "LAE",
+    "named": false
+  },
+  {
+    "type": "LAR",
+    "named": false
+  },
+  {
+    "type": "LAS",
+    "named": false
+  },
+  {
+    "type": "LAX",
+    "named": false
+  },
+  {
+    "type": "LAe",
+    "named": false
+  },
+  {
+    "type": "LAr",
+    "named": false
+  },
+  {
+    "type": "LAs",
+    "named": false
+  },
+  {
+    "type": "LAx",
+    "named": false
+  },
+  {
+    "type": "LBCC",
+    "named": false
+  },
+  {
+    "type": "LBCS",
+    "named": false
+  },
+  {
+    "type": "LBCc",
+    "named": false
+  },
+  {
+    "type": "LBCs",
+    "named": false
+  },
+  {
+    "type": "LBEQ",
+    "named": false
+  },
+  {
+    "type": "LBEq",
+    "named": false
+  },
+  {
+    "type": "LBMI",
+    "named": false
+  },
+  {
+    "type": "LBMi",
+    "named": false
+  },
+  {
+    "type": "LBNE",
+    "named": false
+  },
+  {
+    "type": "LBNe",
+    "named": false
+  },
+  {
+    "type": "LBPL",
+    "named": false
+  },
+  {
+    "type": "LBPl",
+    "named": false
+  },
+  {
+    "type": "LBRA",
+    "named": false
+  },
+  {
+    "type": "LBRa",
+    "named": false
+  },
+  {
+    "type": "LBSR",
+    "named": false
+  },
+  {
+    "type": "LBSr",
+    "named": false
+  },
+  {
+    "type": "LBVC",
+    "named": false
+  },
+  {
+    "type": "LBVS",
+    "named": false
+  },
+  {
+    "type": "LBVc",
+    "named": false
+  },
+  {
+    "type": "LBVs",
+    "named": false
+  },
+  {
+    "type": "LBcC",
+    "named": false
+  },
+  {
+    "type": "LBcS",
+    "named": false
+  },
+  {
+    "type": "LBcc",
+    "named": false
+  },
+  {
+    "type": "LBcs",
+    "named": false
+  },
+  {
+    "type": "LBeQ",
+    "named": false
+  },
+  {
+    "type": "LBeq",
+    "named": false
+  },
+  {
+    "type": "LBmI",
+    "named": false
+  },
+  {
+    "type": "LBmi",
+    "named": false
+  },
+  {
+    "type": "LBnE",
+    "named": false
+  },
+  {
+    "type": "LBne",
+    "named": false
+  },
+  {
+    "type": "LBpL",
+    "named": false
+  },
+  {
+    "type": "LBpl",
+    "named": false
+  },
+  {
+    "type": "LBrA",
+    "named": false
+  },
+  {
+    "type": "LBra",
+    "named": false
+  },
+  {
+    "type": "LBsR",
+    "named": false
+  },
+  {
+    "type": "LBsr",
+    "named": false
+  },
+  {
+    "type": "LBvC",
+    "named": false
+  },
+  {
+    "type": "LBvS",
+    "named": false
+  },
+  {
+    "type": "LBvc",
+    "named": false
+  },
+  {
+    "type": "LBvs",
+    "named": false
+  },
+  {
+    "type": "LDA",
+    "named": false
+  },
+  {
+    "type": "LDQ",
+    "named": false
+  },
+  {
+    "type": "LDS",
+    "named": false
+  },
+  {
+    "type": "LDX",
+    "named": false
+  },
+  {
+    "type": "LDY",
+    "named": false
+  },
+  {
+    "type": "LDZ",
+    "named": false
+  },
+  {
+    "type": "LDa",
+    "named": false
+  },
+  {
+    "type": "LDq",
+    "named": false
+  },
+  {
+    "type": "LDs",
+    "named": false
+  },
+  {
+    "type": "LDx",
+    "named": false
+  },
+  {
+    "type": "LDy",
+    "named": false
+  },
+  {
+    "type": "LDz",
+    "named": false
+  },
+  {
+    "type": "LSE",
+    "named": false
+  },
+  {
+    "type": "LSR",
+    "named": false
+  },
+  {
+    "type": "LSRQ",
+    "named": false
+  },
+  {
+    "type": "LSRq",
+    "named": false
+  },
+  {
+    "type": "LSe",
+    "named": false
+  },
+  {
+    "type": "LSr",
+    "named": false
+  },
+  {
+    "type": "LSrQ",
+    "named": false
+  },
+  {
+    "type": "LSrq",
+    "named": false
+  },
+  {
+    "type": "LXA",
+    "named": false
+  },
+  {
+    "type": "LXa",
+    "named": false
+  },
+  {
+    "type": "LaE",
+    "named": false
+  },
+  {
+    "type": "LaR",
+    "named": false
+  },
+  {
+    "type": "LaS",
+    "named": false
+  },
+  {
+    "type": "LaX",
+    "named": false
+  },
+  {
+    "type": "Lae",
+    "named": false
+  },
+  {
+    "type": "Lar",
+    "named": false
+  },
+  {
+    "type": "Las",
+    "named": false
+  },
+  {
+    "type": "Lax",
+    "named": false
+  },
+  {
+    "type": "LbCC",
+    "named": false
+  },
+  {
+    "type": "LbCS",
+    "named": false
+  },
+  {
+    "type": "LbCc",
+    "named": false
+  },
+  {
+    "type": "LbCs",
+    "named": false
+  },
+  {
+    "type": "LbEQ",
+    "named": false
+  },
+  {
+    "type": "LbEq",
+    "named": false
+  },
+  {
+    "type": "LbMI",
+    "named": false
+  },
+  {
+    "type": "LbMi",
+    "named": false
+  },
+  {
+    "type": "LbNE",
+    "named": false
+  },
+  {
+    "type": "LbNe",
+    "named": false
+  },
+  {
+    "type": "LbPL",
+    "named": false
+  },
+  {
+    "type": "LbPl",
+    "named": false
+  },
+  {
+    "type": "LbRA",
+    "named": false
+  },
+  {
+    "type": "LbRa",
+    "named": false
+  },
+  {
+    "type": "LbSR",
+    "named": false
+  },
+  {
+    "type": "LbSr",
+    "named": false
+  },
+  {
+    "type": "LbVC",
+    "named": false
+  },
+  {
+    "type": "LbVS",
+    "named": false
+  },
+  {
+    "type": "LbVc",
+    "named": false
+  },
+  {
+    "type": "LbVs",
+    "named": false
+  },
+  {
+    "type": "LbcC",
+    "named": false
+  },
+  {
+    "type": "LbcS",
+    "named": false
+  },
+  {
+    "type": "Lbcc",
+    "named": false
+  },
+  {
+    "type": "Lbcs",
+    "named": false
+  },
+  {
+    "type": "LbeQ",
+    "named": false
+  },
+  {
+    "type": "Lbeq",
+    "named": false
+  },
+  {
+    "type": "LbmI",
+    "named": false
+  },
+  {
+    "type": "Lbmi",
+    "named": false
+  },
+  {
+    "type": "LbnE",
+    "named": false
+  },
+  {
+    "type": "Lbne",
+    "named": false
+  },
+  {
+    "type": "LbpL",
+    "named": false
+  },
+  {
+    "type": "Lbpl",
+    "named": false
+  },
+  {
+    "type": "LbrA",
+    "named": false
+  },
+  {
+    "type": "Lbra",
+    "named": false
+  },
+  {
+    "type": "LbsR",
+    "named": false
+  },
+  {
+    "type": "Lbsr",
+    "named": false
+  },
+  {
+    "type": "LbvC",
+    "named": false
+  },
+  {
+    "type": "LbvS",
+    "named": false
+  },
+  {
+    "type": "Lbvc",
+    "named": false
+  },
+  {
+    "type": "Lbvs",
+    "named": false
+  },
+  {
+    "type": "LdA",
+    "named": false
+  },
+  {
+    "type": "LdQ",
+    "named": false
+  },
+  {
+    "type": "LdS",
+    "named": false
+  },
+  {
+    "type": "LdX",
+    "named": false
+  },
+  {
+    "type": "LdY",
+    "named": false
+  },
+  {
+    "type": "LdZ",
+    "named": false
+  },
+  {
+    "type": "Lda",
+    "named": false
+  },
+  {
+    "type": "Ldq",
+    "named": false
+  },
+  {
+    "type": "Lds",
+    "named": false
+  },
+  {
+    "type": "Ldx",
+    "named": false
+  },
+  {
+    "type": "Ldy",
+    "named": false
+  },
+  {
+    "type": "Ldz",
+    "named": false
+  },
+  {
+    "type": "LsE",
+    "named": false
+  },
+  {
+    "type": "LsR",
+    "named": false
+  },
+  {
+    "type": "LsRQ",
+    "named": false
+  },
+  {
+    "type": "LsRq",
+    "named": false
+  },
+  {
+    "type": "Lse",
+    "named": false
+  },
+  {
+    "type": "Lsr",
+    "named": false
+  },
+  {
+    "type": "LsrQ",
+    "named": false
+  },
+  {
+    "type": "Lsrq",
+    "named": false
+  },
+  {
+    "type": "LxA",
+    "named": false
+  },
+  {
+    "type": "Lxa",
+    "named": false
+  },
+  {
+    "type": "MAP",
+    "named": false
+  },
+  {
+    "type": "MAp",
+    "named": false
+  },
+  {
+    "type": "MaP",
+    "named": false
+  },
+  {
+    "type": "Map",
+    "named": false
+  },
+  {
+    "type": "NEG",
+    "named": false
+  },
+  {
+    "type": "NEg",
+    "named": false
+  },
+  {
+    "type": "NOP",
+    "named": false
+  },
+  {
+    "type": "NOp",
+    "named": false
+  },
+  {
+    "type": "NeG",
+    "named": false
+  },
+  {
+    "type": "Neg",
+    "named": false
+  },
+  {
+    "type": "NoP",
+    "named": false
+  },
+  {
+    "type": "Nop",
+    "named": false
+  },
+  {
+    "type": "OAL",
+    "named": false
+  },
+  {
+    "type": "OAl",
+    "named": false
+  },
+  {
+    "type": "ORA",
+    "named": false
+  },
+  {
+    "type": "ORQ",
+    "named": false
+  },
+  {
+    "type": "ORa",
+    "named": false
+  },
+  {
+    "type": "ORq",
+    "named": false
+  },
+  {
+    "type": "OaL",
+    "named": false
+  },
+  {
+    "type": "Oal",
+    "named": false
+  },
+  {
+    "type": "OrA",
+    "named": false
+  },
+  {
+    "type": "OrQ",
+    "named": false
+  },
+  {
+    "type": "Ora",
+    "named": false
+  },
+  {
+    "type": "Orq",
+    "named": false
+  },
+  {
+    "type": "PHA",
+    "named": false
+  },
+  {
+    "type": "PHP",
+    "named": false
+  },
+  {
+    "type": "PHW",
+    "named": false
+  },
+  {
+    "type": "PHX",
+    "named": false
+  },
+  {
+    "type": "PHY",
+    "named": false
+  },
+  {
+    "type": "PHZ",
+    "named": false
+  },
+  {
+    "type": "PHa",
+    "named": false
+  },
+  {
+    "type": "PHp",
+    "named": false
+  },
+  {
+    "type": "PHw",
+    "named": false
+  },
+  {
+    "type": "PHx",
+    "named": false
+  },
+  {
+    "type": "PHy",
+    "named": false
+  },
+  {
+    "type": "PHz",
+    "named": false
+  },
+  {
+    "type": "PLA",
+    "named": false
+  },
+  {
+    "type": "PLP",
+    "named": false
+  },
+  {
+    "type": "PLX",
+    "named": false
+  },
+  {
+    "type": "PLY",
+    "named": false
+  },
+  {
+    "type": "PLZ",
+    "named": false
+  },
+  {
+    "type": "PLa",
+    "named": false
+  },
+  {
+    "type": "PLp",
+    "named": false
+  },
+  {
+    "type": "PLx",
+    "named": false
+  },
+  {
+    "type": "PLy",
+    "named": false
+  },
+  {
+    "type": "PLz",
+    "named": false
+  },
+  {
+    "type": "PhA",
+    "named": false
+  },
+  {
+    "type": "PhP",
+    "named": false
+  },
+  {
+    "type": "PhW",
+    "named": false
+  },
+  {
+    "type": "PhX",
+    "named": false
+  },
+  {
+    "type": "PhY",
+    "named": false
+  },
+  {
+    "type": "PhZ",
+    "named": false
+  },
+  {
+    "type": "Pha",
+    "named": false
+  },
+  {
+    "type": "Php",
+    "named": false
+  },
+  {
+    "type": "Phw",
+    "named": false
+  },
+  {
+    "type": "Phx",
+    "named": false
+  },
+  {
+    "type": "Phy",
+    "named": false
+  },
+  {
+    "type": "Phz",
+    "named": false
+  },
+  {
+    "type": "PlA",
+    "named": false
+  },
+  {
+    "type": "PlP",
+    "named": false
+  },
+  {
+    "type": "PlX",
+    "named": false
+  },
+  {
+    "type": "PlY",
+    "named": false
+  },
+  {
+    "type": "PlZ",
+    "named": false
+  },
+  {
+    "type": "Pla",
+    "named": false
+  },
+  {
+    "type": "Plp",
+    "named": false
+  },
+  {
+    "type": "Plx",
+    "named": false
+  },
+  {
+    "type": "Ply",
+    "named": false
+  },
+  {
+    "type": "Plz",
+    "named": false
+  },
+  {
+    "type": "RLA",
+    "named": false
+  },
+  {
+    "type": "RLa",
+    "named": false
+  },
+  {
+    "type": "RMB0",
+    "named": false
+  },
+  {
+    "type": "RMB1",
+    "named": false
+  },
+  {
+    "type": "RMB2",
+    "named": false
+  },
+  {
+    "type": "RMB3",
+    "named": false
+  },
+  {
+    "type": "RMB4",
+    "named": false
+  },
+  {
+    "type": "RMB5",
+    "named": false
+  },
+  {
+    "type": "RMB6",
+    "named": false
+  },
+  {
+    "type": "RMB7",
+    "named": false
+  },
+  {
+    "type": "RMb0",
+    "named": false
+  },
+  {
+    "type": "RMb1",
+    "named": false
+  },
+  {
+    "type": "RMb2",
+    "named": false
+  },
+  {
+    "type": "RMb3",
+    "named": false
+  },
+  {
+    "type": "RMb4",
+    "named": false
+  },
+  {
+    "type": "RMb5",
+    "named": false
+  },
+  {
+    "type": "RMb6",
+    "named": false
+  },
+  {
+    "type": "RMb7",
+    "named": false
+  },
+  {
+    "type": "ROL",
+    "named": false
+  },
+  {
+    "type": "ROLQ",
+    "named": false
+  },
+  {
+    "type": "ROLq",
+    "named": false
+  },
+  {
+    "type": "ROR",
+    "named": false
+  },
+  {
+    "type": "RORQ",
+    "named": false
+  },
+  {
+    "type": "RORq",
+    "named": false
+  },
+  {
+    "type": "ROW",
+    "named": false
+  },
+  {
+    "type": "ROl",
+    "named": false
+  },
+  {
+    "type": "ROlQ",
+    "named": false
+  },
+  {
+    "type": "ROlq",
+    "named": false
+  },
+  {
+    "type": "ROr",
+    "named": false
+  },
+  {
+    "type": "ROrQ",
+    "named": false
+  },
+  {
+    "type": "ROrq",
+    "named": false
+  },
+  {
+    "type": "ROw",
+    "named": false
+  },
+  {
+    "type": "RRA",
+    "named": false
+  },
+  {
+    "type": "RRa",
+    "named": false
+  },
+  {
+    "type": "RTI",
+    "named": false
+  },
+  {
+    "type": "RTN",
+    "named": false
+  },
+  {
+    "type": "RTS",
+    "named": false
+  },
+  {
+    "type": "RTi",
+    "named": false
+  },
+  {
+    "type": "RTn",
+    "named": false
+  },
+  {
+    "type": "RTs",
+    "named": false
+  },
+  {
+    "type": "RlA",
+    "named": false
+  },
+  {
+    "type": "Rla",
+    "named": false
+  },
+  {
+    "type": "RmB0",
+    "named": false
+  },
+  {
+    "type": "RmB1",
+    "named": false
+  },
+  {
+    "type": "RmB2",
+    "named": false
+  },
+  {
+    "type": "RmB3",
+    "named": false
+  },
+  {
+    "type": "RmB4",
+    "named": false
+  },
+  {
+    "type": "RmB5",
+    "named": false
+  },
+  {
+    "type": "RmB6",
+    "named": false
+  },
+  {
+    "type": "RmB7",
+    "named": false
+  },
+  {
+    "type": "Rmb0",
+    "named": false
+  },
+  {
+    "type": "Rmb1",
+    "named": false
+  },
+  {
+    "type": "Rmb2",
+    "named": false
+  },
+  {
+    "type": "Rmb3",
+    "named": false
+  },
+  {
+    "type": "Rmb4",
+    "named": false
+  },
+  {
+    "type": "Rmb5",
+    "named": false
+  },
+  {
+    "type": "Rmb6",
+    "named": false
+  },
+  {
+    "type": "Rmb7",
+    "named": false
+  },
+  {
+    "type": "RoL",
+    "named": false
+  },
+  {
+    "type": "RoLQ",
+    "named": false
+  },
+  {
+    "type": "RoLq",
+    "named": false
+  },
+  {
+    "type": "RoR",
+    "named": false
+  },
+  {
+    "type": "RoRQ",
+    "named": false
+  },
+  {
+    "type": "RoRq",
+    "named": false
+  },
+  {
+    "type": "RoW",
+    "named": false
+  },
+  {
+    "type": "Rol",
+    "named": false
+  },
+  {
+    "type": "RolQ",
+    "named": false
+  },
+  {
+    "type": "Rolq",
+    "named": false
+  },
+  {
+    "type": "Ror",
+    "named": false
+  },
+  {
+    "type": "RorQ",
+    "named": false
+  },
+  {
+    "type": "Rorq",
+    "named": false
+  },
+  {
+    "type": "Row",
+    "named": false
+  },
+  {
+    "type": "RrA",
+    "named": false
+  },
+  {
+    "type": "Rra",
+    "named": false
+  },
+  {
+    "type": "RtI",
+    "named": false
+  },
+  {
+    "type": "RtN",
+    "named": false
+  },
+  {
+    "type": "RtS",
+    "named": false
+  },
+  {
+    "type": "Rti",
+    "named": false
+  },
+  {
+    "type": "Rtn",
+    "named": false
+  },
+  {
+    "type": "Rts",
+    "named": false
+  },
+  {
+    "type": "SAC",
+    "named": false
+  },
+  {
+    "type": "SAX",
+    "named": false
+  },
+  {
+    "type": "SAY",
+    "named": false
+  },
+  {
+    "type": "SAc",
+    "named": false
+  },
+  {
+    "type": "SAx",
+    "named": false
+  },
+  {
+    "type": "SAy",
+    "named": false
+  },
+  {
+    "type": "SBC",
+    "named": false
+  },
+  {
+    "type": "SBC2",
+    "named": false
+  },
+  {
+    "type": "SBCQ",
+    "named": false
+  },
+  {
+    "type": "SBCq",
+    "named": false
+  },
+  {
+    "type": "SBX",
+    "named": false
+  },
+  {
+    "type": "SBc",
+    "named": false
+  },
+  {
+    "type": "SBc2",
+    "named": false
+  },
+  {
+    "type": "SBcQ",
+    "named": false
+  },
+  {
+    "type": "SBcq",
+    "named": false
+  },
+  {
+    "type": "SBx",
+    "named": false
+  },
+  {
+    "type": "SEC",
+    "named": false
+  },
+  {
+    "type": "SED",
+    "named": false
+  },
+  {
+    "type": "SEE",
+    "named": false
+  },
+  {
+    "type": "SEI",
+    "named": false
+  },
+  {
+    "type": "SEc",
+    "named": false
+  },
+  {
+    "type": "SEd",
+    "named": false
+  },
+  {
+    "type": "SEe",
+    "named": false
+  },
+  {
+    "type": "SEi",
+    "named": false
+  },
+  {
+    "type": "SHA",
+    "named": false
+  },
+  {
+    "type": "SHS",
+    "named": false
+  },
+  {
+    "type": "SHX",
+    "named": false
+  },
+  {
+    "type": "SHY",
+    "named": false
+  },
+  {
+    "type": "SHa",
+    "named": false
+  },
+  {
+    "type": "SHs",
+    "named": false
+  },
+  {
+    "type": "SHx",
+    "named": false
+  },
+  {
+    "type": "SHy",
+    "named": false
+  },
+  {
+    "type": "SIR",
+    "named": false
+  },
+  {
+    "type": "SIr",
+    "named": false
+  },
+  {
+    "type": "SKB",
+    "named": false
+  },
+  {
+    "type": "SKW",
+    "named": false
+  },
+  {
+    "type": "SKb",
+    "named": false
+  },
+  {
+    "type": "SKw",
+    "named": false
+  },
+  {
+    "type": "SLO",
+    "named": false
+  },
+  {
+    "type": "SLo",
+    "named": false
+  },
+  {
+    "type": "SMB0",
+    "named": false
+  },
+  {
+    "type": "SMB1",
+    "named": false
+  },
+  {
+    "type": "SMB2",
+    "named": false
+  },
+  {
+    "type": "SMB3",
+    "named": false
+  },
+  {
+    "type": "SMB4",
+    "named": false
+  },
+  {
+    "type": "SMB5",
+    "named": false
+  },
+  {
+    "type": "SMB6",
+    "named": false
+  },
+  {
+    "type": "SMB7",
+    "named": false
+  },
+  {
+    "type": "SMb0",
+    "named": false
+  },
+  {
+    "type": "SMb1",
+    "named": false
+  },
+  {
+    "type": "SMb2",
+    "named": false
+  },
+  {
+    "type": "SMb3",
+    "named": false
+  },
+  {
+    "type": "SMb4",
+    "named": false
+  },
+  {
+    "type": "SMb5",
+    "named": false
+  },
+  {
+    "type": "SMb6",
+    "named": false
+  },
+  {
+    "type": "SMb7",
+    "named": false
+  },
+  {
+    "type": "SRE",
+    "named": false
+  },
+  {
+    "type": "SRe",
+    "named": false
+  },
+  {
+    "type": "STA",
+    "named": false
+  },
+  {
+    "type": "STP",
+    "named": false
+  },
+  {
+    "type": "STQ",
+    "named": false
+  },
+  {
+    "type": "STX",
+    "named": false
+  },
+  {
+    "type": "STY",
+    "named": false
+  },
+  {
+    "type": "STZ",
+    "named": false
+  },
+  {
+    "type": "STa",
+    "named": false
+  },
+  {
+    "type": "STp",
+    "named": false
+  },
+  {
+    "type": "STq",
+    "named": false
+  },
+  {
+    "type": "STx",
+    "named": false
+  },
+  {
+    "type": "STy",
+    "named": false
+  },
+  {
+    "type": "STz",
+    "named": false
+  },
+  {
+    "type": "SXA",
+    "named": false
+  },
+  {
+    "type": "SXa",
+    "named": false
+  },
+  {
+    "type": "SYA",
+    "named": false
+  },
+  {
+    "type": "SYa",
+    "named": false
+  },
+  {
+    "type": "SaC",
+    "named": false
+  },
+  {
+    "type": "SaX",
+    "named": false
+  },
+  {
+    "type": "SaY",
+    "named": false
+  },
+  {
+    "type": "Sac",
+    "named": false
+  },
+  {
+    "type": "Sax",
+    "named": false
+  },
+  {
+    "type": "Say",
+    "named": false
+  },
+  {
+    "type": "SbC",
+    "named": false
+  },
+  {
+    "type": "SbC2",
+    "named": false
+  },
+  {
+    "type": "SbCQ",
+    "named": false
+  },
+  {
+    "type": "SbCq",
+    "named": false
+  },
+  {
+    "type": "SbX",
+    "named": false
+  },
+  {
+    "type": "Sbc",
+    "named": false
+  },
+  {
+    "type": "Sbc2",
+    "named": false
+  },
+  {
+    "type": "SbcQ",
+    "named": false
+  },
+  {
+    "type": "Sbcq",
+    "named": false
+  },
+  {
+    "type": "Sbx",
+    "named": false
+  },
+  {
+    "type": "SeC",
+    "named": false
+  },
+  {
+    "type": "SeD",
+    "named": false
+  },
+  {
+    "type": "SeE",
+    "named": false
+  },
+  {
+    "type": "SeI",
+    "named": false
+  },
+  {
+    "type": "Sec",
+    "named": false
+  },
+  {
+    "type": "Sed",
+    "named": false
+  },
+  {
+    "type": "See",
+    "named": false
+  },
+  {
+    "type": "Sei",
+    "named": false
+  },
+  {
+    "type": "ShA",
+    "named": false
+  },
+  {
+    "type": "ShS",
+    "named": false
+  },
+  {
+    "type": "ShX",
+    "named": false
+  },
+  {
+    "type": "ShY",
+    "named": false
+  },
+  {
+    "type": "Sha",
+    "named": false
+  },
+  {
+    "type": "Shs",
+    "named": false
+  },
+  {
+    "type": "Shx",
+    "named": false
+  },
+  {
+    "type": "Shy",
+    "named": false
+  },
+  {
+    "type": "SiR",
+    "named": false
+  },
+  {
+    "type": "Sir",
+    "named": false
+  },
+  {
+    "type": "SkB",
+    "named": false
+  },
+  {
+    "type": "SkW",
+    "named": false
+  },
+  {
+    "type": "Skb",
+    "named": false
+  },
+  {
+    "type": "Skw",
+    "named": false
+  },
+  {
+    "type": "SlO",
+    "named": false
+  },
+  {
+    "type": "Slo",
+    "named": false
+  },
+  {
+    "type": "SmB0",
+    "named": false
+  },
+  {
+    "type": "SmB1",
+    "named": false
+  },
+  {
+    "type": "SmB2",
+    "named": false
+  },
+  {
+    "type": "SmB3",
+    "named": false
+  },
+  {
+    "type": "SmB4",
+    "named": false
+  },
+  {
+    "type": "SmB5",
+    "named": false
+  },
+  {
+    "type": "SmB6",
+    "named": false
+  },
+  {
+    "type": "SmB7",
+    "named": false
+  },
+  {
+    "type": "Smb0",
+    "named": false
+  },
+  {
+    "type": "Smb1",
+    "named": false
+  },
+  {
+    "type": "Smb2",
+    "named": false
+  },
+  {
+    "type": "Smb3",
+    "named": false
+  },
+  {
+    "type": "Smb4",
+    "named": false
+  },
+  {
+    "type": "Smb5",
+    "named": false
+  },
+  {
+    "type": "Smb6",
+    "named": false
+  },
+  {
+    "type": "Smb7",
+    "named": false
+  },
+  {
+    "type": "SrE",
+    "named": false
+  },
+  {
+    "type": "Sre",
+    "named": false
+  },
+  {
+    "type": "StA",
+    "named": false
+  },
+  {
+    "type": "StP",
+    "named": false
+  },
+  {
+    "type": "StQ",
+    "named": false
+  },
+  {
+    "type": "StX",
+    "named": false
+  },
+  {
+    "type": "StY",
+    "named": false
+  },
+  {
+    "type": "StZ",
+    "named": false
+  },
+  {
+    "type": "Sta",
+    "named": false
+  },
+  {
+    "type": "Stp",
+    "named": false
+  },
+  {
+    "type": "Stq",
+    "named": false
+  },
+  {
+    "type": "Stx",
+    "named": false
+  },
+  {
+    "type": "Sty",
+    "named": false
+  },
+  {
+    "type": "Stz",
+    "named": false
+  },
+  {
+    "type": "SxA",
+    "named": false
+  },
+  {
+    "type": "Sxa",
+    "named": false
+  },
+  {
+    "type": "SyA",
+    "named": false
+  },
+  {
+    "type": "Sya",
+    "named": false
+  },
+  {
+    "type": "TAB",
+    "named": false
+  },
+  {
+    "type": "TAS",
+    "named": false
+  },
+  {
+    "type": "TAX",
+    "named": false
+  },
+  {
+    "type": "TAY",
+    "named": false
+  },
+  {
+    "type": "TAZ",
+    "named": false
+  },
+  {
+    "type": "TAb",
+    "named": false
+  },
+  {
+    "type": "TAs",
+    "named": false
+  },
+  {
+    "type": "TAx",
+    "named": false
+  },
+  {
+    "type": "TAy",
+    "named": false
+  },
+  {
+    "type": "TAz",
+    "named": false
+  },
+  {
+    "type": "TBA",
+    "named": false
+  },
+  {
+    "type": "TBa",
+    "named": false
+  },
+  {
+    "type": "TOP",
+    "named": false
+  },
+  {
+    "type": "TOp",
+    "named": false
+  },
+  {
+    "type": "TRB",
+    "named": false
+  },
+  {
+    "type": "TRb",
+    "named": false
+  },
+  {
+    "type": "TSB",
+    "named": false
+  },
+  {
+    "type": "TSX",
+    "named": false
+  },
+  {
+    "type": "TSY",
+    "named": false
+  },
+  {
+    "type": "TSb",
+    "named": false
+  },
+  {
+    "type": "TSx",
+    "named": false
+  },
+  {
+    "type": "TSy",
+    "named": false
+  },
+  {
+    "type": "TXA",
+    "named": false
+  },
+  {
+    "type": "TXS",
+    "named": false
+  },
+  {
+    "type": "TXa",
+    "named": false
+  },
+  {
+    "type": "TXs",
+    "named": false
+  },
+  {
+    "type": "TYA",
+    "named": false
+  },
+  {
+    "type": "TYS",
+    "named": false
+  },
+  {
+    "type": "TYa",
+    "named": false
+  },
+  {
+    "type": "TYs",
+    "named": false
+  },
+  {
+    "type": "TZA",
+    "named": false
+  },
+  {
+    "type": "TZa",
+    "named": false
+  },
+  {
+    "type": "TaB",
+    "named": false
+  },
+  {
+    "type": "TaS",
+    "named": false
+  },
+  {
+    "type": "TaX",
+    "named": false
+  },
+  {
+    "type": "TaY",
+    "named": false
+  },
+  {
+    "type": "TaZ",
+    "named": false
+  },
+  {
+    "type": "Tab",
+    "named": false
+  },
+  {
+    "type": "Tas",
+    "named": false
+  },
+  {
+    "type": "Tax",
+    "named": false
+  },
+  {
+    "type": "Tay",
+    "named": false
+  },
+  {
+    "type": "Taz",
+    "named": false
+  },
+  {
+    "type": "TbA",
+    "named": false
+  },
+  {
+    "type": "Tba",
+    "named": false
+  },
+  {
+    "type": "ToP",
+    "named": false
+  },
+  {
+    "type": "Top",
+    "named": false
+  },
+  {
+    "type": "TrB",
+    "named": false
+  },
+  {
+    "type": "Trb",
+    "named": false
+  },
+  {
+    "type": "TsB",
+    "named": false
+  },
+  {
+    "type": "TsX",
+    "named": false
+  },
+  {
+    "type": "TsY",
+    "named": false
+  },
+  {
+    "type": "Tsb",
+    "named": false
+  },
+  {
+    "type": "Tsx",
+    "named": false
+  },
+  {
+    "type": "Tsy",
+    "named": false
+  },
+  {
+    "type": "TxA",
+    "named": false
+  },
+  {
+    "type": "TxS",
+    "named": false
+  },
+  {
+    "type": "Txa",
+    "named": false
+  },
+  {
+    "type": "Txs",
+    "named": false
+  },
+  {
+    "type": "TyA",
+    "named": false
+  },
+  {
+    "type": "TyS",
+    "named": false
+  },
+  {
+    "type": "Tya",
+    "named": false
+  },
+  {
+    "type": "Tys",
+    "named": false
+  },
+  {
+    "type": "TzA",
+    "named": false
+  },
+  {
+    "type": "Tza",
+    "named": false
+  },
+  {
+    "type": "WAI",
+    "named": false
+  },
+  {
+    "type": "WAi",
+    "named": false
+  },
+  {
+    "type": "WaI",
+    "named": false
+  },
+  {
+    "type": "Wai",
+    "named": false
+  },
+  {
+    "type": "X",
+    "named": false
+  },
+  {
+    "type": "XAA",
+    "named": false
+  },
+  {
+    "type": "XAS",
+    "named": false
+  },
+  {
+    "type": "XAa",
+    "named": false
+  },
+  {
+    "type": "XAs",
+    "named": false
+  },
+  {
+    "type": "XaA",
+    "named": false
+  },
+  {
+    "type": "XaS",
+    "named": false
+  },
+  {
+    "type": "Xaa",
+    "named": false
+  },
+  {
+    "type": "Xas",
+    "named": false
+  },
+  {
+    "type": "Y",
+    "named": false
+  },
+  {
+    "type": "a",
+    "named": false
+  },
+  {
+    "type": "aAC",
+    "named": false
+  },
+  {
+    "type": "aAX",
+    "named": false
+  },
+  {
+    "type": "aAc",
+    "named": false
+  },
+  {
+    "type": "aAx",
+    "named": false
+  },
+  {
+    "type": "aDC",
+    "named": false
+  },
+  {
+    "type": "aDCQ",
+    "named": false
+  },
+  {
+    "type": "aDCq",
+    "named": false
+  },
+  {
+    "type": "aDc",
+    "named": false
+  },
+  {
+    "type": "aDcQ",
+    "named": false
+  },
+  {
+    "type": "aDcq",
+    "named": false
+  },
+  {
+    "type": "aHX",
+    "named": false
+  },
+  {
+    "type": "aHx",
+    "named": false
+  },
+  {
+    "type": "aLR",
+    "named": false
+  },
+  {
+    "type": "aLr",
+    "named": false
+  },
+  {
+    "type": "aNC",
+    "named": false
+  },
+  {
+    "type": "aNC2",
+    "named": false
+  },
+  {
+    "type": "aND",
+    "named": false
+  },
+  {
+    "type": "aNDQ",
+    "named": false
+  },
+  {
+    "type": "aNDq",
+    "named": false
+  },
+  {
+    "type": "aNE",
+    "named": false
+  },
+  {
+    "type": "aNc",
+    "named": false
+  },
+  {
+    "type": "aNc2",
+    "named": false
+  },
+  {
+    "type": "aNd",
+    "named": false
+  },
+  {
+    "type": "aNdQ",
+    "named": false
+  },
+  {
+    "type": "aNdq",
+    "named": false
+  },
+  {
+    "type": "aNe",
+    "named": false
+  },
+  {
+    "type": "aRR",
+    "named": false
+  },
+  {
+    "type": "aRr",
+    "named": false
+  },
+  {
+    "type": "aSL",
+    "named": false
+  },
+  {
+    "type": "aSLQ",
+    "named": false
+  },
+  {
+    "type": "aSLq",
+    "named": false
+  },
+  {
+    "type": "aSO",
+    "named": false
+  },
+  {
+    "type": "aSR",
+    "named": false
+  },
+  {
+    "type": "aSRQ",
+    "named": false
+  },
+  {
+    "type": "aSRq",
+    "named": false
+  },
+  {
+    "type": "aSl",
+    "named": false
+  },
+  {
+    "type": "aSlQ",
+    "named": false
+  },
+  {
+    "type": "aSlq",
+    "named": false
+  },
+  {
+    "type": "aSo",
+    "named": false
+  },
+  {
+    "type": "aSr",
+    "named": false
+  },
+  {
+    "type": "aSrQ",
+    "named": false
+  },
+  {
+    "type": "aSrq",
+    "named": false
+  },
+  {
+    "type": "aTX",
+    "named": false
+  },
+  {
+    "type": "aTx",
+    "named": false
+  },
+  {
+    "type": "aXA",
+    "named": false
+  },
+  {
+    "type": "aXS",
+    "named": false
+  },
+  {
+    "type": "aXa",
+    "named": false
+  },
+  {
+    "type": "aXs",
+    "named": false
+  },
+  {
+    "type": "aaC",
+    "named": false
+  },
+  {
+    "type": "aaX",
+    "named": false
+  },
+  {
+    "type": "aac",
+    "named": false
+  },
+  {
+    "type": "aax",
+    "named": false
+  },
+  {
+    "type": "adC",
+    "named": false
+  },
+  {
+    "type": "adCQ",
+    "named": false
+  },
+  {
+    "type": "adCq",
+    "named": false
+  },
+  {
+    "type": "adc",
+    "named": false
+  },
+  {
+    "type": "adcQ",
+    "named": false
+  },
+  {
+    "type": "adcq",
+    "named": false
+  },
+  {
+    "type": "addressing_mode_constant",
+    "named": true
+  },
+  {
+    "type": "ahX",
+    "named": false
+  },
+  {
+    "type": "ahx",
+    "named": false
+  },
+  {
+    "type": "alR",
+    "named": false
+  },
+  {
+    "type": "alr",
+    "named": false
+  },
+  {
+    "type": "anC",
+    "named": false
+  },
+  {
+    "type": "anC2",
+    "named": false
+  },
+  {
+    "type": "anD",
+    "named": false
+  },
+  {
+    "type": "anDQ",
+    "named": false
+  },
+  {
+    "type": "anDq",
+    "named": false
+  },
+  {
+    "type": "anE",
+    "named": false
+  },
+  {
+    "type": "anc",
+    "named": false
+  },
+  {
+    "type": "anc2",
+    "named": false
+  },
+  {
+    "type": "and",
+    "named": false
+  },
+  {
+    "type": "andQ",
+    "named": false
+  },
+  {
+    "type": "andq",
+    "named": false
+  },
+  {
+    "type": "ane",
+    "named": false
+  },
+  {
+    "type": "arR",
+    "named": false
+  },
+  {
+    "type": "arr",
+    "named": false
+  },
+  {
+    "type": "asL",
+    "named": false
+  },
+  {
+    "type": "asLQ",
+    "named": false
+  },
+  {
+    "type": "asLq",
+    "named": false
+  },
+  {
+    "type": "asO",
+    "named": false
+  },
+  {
+    "type": "asR",
+    "named": false
+  },
+  {
+    "type": "asRQ",
+    "named": false
+  },
+  {
+    "type": "asRq",
+    "named": false
+  },
+  {
+    "type": "asl",
+    "named": false
+  },
+  {
+    "type": "aslQ",
+    "named": false
+  },
+  {
+    "type": "aslq",
+    "named": false
+  },
+  {
+    "type": "aso",
+    "named": false
+  },
+  {
+    "type": "asr",
+    "named": false
+  },
+  {
+    "type": "asrQ",
+    "named": false
+  },
+  {
+    "type": "asrq",
+    "named": false
+  },
+  {
+    "type": "atX",
+    "named": false
+  },
+  {
+    "type": "atx",
+    "named": false
+  },
+  {
+    "type": "axA",
+    "named": false
+  },
+  {
+    "type": "axS",
+    "named": false
+  },
+  {
+    "type": "axa",
+    "named": false
+  },
+  {
+    "type": "axs",
+    "named": false
+  },
+  {
+    "type": "bBR0",
+    "named": false
+  },
+  {
+    "type": "bBR1",
+    "named": false
+  },
+  {
+    "type": "bBR2",
+    "named": false
+  },
+  {
+    "type": "bBR3",
+    "named": false
+  },
+  {
+    "type": "bBR4",
+    "named": false
+  },
+  {
+    "type": "bBR5",
+    "named": false
+  },
+  {
+    "type": "bBR6",
+    "named": false
+  },
+  {
+    "type": "bBR7",
+    "named": false
+  },
+  {
+    "type": "bBS0",
+    "named": false
+  },
+  {
+    "type": "bBS1",
+    "named": false
+  },
+  {
+    "type": "bBS2",
+    "named": false
+  },
+  {
+    "type": "bBS3",
+    "named": false
+  },
+  {
+    "type": "bBS4",
+    "named": false
+  },
+  {
+    "type": "bBS5",
+    "named": false
+  },
+  {
+    "type": "bBS6",
+    "named": false
+  },
+  {
+    "type": "bBS7",
+    "named": false
+  },
+  {
+    "type": "bBr0",
+    "named": false
+  },
+  {
+    "type": "bBr1",
+    "named": false
+  },
+  {
+    "type": "bBr2",
+    "named": false
+  },
+  {
+    "type": "bBr3",
+    "named": false
+  },
+  {
+    "type": "bBr4",
+    "named": false
+  },
+  {
+    "type": "bBr5",
+    "named": false
+  },
+  {
+    "type": "bBr6",
+    "named": false
+  },
+  {
+    "type": "bBr7",
+    "named": false
+  },
+  {
+    "type": "bBs0",
+    "named": false
+  },
+  {
+    "type": "bBs1",
+    "named": false
+  },
+  {
+    "type": "bBs2",
+    "named": false
+  },
+  {
+    "type": "bBs3",
+    "named": false
+  },
+  {
+    "type": "bBs4",
+    "named": false
+  },
+  {
+    "type": "bBs5",
+    "named": false
+  },
+  {
+    "type": "bBs6",
+    "named": false
+  },
+  {
+    "type": "bBs7",
+    "named": false
+  },
+  {
+    "type": "bCC",
+    "named": false
+  },
+  {
+    "type": "bCS",
+    "named": false
+  },
+  {
+    "type": "bCc",
+    "named": false
+  },
+  {
+    "type": "bCs",
+    "named": false
+  },
+  {
+    "type": "bEQ",
+    "named": false
+  },
+  {
+    "type": "bEq",
+    "named": false
+  },
+  {
+    "type": "bIT",
+    "named": false
+  },
+  {
+    "type": "bITQ",
+    "named": false
+  },
+  {
+    "type": "bITq",
+    "named": false
+  },
+  {
+    "type": "bIt",
+    "named": false
+  },
+  {
+    "type": "bItQ",
+    "named": false
+  },
+  {
+    "type": "bItq",
+    "named": false
+  },
+  {
+    "type": "bMI",
+    "named": false
+  },
+  {
+    "type": "bMi",
+    "named": false
+  },
+  {
+    "type": "bNE",
+    "named": false
+  },
+  {
+    "type": "bNe",
+    "named": false
+  },
+  {
+    "type": "bPL",
+    "named": false
+  },
+  {
+    "type": "bPl",
+    "named": false
+  },
+  {
+    "type": "bRA",
+    "named": false
+  },
+  {
+    "type": "bRK",
+    "named": false
+  },
+  {
+    "type": "bRa",
+    "named": false
+  },
+  {
+    "type": "bRk",
+    "named": false
+  },
+  {
+    "type": "bVC",
+    "named": false
+  },
+  {
+    "type": "bVS",
+    "named": false
+  },
+  {
+    "type": "bVc",
+    "named": false
+  },
+  {
+    "type": "bVs",
+    "named": false
+  },
+  {
+    "type": "bbR0",
+    "named": false
+  },
+  {
+    "type": "bbR1",
+    "named": false
+  },
+  {
+    "type": "bbR2",
+    "named": false
+  },
+  {
+    "type": "bbR3",
+    "named": false
+  },
+  {
+    "type": "bbR4",
+    "named": false
+  },
+  {
+    "type": "bbR5",
+    "named": false
+  },
+  {
+    "type": "bbR6",
+    "named": false
+  },
+  {
+    "type": "bbR7",
+    "named": false
+  },
+  {
+    "type": "bbS0",
+    "named": false
+  },
+  {
+    "type": "bbS1",
+    "named": false
+  },
+  {
+    "type": "bbS2",
+    "named": false
+  },
+  {
+    "type": "bbS3",
+    "named": false
+  },
+  {
+    "type": "bbS4",
+    "named": false
+  },
+  {
+    "type": "bbS5",
+    "named": false
+  },
+  {
+    "type": "bbS6",
+    "named": false
+  },
+  {
+    "type": "bbS7",
+    "named": false
+  },
+  {
+    "type": "bbr0",
+    "named": false
+  },
+  {
+    "type": "bbr1",
+    "named": false
+  },
+  {
+    "type": "bbr2",
+    "named": false
+  },
+  {
+    "type": "bbr3",
+    "named": false
+  },
+  {
+    "type": "bbr4",
+    "named": false
+  },
+  {
+    "type": "bbr5",
+    "named": false
+  },
+  {
+    "type": "bbr6",
+    "named": false
+  },
+  {
+    "type": "bbr7",
+    "named": false
+  },
+  {
+    "type": "bbs0",
+    "named": false
+  },
+  {
+    "type": "bbs1",
+    "named": false
+  },
+  {
+    "type": "bbs2",
+    "named": false
+  },
+  {
+    "type": "bbs3",
+    "named": false
+  },
+  {
+    "type": "bbs4",
+    "named": false
+  },
+  {
+    "type": "bbs5",
+    "named": false
+  },
+  {
+    "type": "bbs6",
+    "named": false
+  },
+  {
+    "type": "bbs7",
+    "named": false
+  },
+  {
+    "type": "bcC",
+    "named": false
+  },
+  {
+    "type": "bcS",
+    "named": false
+  },
+  {
+    "type": "bcc",
+    "named": false
+  },
+  {
+    "type": "bcs",
+    "named": false
+  },
+  {
+    "type": "beQ",
+    "named": false
+  },
+  {
+    "type": "beq",
+    "named": false
+  },
+  {
+    "type": "biT",
+    "named": false
+  },
+  {
+    "type": "biTQ",
+    "named": false
+  },
+  {
+    "type": "biTq",
+    "named": false
+  },
+  {
+    "type": "bit",
+    "named": false
+  },
+  {
+    "type": "bitQ",
+    "named": false
+  },
+  {
+    "type": "bitq",
+    "named": false
+  },
+  {
+    "type": "bmI",
+    "named": false
+  },
+  {
+    "type": "bmi",
+    "named": false
+  },
+  {
+    "type": "bnE",
+    "named": false
+  },
+  {
+    "type": "bne",
+    "named": false
+  },
+  {
+    "type": "boolean",
+    "named": true
+  },
+  {
+    "type": "bpL",
+    "named": false
+  },
+  {
+    "type": "bpl",
+    "named": false
+  },
+  {
+    "type": "brA",
+    "named": false
+  },
+  {
+    "type": "brK",
+    "named": false
+  },
+  {
+    "type": "bra",
+    "named": false
+  },
+  {
+    "type": "brk",
+    "named": false
+  },
+  {
+    "type": "builtin_function",
+    "named": true
+  },
+  {
+    "type": "bvC",
+    "named": false
+  },
+  {
+    "type": "bvS",
+    "named": false
+  },
+  {
+    "type": "bvc",
+    "named": false
+  },
+  {
+    "type": "bvs",
+    "named": false
+  },
+  {
+    "type": "cLC",
+    "named": false
+  },
+  {
+    "type": "cLD",
+    "named": false
+  },
+  {
+    "type": "cLE",
+    "named": false
+  },
+  {
+    "type": "cLI",
+    "named": false
+  },
+  {
+    "type": "cLV",
+    "named": false
+  },
+  {
+    "type": "cLc",
+    "named": false
+  },
+  {
+    "type": "cLd",
+    "named": false
+  },
+  {
+    "type": "cLe",
+    "named": false
+  },
+  {
+    "type": "cLi",
+    "named": false
+  },
+  {
+    "type": "cLv",
+    "named": false
+  },
+  {
+    "type": "cMP",
+    "named": false
+  },
+  {
+    "type": "cMp",
+    "named": false
+  },
+  {
+    "type": "cPQ",
+    "named": false
+  },
+  {
+    "type": "cPX",
+    "named": false
+  },
+  {
+    "type": "cPY",
+    "named": false
+  },
+  {
+    "type": "cPZ",
+    "named": false
+  },
+  {
+    "type": "cPq",
+    "named": false
+  },
+  {
+    "type": "cPx",
+    "named": false
+  },
+  {
+    "type": "cPy",
+    "named": false
+  },
+  {
+    "type": "cPz",
+    "named": false
+  },
+  {
+    "type": "char_content",
+    "named": true
+  },
+  {
+    "type": "clC",
+    "named": false
+  },
+  {
+    "type": "clD",
+    "named": false
+  },
+  {
+    "type": "clE",
+    "named": false
+  },
+  {
+    "type": "clI",
+    "named": false
+  },
+  {
+    "type": "clV",
+    "named": false
+  },
+  {
+    "type": "clc",
+    "named": false
+  },
+  {
+    "type": "cld",
+    "named": false
+  },
+  {
+    "type": "cle",
+    "named": false
+  },
+  {
+    "type": "cli",
+    "named": false
+  },
+  {
+    "type": "clv",
+    "named": false
+  },
+  {
+    "type": "cmP",
+    "named": false
+  },
+  {
+    "type": "cmp",
+    "named": false
+  },
+  {
+    "type": "colour_constant",
     "named": true
   },
   {
@@ -417,52 +5627,2596 @@
     "extra": true
   },
   {
-    "type": "data",
+    "type": "control_keyword",
     "named": true
   },
   {
-    "type": "dec_16",
-    "named": true
-  },
-  {
-    "type": "dec_8",
-    "named": true
-  },
-  {
-    "type": "file",
-    "named": true
-  },
-  {
-    "type": "file_type",
-    "named": true
-  },
-  {
-    "type": "function",
-    "named": true
-  },
-  {
-    "type": "h",
+    "type": "cpQ",
     "named": false
   },
   {
-    "type": "label",
+    "type": "cpX",
+    "named": false
+  },
+  {
+    "type": "cpY",
+    "named": false
+  },
+  {
+    "type": "cpZ",
+    "named": false
+  },
+  {
+    "type": "cpq",
+    "named": false
+  },
+  {
+    "type": "cpu_constant",
     "named": true
   },
   {
-    "type": "math",
+    "type": "cpx",
+    "named": false
+  },
+  {
+    "type": "cpy",
+    "named": false
+  },
+  {
+    "type": "cpz",
+    "named": false
+  },
+  {
+    "type": "dCM",
+    "named": false
+  },
+  {
+    "type": "dCP",
+    "named": false
+  },
+  {
+    "type": "dCm",
+    "named": false
+  },
+  {
+    "type": "dCp",
+    "named": false
+  },
+  {
+    "type": "dEC",
+    "named": false
+  },
+  {
+    "type": "dEQ",
+    "named": false
+  },
+  {
+    "type": "dEW",
+    "named": false
+  },
+  {
+    "type": "dEX",
+    "named": false
+  },
+  {
+    "type": "dEY",
+    "named": false
+  },
+  {
+    "type": "dEZ",
+    "named": false
+  },
+  {
+    "type": "dEc",
+    "named": false
+  },
+  {
+    "type": "dEq",
+    "named": false
+  },
+  {
+    "type": "dEw",
+    "named": false
+  },
+  {
+    "type": "dEx",
+    "named": false
+  },
+  {
+    "type": "dEy",
+    "named": false
+  },
+  {
+    "type": "dEz",
+    "named": false
+  },
+  {
+    "type": "dOP",
+    "named": false
+  },
+  {
+    "type": "dOp",
+    "named": false
+  },
+  {
+    "type": "dcM",
+    "named": false
+  },
+  {
+    "type": "dcP",
+    "named": false
+  },
+  {
+    "type": "dcm",
+    "named": false
+  },
+  {
+    "type": "dcp",
+    "named": false
+  },
+  {
+    "type": "deC",
+    "named": false
+  },
+  {
+    "type": "deQ",
+    "named": false
+  },
+  {
+    "type": "deW",
+    "named": false
+  },
+  {
+    "type": "deX",
+    "named": false
+  },
+  {
+    "type": "deY",
+    "named": false
+  },
+  {
+    "type": "deZ",
+    "named": false
+  },
+  {
+    "type": "dec",
+    "named": false
+  },
+  {
+    "type": "deq",
+    "named": false
+  },
+  {
+    "type": "dew",
+    "named": false
+  },
+  {
+    "type": "dex",
+    "named": false
+  },
+  {
+    "type": "dey",
+    "named": false
+  },
+  {
+    "type": "dez",
+    "named": false
+  },
+  {
+    "type": "directive",
     "named": true
   },
   {
-    "type": "object",
+    "type": "doP",
+    "named": false
+  },
+  {
+    "type": "dop",
+    "named": false
+  },
+  {
+    "type": "eOM",
+    "named": false
+  },
+  {
+    "type": "eOR",
+    "named": false
+  },
+  {
+    "type": "eORQ",
+    "named": false
+  },
+  {
+    "type": "eORq",
+    "named": false
+  },
+  {
+    "type": "eOm",
+    "named": false
+  },
+  {
+    "type": "eOr",
+    "named": false
+  },
+  {
+    "type": "eOrQ",
+    "named": false
+  },
+  {
+    "type": "eOrq",
+    "named": false
+  },
+  {
+    "type": "else_keyword",
     "named": true
   },
   {
-    "type": "preprocessor",
+    "type": "eoM",
+    "named": false
+  },
+  {
+    "type": "eoR",
+    "named": false
+  },
+  {
+    "type": "eoRQ",
+    "named": false
+  },
+  {
+    "type": "eoRq",
+    "named": false
+  },
+  {
+    "type": "eom",
+    "named": false
+  },
+  {
+    "type": "eor",
+    "named": false
+  },
+  {
+    "type": "eorQ",
+    "named": false
+  },
+  {
+    "type": "eorq",
+    "named": false
+  },
+  {
+    "type": "file_type_constant",
     "named": true
   },
   {
-    "type": "threed",
+    "type": "hLT",
+    "named": false
+  },
+  {
+    "type": "hLt",
+    "named": false
+  },
+  {
+    "type": "hlT",
+    "named": false
+  },
+  {
+    "type": "hlt",
+    "named": false
+  },
+  {
+    "type": "iNC",
+    "named": false
+  },
+  {
+    "type": "iNQ",
+    "named": false
+  },
+  {
+    "type": "iNS",
+    "named": false
+  },
+  {
+    "type": "iNW",
+    "named": false
+  },
+  {
+    "type": "iNX",
+    "named": false
+  },
+  {
+    "type": "iNY",
+    "named": false
+  },
+  {
+    "type": "iNZ",
+    "named": false
+  },
+  {
+    "type": "iNc",
+    "named": false
+  },
+  {
+    "type": "iNq",
+    "named": false
+  },
+  {
+    "type": "iNs",
+    "named": false
+  },
+  {
+    "type": "iNw",
+    "named": false
+  },
+  {
+    "type": "iNx",
+    "named": false
+  },
+  {
+    "type": "iNy",
+    "named": false
+  },
+  {
+    "type": "iNz",
+    "named": false
+  },
+  {
+    "type": "iSB",
+    "named": false
+  },
+  {
+    "type": "iSC",
+    "named": false
+  },
+  {
+    "type": "iSb",
+    "named": false
+  },
+  {
+    "type": "iSc",
+    "named": false
+  },
+  {
+    "type": "identifier",
     "named": true
+  },
+  {
+    "type": "immediate_identifier",
+    "named": true
+  },
+  {
+    "type": "inC",
+    "named": false
+  },
+  {
+    "type": "inQ",
+    "named": false
+  },
+  {
+    "type": "inS",
+    "named": false
+  },
+  {
+    "type": "inW",
+    "named": false
+  },
+  {
+    "type": "inX",
+    "named": false
+  },
+  {
+    "type": "inY",
+    "named": false
+  },
+  {
+    "type": "inZ",
+    "named": false
+  },
+  {
+    "type": "inc",
+    "named": false
+  },
+  {
+    "type": "inq",
+    "named": false
+  },
+  {
+    "type": "ins",
+    "named": false
+  },
+  {
+    "type": "inw",
+    "named": false
+  },
+  {
+    "type": "inx",
+    "named": false
+  },
+  {
+    "type": "iny",
+    "named": false
+  },
+  {
+    "type": "inz",
+    "named": false
+  },
+  {
+    "type": "isB",
+    "named": false
+  },
+  {
+    "type": "isC",
+    "named": false
+  },
+  {
+    "type": "isb",
+    "named": false
+  },
+  {
+    "type": "isc",
+    "named": false
+  },
+  {
+    "type": "jAM",
+    "named": false
+  },
+  {
+    "type": "jAm",
+    "named": false
+  },
+  {
+    "type": "jMP",
+    "named": false
+  },
+  {
+    "type": "jMp",
+    "named": false
+  },
+  {
+    "type": "jSR",
+    "named": false
+  },
+  {
+    "type": "jSr",
+    "named": false
+  },
+  {
+    "type": "jaM",
+    "named": false
+  },
+  {
+    "type": "jam",
+    "named": false
+  },
+  {
+    "type": "jmP",
+    "named": false
+  },
+  {
+    "type": "jmp",
+    "named": false
+  },
+  {
+    "type": "jsR",
+    "named": false
+  },
+  {
+    "type": "jsr",
+    "named": false
+  },
+  {
+    "type": "kIL",
+    "named": false
+  },
+  {
+    "type": "kIl",
+    "named": false
+  },
+  {
+    "type": "kiL",
+    "named": false
+  },
+  {
+    "type": "kil",
+    "named": false
+  },
+  {
+    "type": "lAE",
+    "named": false
+  },
+  {
+    "type": "lAR",
+    "named": false
+  },
+  {
+    "type": "lAS",
+    "named": false
+  },
+  {
+    "type": "lAX",
+    "named": false
+  },
+  {
+    "type": "lAe",
+    "named": false
+  },
+  {
+    "type": "lAr",
+    "named": false
+  },
+  {
+    "type": "lAs",
+    "named": false
+  },
+  {
+    "type": "lAx",
+    "named": false
+  },
+  {
+    "type": "lBCC",
+    "named": false
+  },
+  {
+    "type": "lBCS",
+    "named": false
+  },
+  {
+    "type": "lBCc",
+    "named": false
+  },
+  {
+    "type": "lBCs",
+    "named": false
+  },
+  {
+    "type": "lBEQ",
+    "named": false
+  },
+  {
+    "type": "lBEq",
+    "named": false
+  },
+  {
+    "type": "lBMI",
+    "named": false
+  },
+  {
+    "type": "lBMi",
+    "named": false
+  },
+  {
+    "type": "lBNE",
+    "named": false
+  },
+  {
+    "type": "lBNe",
+    "named": false
+  },
+  {
+    "type": "lBPL",
+    "named": false
+  },
+  {
+    "type": "lBPl",
+    "named": false
+  },
+  {
+    "type": "lBRA",
+    "named": false
+  },
+  {
+    "type": "lBRa",
+    "named": false
+  },
+  {
+    "type": "lBSR",
+    "named": false
+  },
+  {
+    "type": "lBSr",
+    "named": false
+  },
+  {
+    "type": "lBVC",
+    "named": false
+  },
+  {
+    "type": "lBVS",
+    "named": false
+  },
+  {
+    "type": "lBVc",
+    "named": false
+  },
+  {
+    "type": "lBVs",
+    "named": false
+  },
+  {
+    "type": "lBcC",
+    "named": false
+  },
+  {
+    "type": "lBcS",
+    "named": false
+  },
+  {
+    "type": "lBcc",
+    "named": false
+  },
+  {
+    "type": "lBcs",
+    "named": false
+  },
+  {
+    "type": "lBeQ",
+    "named": false
+  },
+  {
+    "type": "lBeq",
+    "named": false
+  },
+  {
+    "type": "lBmI",
+    "named": false
+  },
+  {
+    "type": "lBmi",
+    "named": false
+  },
+  {
+    "type": "lBnE",
+    "named": false
+  },
+  {
+    "type": "lBne",
+    "named": false
+  },
+  {
+    "type": "lBpL",
+    "named": false
+  },
+  {
+    "type": "lBpl",
+    "named": false
+  },
+  {
+    "type": "lBrA",
+    "named": false
+  },
+  {
+    "type": "lBra",
+    "named": false
+  },
+  {
+    "type": "lBsR",
+    "named": false
+  },
+  {
+    "type": "lBsr",
+    "named": false
+  },
+  {
+    "type": "lBvC",
+    "named": false
+  },
+  {
+    "type": "lBvS",
+    "named": false
+  },
+  {
+    "type": "lBvc",
+    "named": false
+  },
+  {
+    "type": "lBvs",
+    "named": false
+  },
+  {
+    "type": "lDA",
+    "named": false
+  },
+  {
+    "type": "lDQ",
+    "named": false
+  },
+  {
+    "type": "lDS",
+    "named": false
+  },
+  {
+    "type": "lDX",
+    "named": false
+  },
+  {
+    "type": "lDY",
+    "named": false
+  },
+  {
+    "type": "lDZ",
+    "named": false
+  },
+  {
+    "type": "lDa",
+    "named": false
+  },
+  {
+    "type": "lDq",
+    "named": false
+  },
+  {
+    "type": "lDs",
+    "named": false
+  },
+  {
+    "type": "lDx",
+    "named": false
+  },
+  {
+    "type": "lDy",
+    "named": false
+  },
+  {
+    "type": "lDz",
+    "named": false
+  },
+  {
+    "type": "lSE",
+    "named": false
+  },
+  {
+    "type": "lSR",
+    "named": false
+  },
+  {
+    "type": "lSRQ",
+    "named": false
+  },
+  {
+    "type": "lSRq",
+    "named": false
+  },
+  {
+    "type": "lSe",
+    "named": false
+  },
+  {
+    "type": "lSr",
+    "named": false
+  },
+  {
+    "type": "lSrQ",
+    "named": false
+  },
+  {
+    "type": "lSrq",
+    "named": false
+  },
+  {
+    "type": "lXA",
+    "named": false
+  },
+  {
+    "type": "lXa",
+    "named": false
+  },
+  {
+    "type": "laE",
+    "named": false
+  },
+  {
+    "type": "laR",
+    "named": false
+  },
+  {
+    "type": "laS",
+    "named": false
+  },
+  {
+    "type": "laX",
+    "named": false
+  },
+  {
+    "type": "lae",
+    "named": false
+  },
+  {
+    "type": "lar",
+    "named": false
+  },
+  {
+    "type": "las",
+    "named": false
+  },
+  {
+    "type": "lax",
+    "named": false
+  },
+  {
+    "type": "lbCC",
+    "named": false
+  },
+  {
+    "type": "lbCS",
+    "named": false
+  },
+  {
+    "type": "lbCc",
+    "named": false
+  },
+  {
+    "type": "lbCs",
+    "named": false
+  },
+  {
+    "type": "lbEQ",
+    "named": false
+  },
+  {
+    "type": "lbEq",
+    "named": false
+  },
+  {
+    "type": "lbMI",
+    "named": false
+  },
+  {
+    "type": "lbMi",
+    "named": false
+  },
+  {
+    "type": "lbNE",
+    "named": false
+  },
+  {
+    "type": "lbNe",
+    "named": false
+  },
+  {
+    "type": "lbPL",
+    "named": false
+  },
+  {
+    "type": "lbPl",
+    "named": false
+  },
+  {
+    "type": "lbRA",
+    "named": false
+  },
+  {
+    "type": "lbRa",
+    "named": false
+  },
+  {
+    "type": "lbSR",
+    "named": false
+  },
+  {
+    "type": "lbSr",
+    "named": false
+  },
+  {
+    "type": "lbVC",
+    "named": false
+  },
+  {
+    "type": "lbVS",
+    "named": false
+  },
+  {
+    "type": "lbVc",
+    "named": false
+  },
+  {
+    "type": "lbVs",
+    "named": false
+  },
+  {
+    "type": "lbcC",
+    "named": false
+  },
+  {
+    "type": "lbcS",
+    "named": false
+  },
+  {
+    "type": "lbcc",
+    "named": false
+  },
+  {
+    "type": "lbcs",
+    "named": false
+  },
+  {
+    "type": "lbeQ",
+    "named": false
+  },
+  {
+    "type": "lbeq",
+    "named": false
+  },
+  {
+    "type": "lbmI",
+    "named": false
+  },
+  {
+    "type": "lbmi",
+    "named": false
+  },
+  {
+    "type": "lbnE",
+    "named": false
+  },
+  {
+    "type": "lbne",
+    "named": false
+  },
+  {
+    "type": "lbpL",
+    "named": false
+  },
+  {
+    "type": "lbpl",
+    "named": false
+  },
+  {
+    "type": "lbrA",
+    "named": false
+  },
+  {
+    "type": "lbra",
+    "named": false
+  },
+  {
+    "type": "lbsR",
+    "named": false
+  },
+  {
+    "type": "lbsr",
+    "named": false
+  },
+  {
+    "type": "lbvC",
+    "named": false
+  },
+  {
+    "type": "lbvS",
+    "named": false
+  },
+  {
+    "type": "lbvc",
+    "named": false
+  },
+  {
+    "type": "lbvs",
+    "named": false
+  },
+  {
+    "type": "ldA",
+    "named": false
+  },
+  {
+    "type": "ldQ",
+    "named": false
+  },
+  {
+    "type": "ldS",
+    "named": false
+  },
+  {
+    "type": "ldX",
+    "named": false
+  },
+  {
+    "type": "ldY",
+    "named": false
+  },
+  {
+    "type": "ldZ",
+    "named": false
+  },
+  {
+    "type": "lda",
+    "named": false
+  },
+  {
+    "type": "ldq",
+    "named": false
+  },
+  {
+    "type": "lds",
+    "named": false
+  },
+  {
+    "type": "ldx",
+    "named": false
+  },
+  {
+    "type": "ldy",
+    "named": false
+  },
+  {
+    "type": "ldz",
+    "named": false
+  },
+  {
+    "type": "lsE",
+    "named": false
+  },
+  {
+    "type": "lsR",
+    "named": false
+  },
+  {
+    "type": "lsRQ",
+    "named": false
+  },
+  {
+    "type": "lsRq",
+    "named": false
+  },
+  {
+    "type": "lse",
+    "named": false
+  },
+  {
+    "type": "lsr",
+    "named": false
+  },
+  {
+    "type": "lsrQ",
+    "named": false
+  },
+  {
+    "type": "lsrq",
+    "named": false
+  },
+  {
+    "type": "lxA",
+    "named": false
+  },
+  {
+    "type": "lxa",
+    "named": false
+  },
+  {
+    "type": "mAP",
+    "named": false
+  },
+  {
+    "type": "mAp",
+    "named": false
+  },
+  {
+    "type": "maP",
+    "named": false
+  },
+  {
+    "type": "macro_name",
+    "named": true
+  },
+  {
+    "type": "map",
+    "named": false
+  },
+  {
+    "type": "math_constant",
+    "named": true
+  },
+  {
+    "type": "multi_label_name",
+    "named": true
+  },
+  {
+    "type": "multi_label_reference",
+    "named": true
+  },
+  {
+    "type": "nEG",
+    "named": false
+  },
+  {
+    "type": "nEg",
+    "named": false
+  },
+  {
+    "type": "nOP",
+    "named": false
+  },
+  {
+    "type": "nOp",
+    "named": false
+  },
+  {
+    "type": "neG",
+    "named": false
+  },
+  {
+    "type": "neg",
+    "named": false
+  },
+  {
+    "type": "noP",
+    "named": false
+  },
+  {
+    "type": "nop",
+    "named": false
+  },
+  {
+    "type": "null",
+    "named": true
+  },
+  {
+    "type": "number",
+    "named": true
+  },
+  {
+    "type": "oAL",
+    "named": false
+  },
+  {
+    "type": "oAl",
+    "named": false
+  },
+  {
+    "type": "oRA",
+    "named": false
+  },
+  {
+    "type": "oRQ",
+    "named": false
+  },
+  {
+    "type": "oRa",
+    "named": false
+  },
+  {
+    "type": "oRq",
+    "named": false
+  },
+  {
+    "type": "oaL",
+    "named": false
+  },
+  {
+    "type": "oal",
+    "named": false
+  },
+  {
+    "type": "opcode_constant",
+    "named": true
+  },
+  {
+    "type": "operator",
+    "named": true
+  },
+  {
+    "type": "orA",
+    "named": false
+  },
+  {
+    "type": "orQ",
+    "named": false
+  },
+  {
+    "type": "ora",
+    "named": false
+  },
+  {
+    "type": "orq",
+    "named": false
+  },
+  {
+    "type": "pHA",
+    "named": false
+  },
+  {
+    "type": "pHP",
+    "named": false
+  },
+  {
+    "type": "pHW",
+    "named": false
+  },
+  {
+    "type": "pHX",
+    "named": false
+  },
+  {
+    "type": "pHY",
+    "named": false
+  },
+  {
+    "type": "pHZ",
+    "named": false
+  },
+  {
+    "type": "pHa",
+    "named": false
+  },
+  {
+    "type": "pHp",
+    "named": false
+  },
+  {
+    "type": "pHw",
+    "named": false
+  },
+  {
+    "type": "pHx",
+    "named": false
+  },
+  {
+    "type": "pHy",
+    "named": false
+  },
+  {
+    "type": "pHz",
+    "named": false
+  },
+  {
+    "type": "pLA",
+    "named": false
+  },
+  {
+    "type": "pLP",
+    "named": false
+  },
+  {
+    "type": "pLX",
+    "named": false
+  },
+  {
+    "type": "pLY",
+    "named": false
+  },
+  {
+    "type": "pLZ",
+    "named": false
+  },
+  {
+    "type": "pLa",
+    "named": false
+  },
+  {
+    "type": "pLp",
+    "named": false
+  },
+  {
+    "type": "pLx",
+    "named": false
+  },
+  {
+    "type": "pLy",
+    "named": false
+  },
+  {
+    "type": "pLz",
+    "named": false
+  },
+  {
+    "type": "phA",
+    "named": false
+  },
+  {
+    "type": "phP",
+    "named": false
+  },
+  {
+    "type": "phW",
+    "named": false
+  },
+  {
+    "type": "phX",
+    "named": false
+  },
+  {
+    "type": "phY",
+    "named": false
+  },
+  {
+    "type": "phZ",
+    "named": false
+  },
+  {
+    "type": "pha",
+    "named": false
+  },
+  {
+    "type": "php",
+    "named": false
+  },
+  {
+    "type": "phw",
+    "named": false
+  },
+  {
+    "type": "phx",
+    "named": false
+  },
+  {
+    "type": "phy",
+    "named": false
+  },
+  {
+    "type": "phz",
+    "named": false
+  },
+  {
+    "type": "plA",
+    "named": false
+  },
+  {
+    "type": "plP",
+    "named": false
+  },
+  {
+    "type": "plX",
+    "named": false
+  },
+  {
+    "type": "plY",
+    "named": false
+  },
+  {
+    "type": "plZ",
+    "named": false
+  },
+  {
+    "type": "pla",
+    "named": false
+  },
+  {
+    "type": "plp",
+    "named": false
+  },
+  {
+    "type": "plx",
+    "named": false
+  },
+  {
+    "type": "ply",
+    "named": false
+  },
+  {
+    "type": "plz",
+    "named": false
+  },
+  {
+    "type": "preprocessor_directive",
+    "named": true
+  },
+  {
+    "type": "rLA",
+    "named": false
+  },
+  {
+    "type": "rLa",
+    "named": false
+  },
+  {
+    "type": "rMB0",
+    "named": false
+  },
+  {
+    "type": "rMB1",
+    "named": false
+  },
+  {
+    "type": "rMB2",
+    "named": false
+  },
+  {
+    "type": "rMB3",
+    "named": false
+  },
+  {
+    "type": "rMB4",
+    "named": false
+  },
+  {
+    "type": "rMB5",
+    "named": false
+  },
+  {
+    "type": "rMB6",
+    "named": false
+  },
+  {
+    "type": "rMB7",
+    "named": false
+  },
+  {
+    "type": "rMb0",
+    "named": false
+  },
+  {
+    "type": "rMb1",
+    "named": false
+  },
+  {
+    "type": "rMb2",
+    "named": false
+  },
+  {
+    "type": "rMb3",
+    "named": false
+  },
+  {
+    "type": "rMb4",
+    "named": false
+  },
+  {
+    "type": "rMb5",
+    "named": false
+  },
+  {
+    "type": "rMb6",
+    "named": false
+  },
+  {
+    "type": "rMb7",
+    "named": false
+  },
+  {
+    "type": "rOL",
+    "named": false
+  },
+  {
+    "type": "rOLQ",
+    "named": false
+  },
+  {
+    "type": "rOLq",
+    "named": false
+  },
+  {
+    "type": "rOR",
+    "named": false
+  },
+  {
+    "type": "rORQ",
+    "named": false
+  },
+  {
+    "type": "rORq",
+    "named": false
+  },
+  {
+    "type": "rOW",
+    "named": false
+  },
+  {
+    "type": "rOl",
+    "named": false
+  },
+  {
+    "type": "rOlQ",
+    "named": false
+  },
+  {
+    "type": "rOlq",
+    "named": false
+  },
+  {
+    "type": "rOr",
+    "named": false
+  },
+  {
+    "type": "rOrQ",
+    "named": false
+  },
+  {
+    "type": "rOrq",
+    "named": false
+  },
+  {
+    "type": "rOw",
+    "named": false
+  },
+  {
+    "type": "rRA",
+    "named": false
+  },
+  {
+    "type": "rRa",
+    "named": false
+  },
+  {
+    "type": "rTI",
+    "named": false
+  },
+  {
+    "type": "rTN",
+    "named": false
+  },
+  {
+    "type": "rTS",
+    "named": false
+  },
+  {
+    "type": "rTi",
+    "named": false
+  },
+  {
+    "type": "rTn",
+    "named": false
+  },
+  {
+    "type": "rTs",
+    "named": false
+  },
+  {
+    "type": "rlA",
+    "named": false
+  },
+  {
+    "type": "rla",
+    "named": false
+  },
+  {
+    "type": "rmB0",
+    "named": false
+  },
+  {
+    "type": "rmB1",
+    "named": false
+  },
+  {
+    "type": "rmB2",
+    "named": false
+  },
+  {
+    "type": "rmB3",
+    "named": false
+  },
+  {
+    "type": "rmB4",
+    "named": false
+  },
+  {
+    "type": "rmB5",
+    "named": false
+  },
+  {
+    "type": "rmB6",
+    "named": false
+  },
+  {
+    "type": "rmB7",
+    "named": false
+  },
+  {
+    "type": "rmb0",
+    "named": false
+  },
+  {
+    "type": "rmb1",
+    "named": false
+  },
+  {
+    "type": "rmb2",
+    "named": false
+  },
+  {
+    "type": "rmb3",
+    "named": false
+  },
+  {
+    "type": "rmb4",
+    "named": false
+  },
+  {
+    "type": "rmb5",
+    "named": false
+  },
+  {
+    "type": "rmb6",
+    "named": false
+  },
+  {
+    "type": "rmb7",
+    "named": false
+  },
+  {
+    "type": "roL",
+    "named": false
+  },
+  {
+    "type": "roLQ",
+    "named": false
+  },
+  {
+    "type": "roLq",
+    "named": false
+  },
+  {
+    "type": "roR",
+    "named": false
+  },
+  {
+    "type": "roRQ",
+    "named": false
+  },
+  {
+    "type": "roRq",
+    "named": false
+  },
+  {
+    "type": "roW",
+    "named": false
+  },
+  {
+    "type": "rol",
+    "named": false
+  },
+  {
+    "type": "rolQ",
+    "named": false
+  },
+  {
+    "type": "rolq",
+    "named": false
+  },
+  {
+    "type": "ror",
+    "named": false
+  },
+  {
+    "type": "rorQ",
+    "named": false
+  },
+  {
+    "type": "rorq",
+    "named": false
+  },
+  {
+    "type": "row",
+    "named": false
+  },
+  {
+    "type": "rrA",
+    "named": false
+  },
+  {
+    "type": "rra",
+    "named": false
+  },
+  {
+    "type": "rtI",
+    "named": false
+  },
+  {
+    "type": "rtN",
+    "named": false
+  },
+  {
+    "type": "rtS",
+    "named": false
+  },
+  {
+    "type": "rti",
+    "named": false
+  },
+  {
+    "type": "rtn",
+    "named": false
+  },
+  {
+    "type": "rts",
+    "named": false
+  },
+  {
+    "type": "sAC",
+    "named": false
+  },
+  {
+    "type": "sAX",
+    "named": false
+  },
+  {
+    "type": "sAY",
+    "named": false
+  },
+  {
+    "type": "sAc",
+    "named": false
+  },
+  {
+    "type": "sAx",
+    "named": false
+  },
+  {
+    "type": "sAy",
+    "named": false
+  },
+  {
+    "type": "sBC",
+    "named": false
+  },
+  {
+    "type": "sBC2",
+    "named": false
+  },
+  {
+    "type": "sBCQ",
+    "named": false
+  },
+  {
+    "type": "sBCq",
+    "named": false
+  },
+  {
+    "type": "sBX",
+    "named": false
+  },
+  {
+    "type": "sBc",
+    "named": false
+  },
+  {
+    "type": "sBc2",
+    "named": false
+  },
+  {
+    "type": "sBcQ",
+    "named": false
+  },
+  {
+    "type": "sBcq",
+    "named": false
+  },
+  {
+    "type": "sBx",
+    "named": false
+  },
+  {
+    "type": "sEC",
+    "named": false
+  },
+  {
+    "type": "sED",
+    "named": false
+  },
+  {
+    "type": "sEE",
+    "named": false
+  },
+  {
+    "type": "sEI",
+    "named": false
+  },
+  {
+    "type": "sEc",
+    "named": false
+  },
+  {
+    "type": "sEd",
+    "named": false
+  },
+  {
+    "type": "sEe",
+    "named": false
+  },
+  {
+    "type": "sEi",
+    "named": false
+  },
+  {
+    "type": "sHA",
+    "named": false
+  },
+  {
+    "type": "sHS",
+    "named": false
+  },
+  {
+    "type": "sHX",
+    "named": false
+  },
+  {
+    "type": "sHY",
+    "named": false
+  },
+  {
+    "type": "sHa",
+    "named": false
+  },
+  {
+    "type": "sHs",
+    "named": false
+  },
+  {
+    "type": "sHx",
+    "named": false
+  },
+  {
+    "type": "sHy",
+    "named": false
+  },
+  {
+    "type": "sIR",
+    "named": false
+  },
+  {
+    "type": "sIr",
+    "named": false
+  },
+  {
+    "type": "sKB",
+    "named": false
+  },
+  {
+    "type": "sKW",
+    "named": false
+  },
+  {
+    "type": "sKb",
+    "named": false
+  },
+  {
+    "type": "sKw",
+    "named": false
+  },
+  {
+    "type": "sLO",
+    "named": false
+  },
+  {
+    "type": "sLo",
+    "named": false
+  },
+  {
+    "type": "sMB0",
+    "named": false
+  },
+  {
+    "type": "sMB1",
+    "named": false
+  },
+  {
+    "type": "sMB2",
+    "named": false
+  },
+  {
+    "type": "sMB3",
+    "named": false
+  },
+  {
+    "type": "sMB4",
+    "named": false
+  },
+  {
+    "type": "sMB5",
+    "named": false
+  },
+  {
+    "type": "sMB6",
+    "named": false
+  },
+  {
+    "type": "sMB7",
+    "named": false
+  },
+  {
+    "type": "sMb0",
+    "named": false
+  },
+  {
+    "type": "sMb1",
+    "named": false
+  },
+  {
+    "type": "sMb2",
+    "named": false
+  },
+  {
+    "type": "sMb3",
+    "named": false
+  },
+  {
+    "type": "sMb4",
+    "named": false
+  },
+  {
+    "type": "sMb5",
+    "named": false
+  },
+  {
+    "type": "sMb6",
+    "named": false
+  },
+  {
+    "type": "sMb7",
+    "named": false
+  },
+  {
+    "type": "sRE",
+    "named": false
+  },
+  {
+    "type": "sRe",
+    "named": false
+  },
+  {
+    "type": "sTA",
+    "named": false
+  },
+  {
+    "type": "sTP",
+    "named": false
+  },
+  {
+    "type": "sTQ",
+    "named": false
+  },
+  {
+    "type": "sTX",
+    "named": false
+  },
+  {
+    "type": "sTY",
+    "named": false
+  },
+  {
+    "type": "sTZ",
+    "named": false
+  },
+  {
+    "type": "sTa",
+    "named": false
+  },
+  {
+    "type": "sTp",
+    "named": false
+  },
+  {
+    "type": "sTq",
+    "named": false
+  },
+  {
+    "type": "sTx",
+    "named": false
+  },
+  {
+    "type": "sTy",
+    "named": false
+  },
+  {
+    "type": "sTz",
+    "named": false
+  },
+  {
+    "type": "sXA",
+    "named": false
+  },
+  {
+    "type": "sXa",
+    "named": false
+  },
+  {
+    "type": "sYA",
+    "named": false
+  },
+  {
+    "type": "sYa",
+    "named": false
+  },
+  {
+    "type": "saC",
+    "named": false
+  },
+  {
+    "type": "saX",
+    "named": false
+  },
+  {
+    "type": "saY",
+    "named": false
+  },
+  {
+    "type": "sac",
+    "named": false
+  },
+  {
+    "type": "sax",
+    "named": false
+  },
+  {
+    "type": "say",
+    "named": false
+  },
+  {
+    "type": "sbC",
+    "named": false
+  },
+  {
+    "type": "sbC2",
+    "named": false
+  },
+  {
+    "type": "sbCQ",
+    "named": false
+  },
+  {
+    "type": "sbCq",
+    "named": false
+  },
+  {
+    "type": "sbX",
+    "named": false
+  },
+  {
+    "type": "sbc",
+    "named": false
+  },
+  {
+    "type": "sbc2",
+    "named": false
+  },
+  {
+    "type": "sbcQ",
+    "named": false
+  },
+  {
+    "type": "sbcq",
+    "named": false
+  },
+  {
+    "type": "sbx",
+    "named": false
+  },
+  {
+    "type": "seC",
+    "named": false
+  },
+  {
+    "type": "seD",
+    "named": false
+  },
+  {
+    "type": "seE",
+    "named": false
+  },
+  {
+    "type": "seI",
+    "named": false
+  },
+  {
+    "type": "sec",
+    "named": false
+  },
+  {
+    "type": "sed",
+    "named": false
+  },
+  {
+    "type": "see",
+    "named": false
+  },
+  {
+    "type": "sei",
+    "named": false
+  },
+  {
+    "type": "shA",
+    "named": false
+  },
+  {
+    "type": "shS",
+    "named": false
+  },
+  {
+    "type": "shX",
+    "named": false
+  },
+  {
+    "type": "shY",
+    "named": false
+  },
+  {
+    "type": "sha",
+    "named": false
+  },
+  {
+    "type": "shs",
+    "named": false
+  },
+  {
+    "type": "shx",
+    "named": false
+  },
+  {
+    "type": "shy",
+    "named": false
+  },
+  {
+    "type": "siR",
+    "named": false
+  },
+  {
+    "type": "sir",
+    "named": false
+  },
+  {
+    "type": "skB",
+    "named": false
+  },
+  {
+    "type": "skW",
+    "named": false
+  },
+  {
+    "type": "skb",
+    "named": false
+  },
+  {
+    "type": "skw",
+    "named": false
+  },
+  {
+    "type": "slO",
+    "named": false
+  },
+  {
+    "type": "slo",
+    "named": false
+  },
+  {
+    "type": "smB0",
+    "named": false
+  },
+  {
+    "type": "smB1",
+    "named": false
+  },
+  {
+    "type": "smB2",
+    "named": false
+  },
+  {
+    "type": "smB3",
+    "named": false
+  },
+  {
+    "type": "smB4",
+    "named": false
+  },
+  {
+    "type": "smB5",
+    "named": false
+  },
+  {
+    "type": "smB6",
+    "named": false
+  },
+  {
+    "type": "smB7",
+    "named": false
+  },
+  {
+    "type": "smb0",
+    "named": false
+  },
+  {
+    "type": "smb1",
+    "named": false
+  },
+  {
+    "type": "smb2",
+    "named": false
+  },
+  {
+    "type": "smb3",
+    "named": false
+  },
+  {
+    "type": "smb4",
+    "named": false
+  },
+  {
+    "type": "smb5",
+    "named": false
+  },
+  {
+    "type": "smb6",
+    "named": false
+  },
+  {
+    "type": "smb7",
+    "named": false
+  },
+  {
+    "type": "srE",
+    "named": false
+  },
+  {
+    "type": "sre",
+    "named": false
+  },
+  {
+    "type": "stA",
+    "named": false
+  },
+  {
+    "type": "stP",
+    "named": false
+  },
+  {
+    "type": "stQ",
+    "named": false
+  },
+  {
+    "type": "stX",
+    "named": false
+  },
+  {
+    "type": "stY",
+    "named": false
+  },
+  {
+    "type": "stZ",
+    "named": false
+  },
+  {
+    "type": "sta",
+    "named": false
+  },
+  {
+    "type": "stp",
+    "named": false
+  },
+  {
+    "type": "stq",
+    "named": false
+  },
+  {
+    "type": "string_content",
+    "named": true
+  },
+  {
+    "type": "stx",
+    "named": false
+  },
+  {
+    "type": "sty",
+    "named": false
+  },
+  {
+    "type": "stz",
+    "named": false
+  },
+  {
+    "type": "sxA",
+    "named": false
+  },
+  {
+    "type": "sxa",
+    "named": false
+  },
+  {
+    "type": "syA",
+    "named": false
+  },
+  {
+    "type": "sya",
+    "named": false
+  },
+  {
+    "type": "tAB",
+    "named": false
+  },
+  {
+    "type": "tAS",
+    "named": false
+  },
+  {
+    "type": "tAX",
+    "named": false
+  },
+  {
+    "type": "tAY",
+    "named": false
+  },
+  {
+    "type": "tAZ",
+    "named": false
+  },
+  {
+    "type": "tAb",
+    "named": false
+  },
+  {
+    "type": "tAs",
+    "named": false
+  },
+  {
+    "type": "tAx",
+    "named": false
+  },
+  {
+    "type": "tAy",
+    "named": false
+  },
+  {
+    "type": "tAz",
+    "named": false
+  },
+  {
+    "type": "tBA",
+    "named": false
+  },
+  {
+    "type": "tBa",
+    "named": false
+  },
+  {
+    "type": "tOP",
+    "named": false
+  },
+  {
+    "type": "tOp",
+    "named": false
+  },
+  {
+    "type": "tRB",
+    "named": false
+  },
+  {
+    "type": "tRb",
+    "named": false
+  },
+  {
+    "type": "tSB",
+    "named": false
+  },
+  {
+    "type": "tSX",
+    "named": false
+  },
+  {
+    "type": "tSY",
+    "named": false
+  },
+  {
+    "type": "tSb",
+    "named": false
+  },
+  {
+    "type": "tSx",
+    "named": false
+  },
+  {
+    "type": "tSy",
+    "named": false
+  },
+  {
+    "type": "tXA",
+    "named": false
+  },
+  {
+    "type": "tXS",
+    "named": false
+  },
+  {
+    "type": "tXa",
+    "named": false
+  },
+  {
+    "type": "tXs",
+    "named": false
+  },
+  {
+    "type": "tYA",
+    "named": false
+  },
+  {
+    "type": "tYS",
+    "named": false
+  },
+  {
+    "type": "tYa",
+    "named": false
+  },
+  {
+    "type": "tYs",
+    "named": false
+  },
+  {
+    "type": "tZA",
+    "named": false
+  },
+  {
+    "type": "tZa",
+    "named": false
+  },
+  {
+    "type": "taB",
+    "named": false
+  },
+  {
+    "type": "taS",
+    "named": false
+  },
+  {
+    "type": "taX",
+    "named": false
+  },
+  {
+    "type": "taY",
+    "named": false
+  },
+  {
+    "type": "taZ",
+    "named": false
+  },
+  {
+    "type": "tab",
+    "named": false
+  },
+  {
+    "type": "tas",
+    "named": false
+  },
+  {
+    "type": "tax",
+    "named": false
+  },
+  {
+    "type": "tay",
+    "named": false
+  },
+  {
+    "type": "taz",
+    "named": false
+  },
+  {
+    "type": "tbA",
+    "named": false
+  },
+  {
+    "type": "tba",
+    "named": false
+  },
+  {
+    "type": "toP",
+    "named": false
+  },
+  {
+    "type": "top",
+    "named": false
+  },
+  {
+    "type": "trB",
+    "named": false
+  },
+  {
+    "type": "trb",
+    "named": false
+  },
+  {
+    "type": "tsB",
+    "named": false
+  },
+  {
+    "type": "tsX",
+    "named": false
+  },
+  {
+    "type": "tsY",
+    "named": false
+  },
+  {
+    "type": "tsb",
+    "named": false
+  },
+  {
+    "type": "tsx",
+    "named": false
+  },
+  {
+    "type": "tsy",
+    "named": false
+  },
+  {
+    "type": "txA",
+    "named": false
+  },
+  {
+    "type": "txS",
+    "named": false
+  },
+  {
+    "type": "txa",
+    "named": false
+  },
+  {
+    "type": "txs",
+    "named": false
+  },
+  {
+    "type": "tyA",
+    "named": false
+  },
+  {
+    "type": "tyS",
+    "named": false
+  },
+  {
+    "type": "tya",
+    "named": false
+  },
+  {
+    "type": "type_identifier",
+    "named": true
+  },
+  {
+    "type": "tys",
+    "named": false
+  },
+  {
+    "type": "tzA",
+    "named": false
+  },
+  {
+    "type": "tza",
+    "named": false
+  },
+  {
+    "type": "wAI",
+    "named": false
+  },
+  {
+    "type": "wAi",
+    "named": false
+  },
+  {
+    "type": "waI",
+    "named": false
+  },
+  {
+    "type": "wai",
+    "named": false
+  },
+  {
+    "type": "x",
+    "named": false
+  },
+  {
+    "type": "xAA",
+    "named": false
+  },
+  {
+    "type": "xAS",
+    "named": false
+  },
+  {
+    "type": "xAa",
+    "named": false
+  },
+  {
+    "type": "xAs",
+    "named": false
+  },
+  {
+    "type": "xaA",
+    "named": false
+  },
+  {
+    "type": "xaS",
+    "named": false
+  },
+  {
+    "type": "xaa",
+    "named": false
+  },
+  {
+    "type": "xas",
+    "named": false
+  },
+  {
+    "type": "y",
+    "named": false
   },
   {
     "type": "{",

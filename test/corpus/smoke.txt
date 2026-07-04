@@ -1,0 +1,215 @@
+==================
+Smoke
+==================
+
+// Kick Assembler tree-sitter smoke sample
+#importonce
+#import "constants.asm"
+
+.const DELAY = 7
+.var border = BLACK
+
+*=$1000 "Program"
+start:
+    :BasicUpstart2(start)
+    sei
+    ldx #10
+!loop:
+    lda table,x
+    sta tmpX:#$d020
+    mov16 #intro_irq.an_rti : kernal_nmi_vector
+    set_next_raster(i_end,end_frame_irq)
+    dex
+    bne !loop-
+    rts
+
+.macro BasicUpstart(entry) {
+    .word entry
+}
+
+.function sine(i) {
+    .return 127.5 + 127.5 * sin(toRadians(i * 360 / 256))
+}
+
+table:
+    .byte $01, %00110011, 42, LIGHT_BLUE
+    .fill 16, sine(i)
+
+.if (DELAY > 0) {
+    .print "delay enabled"
+} else {
+    .errorif DELAY < 0 "negative delay"
+}
+
+.namespace Buffers {
+    screen: {
+        .fill 40, 0
+    }
+
+    colour: .fill 40, 0
+}
+
+/* block comment */
+
+---
+
+(program
+  (comment)
+  (preprocessor_statement
+    (preprocessor_directive))
+  (preprocessor_statement
+    (preprocessor_directive)
+    (string
+      (string_content)))
+  (directive_statement
+    (directive)
+    (identifier)
+    (operator)
+    (number))
+  (directive_statement
+    (directive)
+    (identifier)
+    (operator)
+    (colour_constant))
+  (program_counter_statement
+    (directive)
+    (operator)
+    (number)
+    (string
+      (string_content)))
+  (label_definition
+    (identifier))
+  (macro_call_statement
+    (punctuation)
+    (macro_name)
+    (identifier))
+  (instruction_statement
+    (opcode))
+  (instruction_statement
+    (opcode)
+    (number))
+  (label_definition
+    (multi_label_name))
+  (instruction_statement
+    (opcode)
+    (identifier)
+    (punctuation)
+    (register))
+  (instruction_statement
+    (opcode)
+    (argument_label
+      (identifier)
+      (number)))
+  (macro_call_statement
+    (macro_name)
+    (immediate_identifier)
+    (punctuation)
+    (identifier))
+  (macro_call_statement
+    (macro_name)
+    (identifier)
+    (punctuation)
+    (identifier))
+  (instruction_statement
+    (opcode))
+  (instruction_statement
+    (opcode)
+    (multi_label_reference))
+  (instruction_statement
+    (opcode))
+  (directive_statement
+    (directive)
+    (identifier)
+    (punctuation)
+    (identifier)
+    (punctuation)
+    (block
+      (directive_statement
+        (directive)
+        (identifier))))
+  (directive_statement
+    (directive)
+    (identifier)
+    (punctuation)
+    (identifier)
+    (punctuation)
+    (block
+      (directive_statement
+        (directive)
+        (number)
+        (operator)
+        (number)
+        (operator)
+        (builtin_function)
+        (punctuation)
+        (builtin_function)
+        (punctuation)
+        (identifier)
+        (operator)
+        (number)
+        (operator)
+        (number)
+        (punctuation)
+        (punctuation))))
+  (label_definition
+    (identifier))
+  (directive_statement
+    (directive)
+    (number)
+    (punctuation)
+    (number)
+    (punctuation)
+    (number)
+    (punctuation)
+    (colour_constant))
+  (directive_statement
+    (directive)
+    (number)
+    (punctuation)
+    (identifier)
+    (punctuation)
+    (identifier)
+    (punctuation))
+  (directive_statement
+    (directive)
+    (punctuation)
+    (identifier)
+    (operator)
+    (number)
+    (punctuation)
+    (block
+      (directive_statement
+        (directive)
+        (string
+          (string_content))))
+    (else_clause
+      (else_keyword)
+      (block
+        (directive_statement
+          (directive)
+          (identifier)
+          (operator)
+          (number)
+          (string
+            (string_content))))))
+  (directive_statement
+    (directive)
+    (identifier)
+    (block
+      (label_block
+        (label_definition
+          (identifier))
+        (block
+          (directive_statement
+            (directive)
+            (number)
+            (punctuation)
+            (number))))
+      (label_definition
+        (identifier))
+      (directive_statement
+        (directive)
+        (number)
+        (punctuation)
+        (number))))
+  (comment))
