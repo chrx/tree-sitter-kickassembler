@@ -6,12 +6,7 @@
       "camelcase": "KickAssembler",
       "title": "Kick Assembler",
       "scope": "source.kickassembler",
-      "file-types": [
-        "asm",
-        "a",
-        "s",
-        "inc"
-      ],
+      "file-types": ["asm", "a", "s", "inc"],
       "injection-regex": "^kickassembler$",
       "class-name": "TreeSitterKickassembler"
     }
@@ -32,7 +27,7 @@
   "bindings": {
     "c": true,
     "go": true,
-    "node": true,
+    "node": false,
     "python": true,
     "rust": true,
     "swift": true,
