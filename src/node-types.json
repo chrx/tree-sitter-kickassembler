@@ -281,6 +281,10 @@
         {
           "type": "char_content",
           "named": true
+        },
+        {
+          "type": "escape_sequence",
+          "named": true
         }
       ]
     }
@@ -1071,9 +1075,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "escape_sequence",
+          "named": true
+        },
         {
           "type": "string_content",
           "named": true
@@ -5881,6 +5889,10 @@
   {
     "type": "eorq",
     "named": false
+  },
+  {
+    "type": "escape_sequence",
+    "named": true
   },
   {
     "type": "file_type_constant",

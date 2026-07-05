@@ -696,16 +696,20 @@
           "value": "\""
         },
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "string_content"
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "string_content"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "escape_sequence"
+              }
+            ]
+          }
         },
         {
           "type": "STRING",
@@ -716,19 +720,11 @@
     "string_content": {
       "type": "IMMEDIATE_TOKEN",
       "content": {
-        "type": "REPEAT1",
+        "type": "PREC",
+        "value": 1,
         "content": {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "PATTERN",
-              "value": "[^\"\\\\\\n]"
-            },
-            {
-              "type": "PATTERN",
-              "value": "\\\\."
-            }
-          ]
+          "type": "PATTERN",
+          "value": "[^\"\\\\\\n]+"
         }
       }
     },
@@ -740,8 +736,17 @@
           "value": "'"
         },
         {
-          "type": "SYMBOL",
-          "name": "char_content"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "char_content"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "escape_sequence"
+            }
+          ]
         },
         {
           "type": "STRING",
@@ -752,15 +757,26 @@
     "char_content": {
       "type": "IMMEDIATE_TOKEN",
       "content": {
-        "type": "CHOICE",
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "[^'\\\\\\n]"
+        }
+      }
+    },
+    "escape_sequence": {
+      "type": "IMMEDIATE_TOKEN",
+      "content": {
+        "type": "SEQ",
         "members": [
           {
-            "type": "PATTERN",
-            "value": "[^'\\\\\\n]"
+            "type": "STRING",
+            "value": "\\"
           },
           {
             "type": "PATTERN",
-            "value": "\\\\."
+            "value": "."
           }
         ]
       }

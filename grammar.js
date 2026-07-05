@@ -344,11 +344,12 @@ module.exports = grammar({
         $.punctuation,
       ),
 
-    string: ($) => seq('"', optional($.string_content), '"'),
-    string_content: () => token.immediate(repeat1(choice(/[^"\\\n]/, /\\./))),
+    string: ($) => seq('"', repeat(choice($.string_content, $.escape_sequence)), '"'),
+    string_content: () => token.immediate(prec(1, /[^"\\\n]+/)),
 
-    char: ($) => seq("'", $.char_content, "'"),
-    char_content: () => token.immediate(choice(/[^'\\\n]/, /\\./)),
+    char: ($) => seq("'", choice($.char_content, $.escape_sequence), "'"),
+    char_content: () => token.immediate(prec(1, /[^'\\\n]/)),
+    escape_sequence: () => token.immediate(seq("\\", /./)),
 
     number: () =>
       token(

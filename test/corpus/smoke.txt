@@ -33,9 +33,11 @@ start:
 
 table:
     .byte $01, %00110011, 42, LIGHT_BLUE
+    .byte '\n'
     .fill 16, sine(i)
 
 .if (DELAY > 0) {
+    .print "delay\nenabled with \"quotes\""
     .print "delay enabled"
 } else {
     .errorif DELAY < 0 "negative delay"
@@ -164,6 +166,10 @@ table:
     (colour_constant))
   (directive_statement
     (directive)
+    (char
+      (escape_sequence)))
+  (directive_statement
+    (directive)
     (number)
     (punctuation)
     (identifier)
@@ -178,6 +184,15 @@ table:
     (number)
     (punctuation)
     (block
+      (directive_statement
+        (directive)
+        (string
+          (string_content)
+          (escape_sequence)
+          (string_content)
+          (escape_sequence)
+          (string_content)
+          (escape_sequence)))
       (directive_statement
         (directive)
         (string

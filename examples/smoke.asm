@@ -30,11 +30,12 @@ start:
 
 table:
     .byte $01, %00110011, 42, LIGHT_BLUE
-    .byte 'A'
+    .byte '\n'
     .fill 16, sine(i)
 
 .if (DELAY > 0) {
     .print "delay enabled"
+    .print "delay\nenabled with \"quotes\""
 } else {
     .errorif DELAY < 0 "negative delay"
 }
